@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Set API key via env
-process.env.STITCH_API_KEY = 'AQ.Ab8RN6Lbrid0VeKAmDrMYRPd2nHKNMrcNT6u49Ga02V2K3yjtA';
+process.env.STITCH_API_KEY = 'AQ.Ab8RN6I7g-lQUBdUGB1CtsXGku252kv_zxV31ufsTZwnJBQZBA';
 
 async function downloadContent(url) {
   return new Promise((resolve, reject) => {

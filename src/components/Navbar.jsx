@@ -8,7 +8,7 @@ export default function Navbar({ onSearch, onUpdate, isUpdating }) {
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-soft">
               <span className="text-white font-display text-lg font-semibold">溯</span>
             </div>
-            <span className="font-heading text-xl font-semibold text-ink tracking-tight">溯史</span>
+            <span className="font-heading text-xl font-semibold text-ink tracking-tight">热点论文</span>
           </div>
 
           {/* Search - Centered */}
