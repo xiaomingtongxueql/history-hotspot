@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import TopicDetail from './pages/TopicDetail'
@@ -11,6 +11,8 @@ export default function App() {
 
   const handleTopicClick = (topic, category) => {
     setIsTransitioning(true)
+    // Push a history entry so browser back button returns to home
+    window.history.pushState({ view: 'topic', topicId: topic.id }, '')
     setTimeout(() => {
       setCurrentTopic(topic)
       setCurrentCategory(category)
@@ -19,7 +21,7 @@ export default function App() {
     }, 150)
   }
 
-  const handleBack = () => {
+  const goHome = useCallback(() => {
     setIsTransitioning(true)
     setTimeout(() => {
       setCurrentTopic(null)
@@ -27,7 +29,21 @@ export default function App() {
       setIsTransitioning(false)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 150)
+  }, [])
+
+  const handleBack = () => {
+    // Use history.back() so the popstate listener handles the transition
+    window.history.back()
   }
+
+  // Listen for browser back/forward button
+  useEffect(() => {
+    const onPopState = () => {
+      goHome()
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [goHome])
 
   const handleUpdate = () => {
     window.open(
@@ -38,7 +54,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg-primary">
-      <Navbar onSearch={setSearchQuery} onUpdate={handleUpdate} />
+      <Navbar onSearch={setSearchQuery} onUpdate={handleUpdate} onLogoClick={currentTopic ? handleBack : undefined} />
       <main className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
         {currentTopic ? (
           <TopicDetail
