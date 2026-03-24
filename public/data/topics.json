@@ -9,70 +9,197 @@
       "topics": [
         {
           "id": "ancient-china-001",
-          "title": "魏晋南北朝门阀政治研究",
-          "description": "探讨魏晋南北朝时期门阀士族的兴衰、皇权与士权的关系以及社会阶层流动的历史规律。",
+          "title": "古代地理文献与国家治理",
+          "keyword": "古代地理书 国家治理 历史地理",
+          "description": "探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。",
           "papers": [
             {
-              "title": "释“王与马共天下”",
-              "authors": ["田余庆"],
+              "title": "汉魏六朝地理书的演进",
+              "authors": [
+                "徐成",
+                "杨计国"
+              ],
               "journal": "历史研究",
-              "year": 1982,
-              "citations": 1256,
-              "downloads": 15800,
-              "score": 9.5,
+              "year": 2023,
+              "citations": 12,
+              "downloads": 850,
+              "score": 1.7,
               "source": "知网",
-              "cnki_id": "LSYJ198201001"
+              "cnki_id": "LSYJ202301004"
             },
             {
-              "title": "论魏晋时代之“清谈”",
-              "authors": ["唐长孺"],
-              "journal": "武汉大学学报",
-              "year": 1957,
-              "citations": 845,
-              "downloads": 9200,
-              "score": 8.8,
-              "source": "知网",
-              "cnki_id": "WHDS195701001"
+              "title": "蒙元时代的四怯薛长承袭",
+              "authors": [
+                "张晓慧"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 8,
+              "downloads": 420,
+              "score": 1.6,
+              "source": "万方",
+              "cnki_id": "LSYJ202302005"
             },
             {
-              "title": "魏晋南北朝时期的察举与九品中正制",
-              "authors": ["阎步克"],
-              "journal": "历史研究",
-              "year": 1999,
-              "citations": 980,
-              "downloads": 11000,
-              "score": 8.9,
-              "source": "知网",
-              "cnki_id": "LSYJ199904005"
+              "title": "习近平总书记关于边疆治理的重要论述的生成逻辑、理论意蕴与实践价值",
+              "authors": [
+                "赵彪",
+                "林拓"
+              ],
+              "journal": "中央社会主义学院学报",
+              "year": 2025,
+              "citations": 1,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "periodical_zyshzyxyxb202503001",
+              "score": 1.8
+            },
+            {
+              "title": "形塑国家韧性：论中国古代大一统国家的长期延续与不断重建",
+              "authors": [
+                "赵德昊"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 4,
+              "downloads": 100,
+              "source": "万方",
+              "cnki_id": "thesis_D02646689",
+              "score": 2.0
+            },
+            {
+              "title": "朱右曾《诗地理征》研究",
+              "authors": [
+                "霍忠凯"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 5,
+              "downloads": 25,
+              "source": "万方",
+              "cnki_id": "thesis_D01671583",
+              "score": 2.0
+            },
+            {
+              "title": "中国古代治理模式及其核心思想——评《古代中国治国理政思想》",
+              "authors": [
+                "郑臣",
+                "王斌兵"
+              ],
+              "journal": "中国教育学刊",
+              "year": 2021,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_zgjyxk202110048",
+              "score": 1.0
+            },
+            {
+              "title": "中国古代王朝边疆形成与稳固的历史轨迹",
+              "authors": [
+                "孙佳"
+              ],
+              "journal": "中国出版",
+              "year": 2018,
+              "citations": 0,
+              "downloads": 50,
+              "source": "万方",
+              "cnki_id": "periodical_zgcb201815021",
+              "score": 0.4
             }
           ]
         },
         {
           "id": "ancient-china-002",
-          "title": "宋代社会经济与商品经济研究",
-          "description": "聚焦宋代城市化进程、商业网络、纸币运用及土地制度等经济层面的重大变革。",
+          "title": "早期中国与先秦社会文化",
+          "keyword": "先秦 商周 华夏 甲骨文 早期中国",
+          "description": "利用出土甲骨文献及早期传世文献重新认识华夏共同祖先与商周社会。",
           "papers": [
             {
-              "title": "宋代经济史（上、下）核心观点述评",
-              "authors": ["漆侠"],
-              "journal": "中国史研究",
-              "year": 1999,
-              "citations": 2105,
-              "downloads": 24000,
-              "score": 9.8,
+              "title": "华夏共同祖先意识的萌生发展——以「祝融八姓」为中心",
+              "authors": [
+                "罗新慧"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 25,
+              "downloads": 1100,
+              "score": 1.9,
               "source": "知网",
-              "cnki_id": "ZGSY199901002"
+              "cnki_id": "LSYJ202301003"
             },
             {
-              "title": "中国两宋时期的商业革命",
-              "authors": ["伊懋可", "斯波义信"],
-              "journal": "中国经济史研究",
-              "year": 2005,
-              "citations": 1540,
-              "downloads": 18500,
-              "score": 9.2,
+              "title": "甲骨文「黄尹」身分考——兼论商代配祀制度",
+              "authors": [
+                "吴丽婉"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 6,
+              "downloads": 580,
+              "score": 1.6,
               "source": "万方",
-              "cnki_id": "ZGJI200503001"
+              "cnki_id": "LSYJ202302008"
+            },
+            {
+              "title": "人地关系视角下的石峁文化兴衰",
+              "authors": [
+                "韩茂莉"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 42,
+              "downloads": 2400,
+              "score": 2.3,
+              "source": "知网",
+              "cnki_id": "LSYJ202304005"
+            }
+          ]
+        },
+        {
+          "id": "ancient-china-003",
+          "title": "唐宋明清的赋税军制与地方管控",
+          "keyword": "唐代 宋代 明代 清代 军制 赋税 地方治理",
+          "description": "从唐代节度使到明代军制，剖析中古以后帝国的社会管控嬗变。",
+          "papers": [
+            {
+              "title": "唐代节度使领州府体制研究",
+              "authors": [
+                "丁俊"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 18,
+              "downloads": 1500,
+              "score": 1.9,
+              "source": "知网",
+              "cnki_id": "LSYJ202303002"
+            },
+            {
+              "title": "明代军制演进与盛衰之变",
+              "authors": [
+                "曹循"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 22,
+              "downloads": 1340,
+              "score": 1.9,
+              "source": "知网",
+              "cnki_id": "LSYJ202303003"
+            },
+            {
+              "title": "清中后期华北乡村治理——以青苗会若干京控案为中心",
+              "authors": [
+                "王洪兵"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 15,
+              "downloads": 980,
+              "score": 1.8,
+              "source": "知网",
+              "cnki_id": "LSYJ202304006"
             }
           ]
         }
@@ -86,59 +213,298 @@
       "topics": [
         {
           "id": "modern-china-001",
-          "title": "洋务运动与中国早期现代化",
-          "description": "研究19世纪下半叶洋务派在工业、军事、教育等领域的改革及其对中国现代化的启蒙作用。",
+          "title": "晚清社会动荡与现代化起步",
+          "keyword": "晚清 现代化 社会变革 改革",
+          "description": "探讨中国早期现代化的特征以及晚清地方生态与权力的变局。",
           "papers": [
             {
-              "title": "论洋务运动",
-              "authors": ["李时岳", "胡滨"],
-              "journal": "历史研究",
-              "year": 1980,
-              "citations": 1150,
-              "downloads": 16000,
-              "score": 9.1,
+              "title": "中国早期现代化道路的三大特性",
+              "authors": [
+                "虞和平"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 45,
+              "downloads": 3200,
+              "score": 2.6,
               "source": "知网",
-              "cnki_id": "LSYJ198001002"
+              "cnki_id": "JDSY202301001"
             },
             {
-              "title": "洋务运动与中国近代化",
-              "authors": ["夏东元"],
+              "title": "黄河故道之变与土地权属之争(1855—1937)",
+              "authors": [
+                "李发根"
+              ],
               "journal": "近代史研究",
-              "year": 1995,
-              "citations": 960,
-              "downloads": 12400,
-              "score": 8.7,
+              "year": 2023,
+              "citations": 11,
+              "downloads": 650,
+              "score": 1.7,
+              "source": "万方",
+              "cnki_id": "JDSY202302004"
+            },
+            {
+              "title": "近代天津排水系统的变化与生态影响",
+              "authors": [
+                "曹牧"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 14,
+              "downloads": 890,
+              "score": 1.7,
               "source": "知网",
-              "cnki_id": "JDSY199502004"
+              "cnki_id": "JDSY202304008"
+            },
+            {
+              "title": "民族国家建设场域中的女子教育变革——以晚清女子学堂为中心",
+              "authors": [
+                "孙秀玲"
+              ],
+              "journal": "妇女研究论丛",
+              "year": 2016,
+              "citations": 5,
+              "downloads": 36,
+              "source": "万方",
+              "cnki_id": "periodical_fnyjlc201602011",
+              "score": 0.0
+            },
+            {
+              "title": "新权威主义视角的晚清中国宪政变革研究",
+              "authors": [
+                "田马爽"
+              ],
+              "journal": "河南",
+              "year": 2011,
+              "citations": 1,
+              "downloads": 86,
+              "source": "万方",
+              "cnki_id": "periodical_hnshkx201103015",
+              "score": 0.0
+            },
+            {
+              "title": "人衣关系视域下的晚清民国女性服饰变革研究",
+              "authors": [
+                "张雪飞"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 14,
+              "downloads": 126,
+              "source": "万方",
+              "cnki_id": "thesis_D02371678",
+              "score": 2.1
+            },
+            {
+              "title": "晚清军事变革战略的缺失与借鉴意义",
+              "authors": [
+                "王兆辉"
+              ],
+              "journal": "兰州教育学院学报",
+              "year": 2008,
+              "citations": 0,
+              "downloads": 35,
+              "source": "万方",
+              "cnki_id": "periodical_lzjyxyxb200803008",
+              "score": 0.0
+            },
+            {
+              "title": "晚清民国药物政策变迁研究",
+              "authors": [
+                "冯偲"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 1,
+              "downloads": 28,
+              "source": "万方",
+              "cnki_id": "thesis_D03762356",
+              "score": 2.0
             }
           ]
         },
         {
           "id": "modern-china-002",
-          "title": "抗日战争与民族国家构建",
-          "description": "探讨抗日战争时期国共两党的战略、正面战场与敌后战场的互动，以及抗战对中华民族认同的深远影响。",
+          "title": "民国时期政治生态与思潮",
+          "keyword": "民国 国民政府 政治 知识分子 思潮",
+          "description": "聚焦民国时期的中央与地方关系、以及知识界思潮与社会动员。",
           "papers": [
             {
-              "title": "抗日战争时期的国共关系再探讨",
-              "authors": ["杨奎松"],
+              "title": "从分到合：国民政府的行政督察专员制度(1932—1936)",
+              "authors": [
+                "侯桂红"
+              ],
               "journal": "近代史研究",
-              "year": 2008,
-              "citations": 1345,
-              "downloads": 21000,
-              "score": 9.6,
+              "year": 2023,
+              "citations": 16,
+              "downloads": 950,
+              "score": 1.8,
               "source": "知网",
-              "cnki_id": "JDSY200805001"
+              "cnki_id": "JDSY202303004"
             },
             {
-              "title": "论中国抗日战争在世界反法西斯战争中的地位",
-              "authors": ["步平"],
+              "title": "国民党北伐后平津的权力角逐",
+              "authors": [
+                "郝昭荔"
+              ],
               "journal": "历史研究",
-              "year": 2015,
-              "citations": 880,
-              "downloads": 14500,
-              "score": 9.0,
+              "year": 2023,
+              "citations": 19,
+              "downloads": 1120,
+              "score": 1.8,
               "source": "万方",
-              "cnki_id": "LSYJ201504003"
+              "cnki_id": "LSYJ202304007"
+            },
+            {
+              "title": "从潜流到激流：20世纪30年代北平的左翼思潮与行动",
+              "authors": [
+                "王建伟"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 28,
+              "downloads": 1800,
+              "score": 2.1,
+              "source": "知网",
+              "cnki_id": "JDSY202303003"
+            },
+            {
+              "title": "民国时期教育经费独立思潮研究(1912-1937)",
+              "authors": [
+                "刘澳"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 3,
+              "source": "万方",
+              "cnki_id": "thesis_D03854711",
+              "score": 2.0
+            },
+            {
+              "title": "独立与自治:略论民国广西地方实力派自存之道",
+              "authors": [
+                "陈明胜"
+              ],
+              "journal": "",
+              "year": 2024,
+              "citations": 0,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "periodical_mingyj202402005",
+              "score": 1.6
+            },
+            {
+              "title": "试论南京国民政府初期的村治派",
+              "authors": [
+                "李德芳"
+              ],
+              "journal": "史学月刊",
+              "year": 2001,
+              "citations": 14,
+              "downloads": 29,
+              "source": "万方",
+              "cnki_id": "periodical_sxyk200102013",
+              "score": 0.1
+            },
+            {
+              "title": "民国时期的识字运动(1928—1937)",
+              "authors": [
+                "师萍萍"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 18,
+              "downloads": 115,
+              "source": "万方",
+              "cnki_id": "thesis_Y1532563",
+              "score": 2.1
+            },
+            {
+              "title": "民国时期体育教学中的性别差异问题",
+              "authors": [
+                "苗海燕"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 47,
+              "source": "万方",
+              "cnki_id": "thesis_D01006212",
+              "score": 2.0
+            }
+          ]
+        },
+        {
+          "id": "modern-china-003",
+          "title": "近代史学史与思想论革",
+          "keyword": "近代史学 马克思主义史学 章太炎 康有为",
+          "description": "清末民初及马克思主义史学观念在近代的萌发及演变过程。",
+          "papers": [
+            {
+              "title": "翦伯赞与中国马克思主义史料学的初步建立",
+              "authors": [
+                "李长银"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 35,
+              "downloads": 2400,
+              "score": 2.3,
+              "source": "知网",
+              "cnki_id": "JDSY202303001"
+            },
+            {
+              "title": "私谊、舆论和政治：刘师培与章太炎关系再考察",
+              "authors": [
+                "张仲民"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 24,
+              "downloads": 1600,
+              "score": 2.0,
+              "source": "知网",
+              "cnki_id": "JDSY202303002"
+            },
+            {
+              "title": "康有为早年经学思想演变",
+              "authors": [
+                "傅正"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 15,
+              "downloads": 1200,
+              "score": 1.8,
+              "source": "知网",
+              "cnki_id": "LSYJ202303004"
+            },
+            {
+              "title": "学术史视野下井田制研究的演进",
+              "authors": [
+                "孙顺顺"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 78,
+              "source": "万方",
+              "cnki_id": "thesis_Y3707321",
+              "score": 2.0
+            },
+            {
+              "title": "20世纪的颜子文化",
+              "authors": [
+                "颜廷燕"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 5,
+              "downloads": 72,
+              "source": "万方",
+              "cnki_id": "thesis_Y1471066",
+              "score": 2.0
             }
           ]
         }
@@ -152,191 +518,1136 @@
       "topics": [
         {
           "id": "prc-history-001",
-          "title": "改革开放初期的经济体制改革",
-          "description": "研究十一届三中全会后，农村家庭联产承包责任制的推行以及城市经济体制改革的起步破局。",
+          "title": "中国式现代化与经济建设",
+          "keyword": "中国式现代化 经济建设 历史",
+          "description": "聚焦中国共产党百年进程中经济建设与现代化的历史反思。",
           "papers": [
             {
-              "title": "关于建国以来党的若干历史问题的决议史料考证",
-              "authors": ["原中共中央文献研究室"],
-              "journal": "中共党史研究",
-              "year": 1981,
-              "citations": 3200,
-              "downloads": 45000,
-              "score": 10.0,
+              "title": "从近代历史进程看中国式现代化",
+              "authors": [
+                "郭若平"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 56,
+              "downloads": 4800,
+              "score": 3.1,
               "source": "知网",
-              "cnki_id": "ZGDS198101000"
+              "cnki_id": "LSYJ202301002"
             },
             {
-              "title": "中国农村改革的历史进程与经验启示",
-              "authors": ["杜润生"],
-              "journal": "经济研究",
-              "year": 1998,
-              "citations": 1420,
-              "downloads": 18200,
-              "score": 9.5,
+              "title": "中国式现代化的经济史分析",
+              "authors": [
+                "武力"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 62,
+              "downloads": 5100,
+              "score": 3.2,
               "source": "知网",
-              "cnki_id": "JJYJ199810002"
+              "cnki_id": "JDSY202301002"
+            },
+            {
+              "title": "中央苏区经济建设创新实践对新时代接续推进中国式现代化的现实启示",
+              "authors": [
+                "曾为东"
+              ],
+              "journal": "观察与思考",
+              "year": 2025,
+              "citations": 0,
+              "downloads": 4,
+              "source": "万方",
+              "cnki_id": "periodical_gcysk202505009",
+              "score": 1.8
+            },
+            {
+              "title": "中国式现代化的政治起源——从国共两党建立货币金融体系的经验看历史的分野",
+              "authors": [
+                "王晨",
+                "路风"
+              ],
+              "journal": "开放时代",
+              "year": 2024,
+              "citations": 0,
+              "downloads": 57,
+              "source": "万方",
+              "cnki_id": "periodical_kfsd202404006",
+              "score": 1.6
+            },
+            {
+              "title": "延安十三年中国共产党的经济建设实践——兼论对中国式现代化的启示",
+              "authors": [
+                "何虎生",
+                "郑元泰"
+              ],
+              "journal": "长白学刊",
+              "year": 2025,
+              "citations": 0,
+              "downloads": 5,
+              "source": "万方",
+              "cnki_id": "periodical_cbxk202505002",
+              "score": 1.8
+            },
+            {
+              "title": "中国式现代化的战略深化:从以经济建设为中心到实践共同富裕",
+              "authors": [
+                "王进",
+                "刘兵兵",
+                "杨传勇"
+              ],
+              "journal": "河西学院学报",
+              "year": 2025,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_hxxyxb202506002",
+              "score": 1.8
+            },
+            {
+              "title": "中国式经济现代化道路的历史进程与生成机理",
+              "authors": [
+                "郭东方",
+                "向艳"
+              ],
+              "journal": "管理学刊",
+              "year": 2024,
+              "citations": 3,
+              "downloads": 17,
+              "source": "万方",
+              "cnki_id": "periodical_xxjyxyxb202401002",
+              "score": 1.6
             }
           ]
         },
         {
           "id": "prc-history-002",
-          "title": "中苏关系与冷战时期的中国外交",
-          "description": "利用多国解密档案，重新审视中苏同盟的建立、破裂及中国在冷战格局中的战略抉择。",
+          "title": "党史文献与新闻传播史",
+          "keyword": "延安 解放区 中共 新闻 抗战 舆论",
+          "description": "探讨解放区及抗日战争时期的新闻动员及少数民族工作机制。",
           "papers": [
             {
-              "title": "中苏同盟的经济背景:1948-1953",
-              "authors": ["沈志华"],
-              "journal": "历史研究",
-              "year": 2001,
-              "citations": 1150,
-              "downloads": 15800,
-              "score": 9.1,
+              "title": "毛泽东与延安《解放日报》对原子弹报道的变化",
+              "authors": [
+                "耿显家"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 18,
+              "downloads": 1150,
+              "score": 1.8,
               "source": "知网",
-              "cnki_id": "LSYJ200105004"
+              "cnki_id": "JDSY202306002"
             },
             {
-              "title": "冷战史研究的新视角与新材料",
-              "authors": ["牛军"],
-              "journal": "世界历史",
-              "year": 2005,
-              "citations": 820,
-              "downloads": 11900,
-              "score": 8.6,
+              "title": "《解放》周刊与中国共产党实现全面抗战的舆论动员",
+              "authors": [
+                "王凤青"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 21,
+              "downloads": 1380,
+              "score": 1.9,
               "source": "万方",
-              "cnki_id": "SJLS200502008"
+              "cnki_id": "JDSY202306003"
+            },
+            {
+              "title": "论新民主主义革命时期中国共产党对少数民族的认识",
+              "authors": [
+                "郑大华"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 33,
+              "downloads": 2100,
+              "score": 2.2,
+              "source": "知网",
+              "cnki_id": "JDSY202306001"
+            },
+            {
+              "title": "冀中解放区党报通联工作研究(1945--1949)",
+              "authors": [
+                "程磊"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 24,
+              "source": "万方",
+              "cnki_id": "thesis_Y4361701",
+              "score": 2.0
+            },
+            {
+              "title": "延安办报与重庆办报：《解放日报》《新华日报》政治动员比较研究(1942-1945)",
+              "authors": [
+                "陈晓静"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 18,
+              "downloads": 72,
+              "source": "万方",
+              "cnki_id": "thesis_Y3018568",
+              "score": 2.1
+            },
+            {
+              "title": "阵前党报别样红——《大众日报》在抗日战争中的历史贡献",
+              "authors": [
+                "陈媚娜"
+              ],
+              "journal": "青年记者",
+              "year": 2009,
+              "citations": 5,
+              "downloads": 21,
+              "source": "万方",
+              "cnki_id": "periodical_qnjz200903012",
+              "score": 0.0
+            }
+          ]
+        },
+        {
+          "id": "prc-history-003",
+          "title": "中共地下组织与历史地理建构",
+          "keyword": "中共地下组织 大革命 抗日战争 区域",
+          "description": "研究抗日战争与大革命时期中共的地方动员及区域构建。",
+          "papers": [
+            {
+              "title": "中国共产党地下机关设置的调适（1927—1937）",
+              "authors": [
+                "李里"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 26,
+              "downloads": 1900,
+              "score": 2.1,
+              "source": "知网",
+              "cnki_id": "LSYJ202302004"
+            },
+            {
+              "title": "抗战时期中国共产党对「华中」区域概念的建构",
+              "authors": [
+                "李雷波"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 15,
+              "downloads": 1050,
+              "score": 1.8,
+              "source": "万方",
+              "cnki_id": "LSYJ202301005"
+            },
+            {
+              "title": "抗战时期中国共产党军队与地方党组织的关系",
+              "authors": [
+                "谢敏"
+              ],
+              "journal": "近代史研究",
+              "year": 2023,
+              "citations": 23,
+              "downloads": 1420,
+              "score": 1.9,
+              "source": "知网",
+              "cnki_id": "JDSY202306004"
             }
           ]
         }
       ]
     },
     {
-      "id": "world-ancient",
-      "name": "世界古代史",
+      "id": "world-history",
+      "name": "世界历史",
       "icon": "🏛️",
       "color": "#4c7cc9",
       "topics": [
         {
-          "id": "world-ancient-001",
-          "title": "古希腊民主政治的起源与演变",
-          "description": "探讨雅典城邦民主制度的建立、平民与贵族的冲突及其对西方政治观念的影响。",
+          "id": "world-history-001",
+          "title": "古典帝国与早期现代欧洲",
+          "keyword": "拜占庭 中世纪 欧洲 古典帝国 赫梯",
+          "description": "以历史编纂学视角审视拜占庭、英格兰及赫梯帝国的制度转型与文化变迁。",
           "papers": [
             {
-              "title": "雅典民主制形成过程的几个问题",
-              "authors": ["郭小凌"],
+              "title": "法律编纂视域下的7—8世纪拜占庭帝国转型",
+              "authors": [
+                "庞国庆"
+              ],
               "journal": "历史研究",
-              "year": 1995,
-              "citations": 760,
-              "downloads": 10200,
-              "score": 8.5,
+              "year": 2023,
+              "citations": 14,
+              "downloads": 820,
+              "score": 1.7,
               "source": "知网",
-              "cnki_id": "LSYJ199506005"
+              "cnki_id": "LSYJ202301006"
             },
             {
-              "title": "古希腊城邦的起源",
-              "authors": ["黄洋"],
-              "journal": "世界历史",
-              "year": 2000,
-              "citations": 680,
-              "downloads": 9500,
-              "score": 8.3,
+              "title": "赫梯节日空间及其国家治理策略",
+              "authors": [
+                "蒋家瑜"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 8,
+              "downloads": 410,
+              "score": 1.6,
               "source": "知网",
-              "cnki_id": "SJLS200003002"
+              "cnki_id": "LSYJ202302006"
+            },
+            {
+              "title": "中世纪英格兰国王的土地产权",
+              "authors": [
+                "侯建新"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 31,
+              "downloads": 1950,
+              "score": 2.1,
+              "source": "万方",
+              "cnki_id": "LSYJ202306005"
             }
           ]
         },
         {
-          "id": "world-ancient-002",
-          "title": "罗马帝国的兴衰与罗马法",
-          "description": "研究罗马共和国向帝国转变的过程、罗马法的体系化建设及罗马帝国衰亡的原因。",
+          "id": "world-history-002",
+          "title": "西方思想史与概念史",
+          "keyword": "西方思想史 概念史 人文主义 启蒙",
+          "description": "探讨重农学派、人文主义以及博物学在东西方知识构造中的演变脉络。",
           "papers": [
             {
-              "title": "罗马法与现代民法学的发展",
-              "authors": ["江平"],
-              "journal": "中国法学",
-              "year": 1998,
-              "citations": 2500,
-              "downloads": 32000,
-              "score": 9.9,
-              "source": "万方",
-              "cnki_id": "ZGFX199801001"
+              "title": "「中世纪人文主义」概念史考察",
+              "authors": [
+                "徐善伟"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 19,
+              "downloads": 1250,
+              "score": 1.9,
+              "source": "知网",
+              "cnki_id": "LSYJ202303006"
             },
             {
-              "title": "罗马帝国衰亡的社会经济根源再探",
-              "authors": ["马克垚"],
+              "title": "重农学派与18世纪法国旧制度改革",
+              "authors": [
+                "张慧"
+              ],
               "journal": "历史研究",
-              "year": 2002,
-              "citations": 920,
-              "downloads": 13400,
-              "score": 8.8,
+              "year": 2023,
+              "citations": 11,
+              "downloads": 760,
+              "score": 1.7,
               "source": "知网",
-              "cnki_id": "LSYJ200202007"
+              "cnki_id": "LSYJ202301007"
+            },
+            {
+              "title": "博物学与Natural History：东西方知识传统的构造",
+              "authors": [
+                "余欣",
+                "周金泰"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 35,
+              "downloads": 2400,
+              "score": 2.3,
+              "source": "万方",
+              "cnki_id": "LSYJ202301008"
+            },
+            {
+              "title": "卢卡奇历史小说理论研究",
+              "authors": [
+                "王一冰"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 7,
+              "source": "万方",
+              "cnki_id": "thesis_D03903602",
+              "score": 2.0
+            },
+            {
+              "title": "家世、国难与留学：陈寅恪早年经历与其文化史观的发轫",
+              "authors": [
+                "任永亮"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 51,
+              "source": "万方",
+              "cnki_id": "thesis_D01852570",
+              "score": 2.0
+            },
+            {
+              "title": "中国科幻文学“科技人文主义”问题研究",
+              "authors": [
+                "孟凡"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 25,
+              "source": "万方",
+              "cnki_id": "thesis_Y4114435",
+              "score": 2.0
+            },
+            {
+              "title": "科学主义在中国的历史与现实之省思",
+              "authors": [
+                "李丽"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 23,
+              "downloads": 270,
+              "source": "万方",
+              "cnki_id": "thesis_Y955284",
+              "score": 2.2
+            },
+            {
+              "title": "文艺复兴的历史学家汉斯·巴伦及其\"公民人文主义\"",
+              "authors": [
+                "谢天冰"
+              ],
+              "journal": "福建师范大学学报（哲学社会科学版）",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 2,
+              "source": "万方",
+              "cnki_id": "periodical_1002175695",
+              "score": 2.0
+            }
+          ]
+        },
+        {
+          "id": "world-history-003",
+          "title": "近代国际关系与大国外交",
+          "keyword": "近代国际关系 大国外交 二战 冷战",
+          "description": "二战前后的美国、日本及欧洲诸大国之间的竞争与国际机制形塑。",
+          "papers": [
+            {
+              "title": "战后初期美国对中立国政策",
+              "authors": [
+                "梁志"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 16,
+              "downloads": 980,
+              "score": 1.8,
+              "source": "知网",
+              "cnki_id": "LSYJ202304009"
+            },
+            {
+              "title": "20世纪中立危机新探——以大国政治、技术进步为视角",
+              "authors": [
+                "梁志"
+              ],
+              "journal": "世界历史",
+              "year": 2023,
+              "citations": 25,
+              "downloads": 1600,
+              "score": 2.0,
+              "source": "知网",
+              "cnki_id": "SJLS202303001"
+            },
+            {
+              "title": "江户时代日本思想界的对外扩张理论",
+              "authors": [
+                "董灏智"
+              ],
+              "journal": "历史研究",
+              "year": 2023,
+              "citations": 12,
+              "downloads": 810,
+              "score": 1.7,
+              "source": "万方",
+              "cnki_id": "LSYJ202304008"
+            },
+            {
+              "title": "冷战后韩国东北亚均衡外交研究——卢泰愚至卢武铉时期",
+              "authors": [
+                "黄亚雯"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 4,
+              "downloads": 48,
+              "source": "万方",
+              "cnki_id": "thesis_Y3238294",
+              "score": 2.0
+            },
+            {
+              "title": "冷战后日本的“南中国海”政策研究",
+              "authors": [
+                "关月"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 1,
+              "downloads": 24,
+              "source": "万方",
+              "cnki_id": "thesis_Y3216613",
+              "score": 2.0
+            },
+            {
+              "title": "均势战略与战后初期英国外交政策的演变",
+              "authors": [
+                "张平"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 1,
+              "downloads": 242,
+              "source": "万方",
+              "cnki_id": "thesis_Y1427480",
+              "score": 2.1
+            },
+            {
+              "title": "论新时期中国的准联盟外交",
+              "authors": [
+                "孙德刚"
+              ],
+              "journal": "世界经济与政治",
+              "year": 2012,
+              "citations": 36,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "periodical_sjjjyzz201203005",
+              "score": 0.2
+            },
+            {
+              "title": "印度不结盟政策研究",
+              "authors": [
+                "邹琼"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 6,
+              "downloads": 144,
+              "source": "万方",
+              "cnki_id": "thesis_Y2966028",
+              "score": 2.1
             }
           ]
         }
       ]
     },
     {
-      "id": "southwest-univ",
-      "name": "西南大学（历史研究热点）",
-      "icon": "🎓",
-      "color": "#8c4cc9",
+      "id": "archaeology",
+      "name": "考古学",
+      "icon": "⚱️",
+      "color": "#7c6c4c",
       "topics": [
         {
-          "id": "southwest-univ-001",
-          "title": "抗战大后方与重庆历史研究",
-          "description": "作为位于重庆的双一流高校，西南大学历史文化学院在抗战大后方政治、文化与社会史研究中成果颇丰。",
+          "id": "archaeology-001",
+          "title": "史前文明与聚落考古",
+          "keyword": "史前聚落 考古 文明起源 新石器",
+          "description": "通过聚落形态与出土器物，探讨中国史前文明的多元起源路径。",
           "papers": [
             {
-              "title": "抗战大后方历史研究的几个问题",
-              "authors": ["潘洵"],
-              "journal": "近代史研究",
-              "year": 2012,
-              "citations": 350,
-              "downloads": 5600,
-              "score": 8.2,
-              "source": "知网",
-              "cnki_id": "JDSY201204011"
+              "title": "略论安徽史前考古发现中的早期文明因素",
+              "authors": [
+                "李忠林"
+              ],
+              "journal": "东南文化",
+              "year": 2011,
+              "citations": 4,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_dnwh201106006",
+              "score": 0.0
             },
             {
-              "title": "重庆通史稿（近代部分）的核心史料分析",
-              "authors": ["周勇"],
-              "journal": "历史研究",
-              "year": 2005,
-              "citations": 290,
-              "downloads": 4800,
-              "score": 7.9,
+              "title": "玉文化与史前文明化进程——江淮地区的历史证据",
+              "authors": [
+                "沈薇",
+                "李修松"
+              ],
+              "journal": "重庆大学学报（社会科学版）",
+              "year": 2014,
+              "citations": 5,
+              "downloads": 109,
               "source": "万方",
-              "cnki_id": "LSYJ200506008"
+              "cnki_id": "periodical_cqdxxb-shkx201401023",
+              "score": 0.1
+            },
+            {
+              "title": "2008～2017陕西史前考古综述",
+              "authors": [
+                "陕西省考古研究院史前考古研究室"
+              ],
+              "journal": "",
+              "year": 2018,
+              "citations": 24,
+              "downloads": 95,
+              "source": "万方",
+              "cnki_id": "periodical_kgyww201805002",
+              "score": 0.5
+            },
+            {
+              "title": "海岱地区城市起源与史前古城址研究",
+              "authors": [
+                "蔡宇宸"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 31,
+              "source": "万方",
+              "cnki_id": "thesis_Y4118110",
+              "score": 2.0
+            },
+            {
+              "title": "新疆东天山地区史前时期生业模式的考古学观察",
+              "authors": [
+                "苏秋平"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 21,
+              "source": "万方",
+              "cnki_id": "thesis_Y4350710",
+              "score": 2.0
             }
           ]
         },
         {
-          "id": "southwest-univ-002",
-          "title": "古典文明与希腊罗马史研究",
-          "description": "西南大学古典文明研究中心在古希腊罗马碑铭翻译、古代地中海世界互动等方面具有重要学术影响。",
+          "id": "archaeology-002",
+          "title": "汉唐墓葬与物质文化",
+          "keyword": "汉唐墓葬 考古 物质文化 丝绸之路",
+          "description": "汉唐时期墓葬考古的新发现与物质文化交流研究。",
+          "papers": []
+        }
+      ]
+    },
+    {
+      "id": "economic-history",
+      "name": "经济史",
+      "icon": "📊",
+      "color": "#4c9c6c",
+      "topics": [
+        {
+          "id": "economic-history-001",
+          "title": "传统中国市场与商业网络",
+          "keyword": "中国经济史 市场 商业 明清 贸易",
+          "description": "明清以来中国传统市场体系的形成、运作与商业网络的地域扩展。",
           "papers": [
             {
-              "title": "古希腊神话与宗教的社会功能重估",
-              "authors": ["徐松岩"],
-              "journal": "世界历史",
-              "year": 2018,
-              "citations": 210,
-              "downloads": 3500,
-              "score": 8.5,
-              "source": "知网",
-              "cnki_id": "SJLS201803004"
+              "title": "探赜索隐治史用世--评《明清时期商业书及商人书之研究》",
+              "authors": [
+                "余丽芬"
+              ],
+              "journal": "",
+              "year": 2001,
+              "citations": 0,
+              "downloads": 16,
+              "source": "万方",
+              "cnki_id": "periodical_zgjjsyj200101012",
+              "score": 0.0
             },
             {
-              "title": "修昔底德《伯罗奔尼撒战争史》导读与考信",
-              "authors": ["徐松岩"],
-              "journal": "史学理论研究",
-              "year": 2015,
-              "citations": 420,
-              "downloads": 6100,
-              "score": 8.7,
-              "source": "知网",
-              "cnki_id": "SXLL201502010"
+              "title": "中国数字贸易地区分化之谜:-基于企业家精神视角的解释",
+              "authors": [
+                "郭继文",
+                "马述忠"
+              ],
+              "journal": "",
+              "year": 2024,
+              "citations": 3,
+              "downloads": 50,
+              "source": "万方",
+              "cnki_id": "periodical_zgrkx202408004",
+              "score": 1.6
+            },
+            {
+              "title": "国家、市场与资本：山西票号历史演进研究(1567—1921)",
+              "authors": [
+                "李善靖"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 3,
+              "downloads": 21,
+              "source": "万方",
+              "cnki_id": "thesis_D03762396",
+              "score": 2.0
+            },
+            {
+              "title": "经济一体化视角下的明清晋商——以中俄恰克图茶叶贸易及其结算方式为例",
+              "authors": [
+                "成艳萍"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 4,
+              "downloads": 187,
+              "source": "万方",
+              "cnki_id": "thesis_Y2683076",
+              "score": 2.1
+            },
+            {
+              "title": "金钱万能:明清间中国帝制晚期的商业、经典与品位",
+              "authors": [
+                "艾尔曼"
+              ],
+              "journal": "",
+              "year": 2009,
+              "citations": 4,
+              "downloads": 2,
+              "source": "万方",
+              "cnki_id": "periodical_zhonggsyj200904010",
+              "score": 0.0
+            }
+          ]
+        },
+        {
+          "id": "economic-history-002",
+          "title": "近代中国经济转型",
+          "keyword": "近代中国经济 工业化 对外贸易 外资",
+          "description": "19至20世纪中国经济结构转型、工业化进程与外资的历史影响。",
+          "papers": [
+            {
+              "title": "改革开放前新中国经济增长思想研究(1949--1978)",
+              "authors": [
+                "李亚婧"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 3,
+              "source": "万方",
+              "cnki_id": "thesis_Y3663345",
+              "score": 2.0
+            },
+            {
+              "title": "论中国工业化前提条件的准备过程",
+              "authors": [
+                "后东升"
+              ],
+              "journal": "上海",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_QK000001486949",
+              "score": 2.0
+            },
+            {
+              "title": "基于WOT分析的中国石油企业发展的战略与政策研究",
+              "authors": [
+                "李青春"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "thesis_Y2010671",
+              "score": 2.0
+            },
+            {
+              "title": "制度环境变化与当代农村工业兴衰",
+              "authors": [
+                "王平"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 3,
+              "source": "万方",
+              "cnki_id": "thesis_Y9032177",
+              "score": 2.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-history",
+      "name": "社会史",
+      "icon": "👥",
+      "color": "#6c4cc9",
+      "topics": [
+        {
+          "id": "social-history-001",
+          "title": "宗族、乡村与地方社会",
+          "keyword": "宗族 乡村社会 地方史 基层治理",
+          "description": "华南与江南宗族研究的区域社会史路径及其对中国历史的解释意义。",
+          "papers": []
+        },
+        {
+          "id": "social-history-002",
+          "title": "城市社会与日常生活史",
+          "keyword": "城市史 日常生活 社会史 近代城市",
+          "description": "近代中国城市社会的结构变迁与日常生活史研究的新视野。",
+          "papers": [
+            {
+              "title": "政府、商人、舆论：社会史视野下的战时重庆城市生活用煤危机(1937-1945)",
+              "authors": [
+                "邹哲正"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 7,
+              "source": "万方",
+              "cnki_id": "thesis_D03857143",
+              "score": 2.0
+            },
+            {
+              "title": "回顾与省思:2021年的中国近代社会史研究",
+              "authors": [
+                "李俊领"
+              ],
+              "journal": "阜阳师范大学学报（社会科学版）",
+              "year": 2022,
+              "citations": 1,
+              "downloads": 28,
+              "source": "万方",
+              "cnki_id": "periodical_fysfxyxb-shkxb202203021",
+              "score": 1.2
+            },
+            {
+              "title": "知识、权力与日常生活:近代北京饮水进化史",
+              "authors": [
+                "杜丽红",
+                "中国社会科学院近代史研究所第十一届青年学术讨论会"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 17,
+              "source": "万方",
+              "cnki_id": "conference_7761281",
+              "score": 2.0
+            },
+            {
+              "title": "融通与创新:2019年中国近代社会史研究检视",
+              "authors": [
+                "王康"
+              ],
+              "journal": "阜阳师范大学学报（社会科学版）",
+              "year": 2020,
+              "citations": 0,
+              "downloads": 25,
+              "source": "万方",
+              "cnki_id": "periodical_fysfxyxb-shkxb202006021",
+              "score": 0.8
+            },
+            {
+              "title": "近年来中国近代社会史研究回顾",
+              "authors": [
+                "邱哲"
+              ],
+              "journal": "新西部（下旬刊）",
+              "year": 2016,
+              "citations": 0,
+              "downloads": 50,
+              "source": "万方",
+              "cnki_id": "periodical_xxb-xsb201611068",
+              "score": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "intellectual-history",
+      "name": "思想文化史",
+      "icon": "📜",
+      "color": "#c94c8c",
+      "topics": [
+        {
+          "id": "intellectual-history-001",
+          "title": "儒学演变与经学传统",
+          "keyword": "儒学 经学 宋明理学 思想史",
+          "description": "宋明理学至清代朴学的经学传统演变与儒家政治哲学的历史展开。",
+          "papers": [
+            {
+              "title": "从先秦儒学与孔子私学到宋明理学与书院教育\n——浅谈儒学发展与私学演进的历史性统一",
+              "authors": [
+                "郭雁南"
+              ],
+              "journal": "文教资料",
+              "year": 2021,
+              "citations": 0,
+              "downloads": 38,
+              "source": "万方",
+              "cnki_id": "periodical_wjzl202102031",
+              "score": 1.0
+            },
+            {
+              "title": "论经学史与儒学史的统一",
+              "authors": [
+                "严正"
+              ],
+              "journal": "晋阳学刊",
+              "year": 2013,
+              "citations": 2,
+              "downloads": 26,
+              "source": "万方",
+              "cnki_id": "periodical_jyxk201302011",
+              "score": 0.0
+            },
+            {
+              "title": "《五经正义》的问题意识与思想宗旨——再论孔颖达统一经学的思想史意义",
+              "authors": [
+                "郑伟"
+              ],
+              "journal": "天府新论",
+              "year": 2022,
+              "citations": 3,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_tfxl202205007",
+              "score": 1.2
+            },
+            {
+              "title": "扬雄对西汉新儒学的重构及其意义",
+              "authors": [
+                "边家珍"
+              ],
+              "journal": "东岳论丛",
+              "year": 2002,
+              "citations": 10,
+              "downloads": 35,
+              "source": "万方",
+              "cnki_id": "periodical_dylc200206028",
+              "score": 0.1
+            },
+            {
+              "title": "两汉思想史研究的新成果-读《汉代诸子与经学》",
+              "authors": [
+                "张欣",
+                "田楠"
+              ],
+              "journal": "青岛大学师范学院学报",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "periodical_15995382",
+              "score": 2.0
+            }
+          ]
+        },
+        {
+          "id": "intellectual-history-002",
+          "title": "近代学术转型与新史学",
+          "keyword": "近代学术转型 新史学 梁启超 胡适",
+          "description": "20世纪初西学东渐背景下中国史学观念的革新与学科建制的形成。",
+          "papers": [
+            {
+              "title": "开出一派\"新考证学\"——梁启超\"新史学\"对民国新历史考证学派的影响",
+              "authors": [
+                "张峰"
+              ],
+              "journal": "四川师范大学学报（社会科学版）",
+              "year": 2022,
+              "citations": 2,
+              "downloads": 45,
+              "source": "万方",
+              "cnki_id": "periodical_scsfdxxb-shkxb202203021",
+              "score": 1.2
+            },
+            {
+              "title": "中国近代史学科学化进程研究",
+              "authors": [
+                "朱发建"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 18,
+              "downloads": 268,
+              "source": "万方",
+              "cnki_id": "thesis_Y609913",
+              "score": 2.2
+            },
+            {
+              "title": "近代经史嬗变过程中的陈黻宸",
+              "authors": [
+                "齐砚奎"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 3,
+              "downloads": 66,
+              "source": "万方",
+              "cnki_id": "thesis_Y1073207",
+              "score": 2.0
+            },
+            {
+              "title": "学术史视野下井田制研究的演进",
+              "authors": [
+                "孙顺顺"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 78,
+              "source": "万方",
+              "cnki_id": "thesis_Y3707321",
+              "score": 2.0
+            },
+            {
+              "title": "近代中国章学诚研究的现代转型——试论何炳松对章学诚史学研究的贡献",
+              "authors": [
+                "吴培静"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 1,
+              "downloads": 2,
+              "source": "万方",
+              "cnki_id": "thesis_Y1582459",
+              "score": 2.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "historiography",
+      "name": "史学理论与史学史",
+      "icon": "🔬",
+      "color": "#4c8cc9",
+      "topics": [
+        {
+          "id": "historiography-001",
+          "title": "中国史学理论前沿",
+          "keyword": "史学理论 历史哲学 历史方法论",
+          "description": "当代中国史学理论的最新进展，包括跨学科方法与历史认识论的反思。",
+          "papers": [
+            {
+              "title": "论克罗齐“哲学是历史学的方法论”",
+              "authors": [
+                "王利红"
+              ],
+              "journal": "",
+              "year": 2020,
+              "citations": 3,
+              "downloads": 30,
+              "source": "万方",
+              "cnki_id": "periodical_lsjxwt202006014",
+              "score": 0.8
+            },
+            {
+              "title": "影像语言与史学编纂——克拉考尔历史哲学中的方法论互动",
+              "authors": [
+                "张爱卿"
+              ],
+              "journal": "上饶师范学院学报",
+              "year": 2024,
+              "citations": 0,
+              "downloads": 5,
+              "source": "万方",
+              "cnki_id": "periodical_srsfxyxb202402012",
+              "score": 1.6
+            },
+            {
+              "title": "哲学理论的历史感与历史叙述的哲学性——哲学与历史学的关系研究",
+              "authors": [
+                "张云飞"
+              ],
+              "journal": "",
+              "year": 2020,
+              "citations": 4,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_zxyj202001004",
+              "score": 0.8
+            },
+            {
+              "title": "马克思主义实践哲学的方法论功能——以历史唯物主义起源问题研究为例",
+              "authors": [
+                "李志"
+              ],
+              "journal": "马克思主义",
+              "year": 2023,
+              "citations": 0,
+              "downloads": 20,
+              "source": "万方",
+              "cnki_id": "periodical_mkszyzxyj202302002",
+              "score": 1.4
+            },
+            {
+              "title": "会计史研究的历史哲学与时代课题——传统会计史与新会计史的比较及启示",
+              "authors": [
+                "吴大新",
+                "孙勇",
+                "付磊"
+              ],
+              "journal": "会计研究",
+              "year": 2025,
+              "citations": 0,
+              "downloads": 53,
+              "source": "万方",
+              "cnki_id": "periodical_kjyj202507001",
+              "score": 1.8
+            }
+          ]
+        },
+        {
+          "id": "historiography-002",
+          "title": "全球史与比较史学",
+          "keyword": "全球史 比较史学 世界体系 跨国史",
+          "description": "全球史视野下的中国经验与比较史学方法的理论探讨。",
+          "papers": [
+            {
+              "title": "基于文化视角的中西文化遗产管理比较研究",
+              "authors": [
+                "高洁"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 35,
+              "downloads": 212,
+              "source": "万方",
+              "cnki_id": "thesis_Y3816856",
+              "score": 2.2
+            },
+            {
+              "title": "论严歌苓新移民小说的跨域书写",
+              "authors": [
+                "张栋辉"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 43,
+              "downloads": 443,
+              "source": "万方",
+              "cnki_id": "thesis_Y1939340",
+              "score": 2.3
+            },
+            {
+              "title": "俄白哈关税同盟对合约国贸易影响研究",
+              "authors": [
+                "VALENTIN MIGHAY"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 58,
+              "source": "万方",
+              "cnki_id": "thesis_D01185967",
+              "score": 2.0
+            },
+            {
+              "title": "中非关系六十年发展研究——背景、进程与影响(1950-2010)",
+              "authors": [
+                "李泽华"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 2,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "thesis_Y2019140",
+              "score": 2.0
             }
           ]
         }
