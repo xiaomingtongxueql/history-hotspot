@@ -102,18 +102,56 @@
   <main class="max-w-[1600px] mx-auto px-8 md:pl-32 pt-20">
     
     <!-- Header -->
-    <header class="mb-24 flex items-end justify-between border-b border-[#d3c4af]/20 pb-12">
-      <div class="max-w-2xl">
-        <span class="font-body text-[#785600] text-xs uppercase tracking-[0.3em] font-bold block mb-2">每周自动更新 · 2026-03-24</span>
-        <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 leading-tight">史学研究<br><span class="text-[#785600]">热点导航</span></h1>
-        <p class="text-xl text-[#4f4535] max-w-lg font-body italic">汇聚十五大史学研究领域，精选权威期刊高引用论文。</p>
-      </div>
-      <div class="text-right">
-        <div class="flex flex-col items-end">
-          <span class="text-6xl font-black text-[#4f4535] tabular-nums">107</span>
-          <span class="text-sm text-[#4f4535]/60 italic">收录论文</span>
+    <header class="mb-16 border-b border-[#d3c4af]/20 pb-12">
+      <div class="flex items-end justify-between mb-12">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="font-body text-[#785600] text-xs uppercase tracking-[0.3em] font-bold">每周自动更新</span>
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span id="lastUpdateTime" class="text-xs text-[#817563]">加载中...</span>
+          </div>
+          <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 leading-tight">史学研究<br><span class="text-[#785600]">热点导航</span></h1>
+          <p class="text-xl text-[#4f4535] max-w-lg font-body italic">汇聚十五大史学研究领域，精选权威期刊高引用论文。</p>
         </div>
-        <p class="text-4xl font-serif font-bold mt-8">2026</p>
+        <div class="text-right">
+          <p class="text-4xl font-serif font-bold">2026</p>
+        </div>
+      </div>
+      
+      <!-- Data Overview Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600]">article</span>
+            <span class="text-sm text-[#817563]">收录论文</span>
+          </div>
+          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalPapers">0</div>
+          <div class="text-xs text-[#817563] mt-1">篇高质量论文</div>
+        </div>
+        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600]">local_fire_department</span>
+            <span class="text-sm text-[#817563]">研究热点</span>
+          </div>
+          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalTopics">0</div>
+          <div class="text-xs text-[#817563] mt-1">个热点方向</div>
+        </div>
+        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600]">format_quote</span>
+            <span class="text-sm text-[#817563]">总引用数</span>
+          </div>
+          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalCitations">0</div>
+          <div class="text-xs text-[#817563] mt-1">次学术引用</div>
+        </div>
+        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600]">trending_up</span>
+            <span class="text-sm text-[#817563]">最高引用</span>
+          </div>
+          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statMaxCitation">0</div>
+          <div class="text-xs text-[#817563] mt-1">单篇论文</div>
+        </div>
       </div>
     </header>
 
@@ -137,6 +175,19 @@
               <span class="text-xs text-[#1a1c1b]/40">7 篇论文</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Distribution -->
+    <section class="mb-12">
+      <div class="bg-white p-6 border border-[#e2e3e1]">
+        <h4 class="text-sm font-bold text-[#817563] mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#785600]">donut_large</span>
+          分类分布
+        </h4>
+        <div id="categoryDistribution" class="flex flex-wrap items-center gap-4">
+          <!-- Will be rendered by JavaScript -->
         </div>
       </div>
     </section>
@@ -254,8 +305,11 @@
     <div class="bg-white max-w-2xl w-full mx-4 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
       <div class="p-8">
         <div class="flex justify-between items-start mb-6">
-          <span id="paperModalTopic" class="text-xs bg-[#785600]/10 text-[#785600] px-3 py-1 rounded-full"></span>
-          <button onclick="closePaperModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600]">&times;</button>
+          <div class="flex items-center gap-2">
+            <span id="paperModalTopic" class="text-xs bg-[#785600]/10 text-[#785600] px-3 py-1 rounded-full"></span>
+            <span id="paperModalRank" class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded-full font-bold hidden"></span>
+          </div>
+          <button onclick="closePaperModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600] p-2 hover:bg-[#f4f4f2] rounded-full transition-all">&times;</button>
         </div>
         <h2 id="paperModalTitle" class="text-2xl font-bold mb-4 leading-tight"></h2>
         <div class="flex items-center gap-2 mb-2">
@@ -266,23 +320,48 @@
           <span class="material-symbols-outlined text-[#785600] text-sm">menu_book</span>
           <span id="paperModalJournal" class="text-[#4f4535]"></span>
         </div>
-        <div class="grid grid-cols-3 gap-4 mb-6">
-          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
-            <div id="paperModalCitations" class="text-2xl font-bold text-[#785600]"></div>
-            <div class="text-xs text-[#817563] mt-1">引用</div>
+        
+        <!-- Impact Score -->
+        <div class="bg-gradient-to-r from-[#f9f9f7] to-white p-4 rounded-lg mb-6 border border-[#e2e3e1]">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-[#817563]">学术影响力评分</span>
+            <span id="paperModalImpactBadge" class="text-xs px-2 py-0.5 rounded-full"></span>
           </div>
-          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
-            <div id="paperModalDownloads" class="text-2xl font-bold text-[#785600]"></div>
-            <div class="text-xs text-[#817563] mt-1">下载</div>
+          <div class="flex items-end gap-2">
+            <span id="paperModalScore" class="text-4xl font-bold text-[#785600]"></span>
+            <span class="text-sm text-[#817563] mb-1">/ 5.0</span>
           </div>
-          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
-            <div id="paperModalScore" class="text-2xl font-bold text-[#785600]"></div>
-            <div class="text-xs text-[#817563] mt-1">评分</div>
+          <div class="w-full h-2 bg-[#e2e3e1] rounded-full mt-2 overflow-hidden">
+            <div id="paperModalScoreBar" class="h-full bg-gradient-to-r from-[#785600] to-amber-500 rounded-full transition-all duration-700" style="width: 0%"></div>
           </div>
         </div>
+        
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-[#785600] text-sm">format_quote</span>
+              <span id="paperModalCitations" class="text-2xl font-bold text-[#785600]"></span>
+            </div>
+            <div class="text-xs text-[#817563]">被引用次数</div>
+            <div id="paperModalCitationRank" class="text-xs text-[#785600] mt-1"></div>
+          </div>
+          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-[#785600] text-sm">download</span>
+              <span id="paperModalDownloads" class="text-2xl font-bold text-[#785600]"></span>
+            </div>
+            <div class="text-xs text-[#817563]">下载次数</div>
+            <div id="paperModalDownloadRank" class="text-xs text-[#785600] mt-1"></div>
+          </div>
+        </div>
+        
         <div class="flex items-center justify-between pt-4 border-t border-[#e2e3e1]">
-          <span id="paperModalSource" class="text-xs bg-[#f4f4f2] px-3 py-1 rounded"></span>
-          <button class="bg-[#785600] text-white px-6 py-2 text-sm font-bold tracking-wider hover:brightness-110 transition-all">
+          <div class="flex items-center gap-2">
+            <span id="paperModalSource" class="text-xs bg-[#f4f4f2] px-3 py-1 rounded"></span>
+            <span id="paperModalYear" class="text-xs text-[#817563]"></span>
+          </div>
+          <button class="bg-[#785600] text-white px-6 py-2 text-sm font-bold tracking-wider hover:brightness-110 transition-all flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
             查看原文
           </button>
         </div>
@@ -366,11 +445,50 @@
       document.getElementById('paperModalTitle').textContent = paper.title;
       document.getElementById('paperModalAuthors').textContent = paper.authors.join('、');
       document.getElementById('paperModalJournal').textContent = (paper.journal || '未知期刊') + ' · ' + paper.year + '年';
-      document.getElementById('paperModalCitations').textContent = paper.citations;
-      document.getElementById('paperModalDownloads').textContent = paper.downloads;
+      document.getElementById('paperModalCitations').textContent = formatNumber(paper.citations);
+      document.getElementById('paperModalDownloads').textContent = formatNumber(paper.downloads);
       document.getElementById('paperModalScore').textContent = paper.score;
       document.getElementById('paperModalSource').textContent = paper.source;
       document.getElementById('paperModalTopic').textContent = paper.topicTitle;
+      document.getElementById('paperModalYear').textContent = paper.year + '年发表';
+      
+      // Calculate rankings
+      const citationRank = papers.filter(p => p.citations > paper.citations).length + 1;
+      const downloadRank = papers.filter(p => p.downloads > paper.downloads).length + 1;
+      const totalPapers = papers.length;
+      
+      document.getElementById('paperModalCitationRank').textContent = '引用排行第 ' + citationRank + ' 名';
+      document.getElementById('paperModalDownloadRank').textContent = '下载排行第 ' + downloadRank + ' 名';
+      
+      // Score bar animation
+      const scorePercent = (paper.score / 5) * 100;
+      document.getElementById('paperModalScoreBar').style.width = '0%';
+      setTimeout(() => {
+        document.getElementById('paperModalScoreBar').style.width = scorePercent + '%';
+      }, 100);
+      
+      // Impact badge
+      const impactBadge = document.getElementById('paperModalImpactBadge');
+      if (paper.score >= 3) {
+        impactBadge.textContent = '高影响力';
+        impactBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700';
+      } else if (paper.score >= 2) {
+        impactBadge.textContent = '中等影响力';
+        impactBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700';
+      } else {
+        impactBadge.textContent = '一般影响力';
+        impactBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700';
+      }
+      
+      // Show rank badge if top 10
+      const rankBadge = document.getElementById('paperModalRank');
+      if (citationRank <= 10) {
+        rankBadge.textContent = 'TOP ' + citationRank;
+        rankBadge.classList.remove('hidden');
+      } else {
+        rankBadge.classList.add('hidden');
+      }
+      
       document.getElementById('paperModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -378,6 +496,8 @@
     // Search functionality
     let searchResults = [];
     function searchPapers(query) {
+      currentSearchQuery = query;
+      
       if (!query.trim()) {
         searchResults = [];
         document.getElementById('searchResults').classList.add('hidden');
@@ -394,19 +514,35 @@
       displaySearchResults();
     }
     
+    let currentSearchQuery = '';
+    
     function displaySearchResults() {
       const container = document.getElementById('searchResults');
       if (searchResults.length === 0) {
         container.innerHTML = '<div class="p-4 text-center text-[#817563]">未找到相关论文</div>';
       } else {
         container.innerHTML = searchResults.map((p, i) => 
-          '<div class="p-4 hover:bg-[#f4f4f2] cursor-pointer border-b border-[#e2e3e1] last:border-0" onclick="showSearchResult(' + i + ')">' +
-            '<h4 class="font-bold mb-1 text-sm">' + p.title + '</h4>' +
-            '<p class="text-xs text-[#4f4535]">' + p.authors.join('、') + ' · ' + p.topicTitle + '</p>' +
+          '<div class="p-4 hover:bg-[#f4f4f2] cursor-pointer border-b border-[#e2e3e1] last:border-0 transition-colors" onclick="showSearchResult(' + i + ')">' +
+            '<h4 class="font-bold mb-1 text-sm">' + highlightMatch(p.title, currentSearchQuery) + '</h4>' +
+            '<p class="text-xs text-[#4f4535]">' + highlightMatch(p.authors.join('、'), currentSearchQuery) + ' · ' + p.topicTitle + '</p>' +
+            '<div class="flex items-center gap-2 mt-2 text-xs">' +
+              '<span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5 rounded">' + p.source + '</span>' +
+              '<span class="text-[#817563]">引用 ' + p.citations + '</span>' +
+            '</div>' +
           '</div>'
         ).join('');
       }
       container.classList.remove('hidden');
+    }
+    
+    function highlightMatch(text, query) {
+      if (!query) return text;
+      const regex = new RegExp('(' + escapeRegex(query) + ')', 'gi');
+      return text.replace(regex, '<mark class="bg-yellow-200 px-0.5 rounded">$1</mark>');
+    }
+    
+    function escapeRegex(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
     
     function showSearchResult(index) {
@@ -459,7 +595,107 @@
     document.addEventListener('DOMContentLoaded', function() {
       renderPapersList(papers);
       renderTopicsGrid(topics);
+      animateStats();
+      renderCategoryDistribution();
+      updateLastUpdateTime();
     });
+    
+    // Update last update time
+    function updateLastUpdateTime() {
+      const updateTimeEl = document.getElementById('lastUpdateTime');
+      if (updateTimeEl) {
+        const now = new Date();
+        const timeStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+        updateTimeEl.textContent = timeStr;
+      }
+    }
+    
+    // Render category distribution bars
+    function renderCategoryDistribution() {
+      const container = document.getElementById('categoryDistribution');
+      if (!container) return;
+      
+      // Calculate papers per category
+      const categoryData = {};
+      topics.forEach(t => {
+        categoryData[t.category] = (categoryData[t.category] || 0) + t.papers.length;
+      });
+      
+      const maxCount = Math.max(...Object.values(categoryData));
+      const colors = {
+        '中国古代史': '#c9a84c',
+        '中国近现代史': '#8b4513',
+        '世界历史': '#2c5282',
+        '中华人民共和国史': '#c53030',
+        '史学理论与史学史': '#6b7280'
+      };
+      
+      container.innerHTML = Object.entries(categoryData).map(([category, count]) => {
+        const percent = (count / papers.length) * 100;
+        const width = (count / maxCount) * 200; // max width 200px
+        
+        return '<div class="flex items-center gap-3 text-sm">' +
+          '<span class="text-[#4f4535] whitespace-nowrap">' + category + '</span>' +
+          '<div class="h-6 bg-[#e2e3e1] rounded-full overflow-hidden" style="width: ' + width + 'px">' +
+            '<div class="h-full rounded-full transition-all duration-1000" style="width: 0%; background-color: ' + (colors[category] || '#785600') + '" data-width="100%"></div>' +
+          '</div>' +
+          '<span class="text-[#817563] text-xs font-bold">' + count + '篇</span>' +
+          '<span class="text-[#817563] text-xs">' + percent.toFixed(1) + '%</span>' +
+        '</div>';
+      }).join('');
+      
+      // Animate bars after a short delay
+      setTimeout(() => {
+        container.querySelectorAll('[data-width]').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }, 300);
+    }
+    
+    // Animate statistics numbers
+    function animateStats() {
+      const totalPapers = papers.length;
+      const totalTopics = topics.length;
+      const totalCitations = papers.reduce((sum, p) => sum + p.citations, 0);
+      const maxCitation = Math.max(...papers.map(p => p.citations));
+      
+      animateNumber('statTotalPapers', totalPapers, 1000);
+      animateNumber('statTotalTopics', totalTopics, 800);
+      animateNumber('statTotalCitations', totalCitations, 1500);
+      animateNumber('statMaxCitation', maxCitation, 1200);
+    }
+    
+    function animateNumber(elementId, targetValue, duration) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+      
+      const startTime = performance.now();
+      const startValue = 0;
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out)
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOut);
+        
+        element.textContent = formatNumber(currentValue);
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+    
+    function formatNumber(num) {
+      if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'k';
+      }
+      return num.toString();
+    }
     
     // Category filtering
     let currentCategory = 'all';
@@ -550,26 +786,34 @@
     
     function renderPapersList(papersToRender) {
       const container = document.getElementById('papersList');
-      container.innerHTML = papersToRender.slice(0, 8).map((p, i) => 
-        '<div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(' + papers.indexOf(p) + ')">' +
-          '<div class="w-12 h-12 ' + (i < 3 ? 'bg-gradient-to-br from-amber-400 to-amber-600 text-white' : 'bg-[#f4f4f2] text-[#1a1c1b]') + ' rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">' +
+      const maxScore = Math.max(...papers.map(p => p.score));
+      
+      container.innerHTML = papersToRender.slice(0, 8).map((p, i) => {
+        const scorePercent = (p.score / maxScore) * 100;
+        const scoreColor = scorePercent >= 80 ? 'bg-green-500' : scorePercent >= 60 ? 'bg-[#785600]' : scorePercent >= 40 ? 'bg-yellow-500' : 'bg-gray-400';
+        
+        return '<div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-all cursor-pointer group" onclick="showPaperDetail(' + papers.indexOf(p) + ')">' +
+          '<div class="w-12 h-12 ' + (i < 3 ? 'bg-gradient-to-br from-amber-400 to-amber-600 text-white shadow-lg' : 'bg-[#f4f4f2] text-[#1a1c1b]') + ' rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0 transition-transform group-hover:scale-110">' +
             (i + 1) +
           '</div>' +
-          '<div class="flex-1">' +
-            '<h4 class="font-bold mb-1 hover:text-[#785600]">' + p.title + '</h4>' +
+          '<div class="flex-1 min-w-0">' +
+            '<h4 class="font-bold mb-1 hover:text-[#785600] transition-colors truncate">' + p.title + '</h4>' +
             '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + ' · ' + (p.journal || '未知期刊') + ' · ' + p.year + '年</p>' +
             '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
-              '<span>引用 ' + p.citations + '</span>' +
-              '<span>下载 ' + p.downloads + '</span>' +
-              '<span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">' + p.source + '</span>' +
+              '<span class="flex items-center gap-1" title="被引用次数"><span class="material-symbols-outlined text-sm">format_quote</span>' + formatNumber(p.citations) + '</span>' +
+              '<span class="flex items-center gap-1" title="下载次数"><span class="material-symbols-outlined text-sm">download</span>' + formatNumber(p.downloads) + '</span>' +
+              '<span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5 rounded">' + p.source + '</span>' +
             '</div>' +
           '</div>' +
-          '<div class="text-right">' +
+          '<div class="text-right flex-shrink-0">' +
             '<div class="text-2xl font-bold text-[#785600]">' + p.score + '</div>' +
-            '<div class="text-xs text-[#817563]">评分</div>' +
+            '<div class="w-16 h-1.5 bg-[#e2e3e1] rounded-full mt-1 overflow-hidden">' +
+              '<div class="h-full ' + scoreColor + ' rounded-full transition-all duration-500" style="width: ' + scorePercent + '%"></div>' +
+            '</div>' +
+            '<div class="text-xs text-[#817563] mt-1">评分</div>' +
           '</div>' +
-        '</div>'
-      ).join('');
+        '</div>';
+      }).join('');
     }
   </script>
 </body>
