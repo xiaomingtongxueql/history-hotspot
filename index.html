@@ -1,309 +1,440 @@
 <!DOCTYPE html>
-
-<html lang="zh-CN"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>热点论文 - 动态水墨优化版 | The Scholar’s Ledger</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "tertiary": "#904917",
-                "secondary-fixed": "#ffdbd0",
-                "on-primary-fixed-variant": "#5d4200",
-                "surface-container-lowest": "#ffffff",
-                "error-container": "#ffdad6",
-                "surface-container-highest": "#e2e3e1",
-                "on-primary-container": "#fffbff",
-                "on-surface": "#1a1c1b",
-                "on-primary": "#ffffff",
-                "on-tertiary-fixed": "#321200",
-                "on-secondary-fixed": "#2c160e",
-                "on-primary-fixed": "#271900",
-                "surface": "#f9f9f7",
-                "on-surface-variant": "#4f4535",
-                "inverse-primary": "#f7bd48",
-                "on-tertiary-fixed-variant": "#753401",
-                "on-secondary-container": "#795950",
-                "on-error-container": "#93000a",
-                "tertiary-container": "#ae602d",
-                "outline-variant": "#d3c4af",
-                "secondary-container": "#fed3c7",
-                "on-tertiary-container": "#fffbff",
-                "background": "#f9f9f7",
-                "secondary-fixed-dim": "#e7bdb1",
-                "on-secondary-fixed-variant": "#5d4037",
-                "on-error": "#ffffff",
-                "tertiary-fixed-dim": "#ffb68c",
-                "secondary": "#77574d",
-                "outline": "#817563",
-                "on-tertiary": "#ffffff",
-                "surface-bright": "#f9f9f7",
-                "primary": "#785600",
-                "primary-container": "#986d00",
-                "surface-container": "#eeeeec",
-                "primary-fixed": "#ffdea6",
-                "surface-container-high": "#e8e8e6",
-                "on-secondary": "#ffffff",
-                "surface-tint": "#7b5800",
-                "inverse-surface": "#2f3130",
-                "surface-container-low": "#f4f4f2",
-                "surface-dim": "#dadad8",
-                "on-background": "#1a1c1b",
-                "inverse-on-surface": "#f1f1ef",
-                "surface-variant": "#e2e3e1",
-                "primary-fixed-dim": "#f7bd48",
-                "tertiary-fixed": "#ffdbc9",
-                "error": "#ba1a1a"
-              },
-              fontFamily: {
-                "serif": ["Noto Serif SC", "serif"],
-                "headline": ["Noto Serif SC"],
-                "body": ["Newsreader", "serif"],
-                "label": ["Newsreader", "serif"]
-              },
-              borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
-            },
-          },
-        }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-        /* Mobile Ink-Wash Animation & Palette Adaptation */
-        @keyframes inkFlow {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            50% { transform: translate(5%, 2%) scale(1.1); opacity: 0.5; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-        }
-        .ink-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 30%, rgba(26, 28, 27, 0.05) 0%, transparent 50%), 
-                        radial-gradient(circle at 80% 70%, rgba(120, 86, 0, 0.03) 0%, transparent 60%);
-            filter: blur(60px);
-            animation: inkFlow 20s ease-in-out infinite;
-        }
-        .paper-texture {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background-color: #f9f9f7;
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuGHtryQUPXt_jXEwvfpmcp55_e51qqb-ZqjwN_48vgkha2X0B1SGHap6Wtc9QkAasnH4If6Td9iIW2C0YEMD5VU75kOMWNVn4Az8UBd1QMyTuHoZogCAaE_QHegCaNWpkfrOyofmOkWv_c-PVHuG0mnEqwk_3xvUBZsY2Z4erFRAVeu8RUc7py7LxKd7ZnOSTqyC8lTGaUKLxA5B6IqLDCgB0E3FVfyBB8_eEP2vgni2g0DnnGRBF60tHPi9yCtbcBsNKc_Nbqyo");
-            opacity: 0.4;
-        }
-    </style>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>热点论文 - 史学研究热点导航</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Newsreader:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Serif SC', serif; background: #f9f9f7; }
+    .font-display { font-family: 'Noto Serif SC', serif; }
+    .font-body { font-family: 'Newsreader', 'Noto Serif SC', serif; }
+    .ink-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background: radial-gradient(circle at 20% 30%, rgba(120, 86, 0, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(26, 24, 20, 0.03) 0%, transparent 60%);
+      filter: blur(60px);
+      animation: inkFlow 20s ease-in-out infinite;
+    }
+    @keyframes inkFlow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      50% { transform: translate(5%, 2%) scale(1.1); opacity: 0.5; }
+      100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    }
+    .paper-texture { position: fixed; inset: 0; z-index: -2; background-color: #f9f9f7; opacity: 0.4; }
+    .card-hover { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+    .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; backdrop-filter: blur(8px); }
+    .modal.active { display: flex; align-items: center; justify-content: center; }
+  </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- Canvas & Ink Layers from Mobile -->
-<div class="paper-texture"></div>
-<div class="ink-bg"></div>
-<!-- TopNavBar -->
-<nav class="w-full top-0 left-0 bg-[#f9f9f7] dark:bg-stone-900 flex justify-between items-center px-16 py-6 max-w-[1920px] mx-auto z-50 sticky">
-<div class="flex items-center gap-8">
-<span class="text-2xl font-bold text-[#1a1c1b] dark:text-stone-100 tracking-[0.2em] font-serif">The Scholar’s Ledger</span>
-<div class="hidden md:flex space-x-8">
-<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">时代</a>
-<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">手稿</a>
-<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">书法</a>
-<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">地图</a>
-<a class="font-serif text-lg tracking-wide text-primary border-t-2 border-primary pt-1 font-bold" href="#">档案</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">search</span>
-<input class="bg-transparent border-b border-outline-variant/40 focus:border-primary focus:ring-0 px-10 py-1 font-serif text-sm w-64 transition-all" placeholder="Search 档案s..." type="text"/>
-</div>
-<button class="text-primary hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined text-3xl">account_circle</span>
-</button>
-</div>
-</nav>
-<div class="bg-[#f4f4f2] dark:bg-stone-800 h-[1px] w-full"></div>
-<!-- Background 书法 Motif from Mobile -->
-<div class="fixed top-24 right-10 opacity-5 pointer-events-none select-none z-[-1]">
-<span class="font-headline text-[30rem] leading-none font-black vertical-text">歷史</span>
-</div>
-<!-- SideNavBar (Vertical Spine) -->
-<aside class="fixed left-0 top-1/4 h-auto flex flex-col space-y-12 items-center px-4 z-40">
-<div class="flex flex-col items-center space-y-12">
-<div class="flex flex-col items-center group cursor-pointer">
-<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">history_edu</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">编年史</span>
-</div>
-<div class="flex flex-col items-center group cursor-pointer">
-<span class="material-symbols-outlined text-primary scale-110 font-black">approval</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-primary font-black">印玺</span>
-</div>
-<div class="flex flex-col items-center group cursor-pointer">
-<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">edit_note</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">诗词</span>
-</div>
-<div class="flex flex-col items-center group cursor-pointer">
-<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">account_tree</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">世系</span>
-</div>
-<div class="flex flex-col items-center group cursor-pointer">
-<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">menu_book</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">参考</span>
-</div>
-</div>
-</aside>
-<main class="max-w-[1920px] mx-auto px-16 md:pl-32 pt-20">
-<!-- Header Title Section -->
-<header class="mb-24 flex items-end justify-between border-b border-outline-variant/20 pb-12">
-<div class="max-w-2xl">
-<span class="font-label text-primary text-xs uppercase tracking-[0.3em] font-bold block mb-2">当前研究热点</span>
-<h1 class="text-7xl font-headline font-bold text-on-surface tracking-tighter mb-4 leading-tight">历史研究<br/>热点导航</h1>
-<p class="text-xl text-on-surface-variant max-w-lg font-serif italic">汇聚权威期刊高引用论文，为历史学研究者提供一站式学术资源导航。</p>
-</div>
-<div class="text-right">
-<div class="flex flex-col items-end">
-<span class="font-headline text-6xl font-black text-on-surface-variant tabular-nums">1,245,392</span>
-<span class="font-label text-sm text-on-surface-variant/60 italic">档案d Records</span>
-</div>
-<p class="text-4xl font-serif font-bold text-on-surface mt-8">2024</p>
-</div>
-</header>
-<!-- Featured Research Card (Matched Styling) -->
-<section class="mb-24">
-<div class="grid grid-cols-12 gap-0 bg-surface-container-low overflow-hidden relative group border-l-4 border-primary/20 transition-all duration-500 hover:bg-surface-container-high">
-<div class="col-span-12 md:col-span-7 relative h-[600px] overflow-hidden">
-<img class="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp_VXu9z6-_0jAoRK0mS10q5kId0exbCmYHfQLH9N-XLifmOoWQGaUIYf4BQdAD2oRDVckF3SP6N_CyptbJHrwyge7ZW_E6NkVYgDTXTWcV3ZkD8zCO6rFaHzUi6paJni0soTnuUlFuZQ5vYbb4YwhaZD4KziUKQ8rQeBPRcUVx_e0-6X1HUN-PLGqe4O1rP_sMfSBxSguVIMcEG8DuMTH70wmhyRNXUCZDMEkzEcJIMB3T-s1YREzG2kJcU4d0pjhvbNcjYyNioY"/>
-<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low via-transparent to-transparent"></div>
-</div>
-<div class="col-span-12 md:col-span-5 p-16 flex flex-col justify-center relative">
-<div class="absolute top-0 right-0 p-8">
-<span class="font-headline text-primary/10 text-[10rem] font-bold leading-none">清</span>
-</div>
-<div class="relative z-10">
-<span class="inline-block bg-primary text-on-primary px-3 py-1 text-[10px] tracking-[0.2em] mb-6 uppercase font-bold">精选热点</span>
-<h2 class="text-5xl font-headline font-bold mb-6 leading-tight text-on-surface">古代地理文献与国家治理</h2>
-<p class="text-lg text-on-surface-variant mb-10 leading-relaxed font-body">探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。</p>
-<div class="flex items-center space-x-8">
-<button class="bg-primary text-on-primary px-12 py-4 text-sm font-bold tracking-widest hover:brightness-110 transition-all">查看详情</button>
-<span class="text-xs font-label italic text-on-surface/40">更新于 2026-03-24</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Grid Layout for 正在研究 -->
-<section class="mb-32">
-<div class="flex items-center justify-between mb-12">
-<h3 class="text-3xl font-headline font-bold">正在研究</h3>
-<div class="h-px bg-outline-variant/20 flex-grow mx-8"></div>
-<button class="text-primary font-label text-sm tracking-widest uppercase flex items-center gap-2 font-bold">
-                查看全部 <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-<!-- Investigation 1 -->
-<article class="flex flex-col group">
-<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl_uqI8jYUkTmB_S6JQtYb5f4OcmxyGapCw1rPirQWE2axD3IhYHtDGrGzhhwLPj_SDRdYCatVeNNrvAuvIYH0enEKoVLSmmMbEc0oOyMw0oHpLTx3k6DTFXKZls2oeeKJTelQ11v94eOKM6loUpB_Bh9o0r4cq2m2f0teDazxYw_JJYaAalcG5UgPGa9_Vza8NnNt5ggU57eA0ooCXqMiz5_AnUDmwMnVhpowptVzIZ9Octxpj4HoeLY27z92ukQ6Q_qivi-cEWc"/>
-</div>
-<div class="flex justify-between items-start mb-2">
-<div class="flex-1">
-<h5 class="font-headline text-xl font-bold mb-1">古代地理文献与国家治理</h5>
-<p class="font-headline text-lg text-on-surface/80">古代地理文献与国家治理</p>
-</div>
-<div class="text-right">
-<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">中国古代史</span>
-<span class="font-label text-[10px] opacity-40">12 引用</span>
-</div>
-</div>
-<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
-<p class="text-on-surface-variant font-body leading-relaxed text-sm">Decoding the ritualistic bronze culture of the Sanxingdui pits. New discoveries in the 7th and 8th excavation zones.</p>
-</article>
-<!-- Investigation 2 -->
-<article class="flex flex-col group">
-<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYzQq-WZtC2Kf7WeV89dopzpX1z3lKlN8q7v7ZQFKswYH2ncVmuqHGxlEbRUtBeeDS_2bg45zCPJIiUSJZEYDQqJs9qOt7MMg43VpkauZgwUrqtYDPiWPQDlzqvpALPFURe4zJ72QK7g6JuhqqCs1w08eX1C4KgkR1aGB4OA3CamEHq4GLipCP5Ft-FC4ZYPLHwjpGctdOj9XM3wksQwko5Nx4mjSwanHKN2cJwL8Qv0bafR6D-V4dTZAHXnvzjgz4aMqmO2B0Ss"/>
-</div>
-<div class="flex justify-between items-start mb-2">
-<div class="flex-1">
-<h5 class="font-headline text-xl font-bold mb-1">早期中国与先秦社会文化</h5>
-<p class="font-headline text-lg text-on-surface/80">早期中国与先秦社会文化</p>
-</div>
-<div class="text-right">
-<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">中国古代史</span>
-<span class="font-label text-[10px] opacity-40">25 引用</span>
-</div>
-</div>
-<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
-<p class="text-on-surface-variant font-body leading-relaxed text-sm">Urban commercial evolution during the Song Dynasty. A spatial analysis of Bianjing's economic pulse and nocturnal markets.</p>
-</article>
-<!-- Investigation 3 -->
-<article class="flex flex-col group">
-<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkc4fDvX_Rq2dtdxDHN93AC8NOeXPm6u1QIsM2se5OqYGXwzQvzH62wUZxt_Msbm951kvI6wLYzI1ZcfQUTIv7X38wtiqxl-MOvcEGnX357OLcDxQM3NwrkGmiPJc4dCO3EnzjROhpLWyaf8D0KDsA6e_9XLquWBHahHJcwcBb-aOql1TyApW9mbUR86EN-6nSBPXcDKCS_yplGgPcypBe9FmhyWpofD6LhXEK0NSjkNpkHAIm6R57VEcUTtdoXsGldrPoETHBYNI"/>
-</div>
-<div class="flex justify-between items-start mb-2">
-<div class="flex-1">
-<h5 class="font-headline text-xl font-bold mb-1">唐宋明清的赋税军制与地方管控</h5>
-<p class="font-headline text-lg text-on-surface/80">唐宋明清的赋税军制与地方管控</p>
-</div>
-<div class="text-right">
-<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">中国古代史</span>
-<span class="font-label text-[10px] opacity-40">18 引用</span>
-</div>
-</div>
-<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
-<p class="text-on-surface-variant font-body leading-relaxed text-sm">Reassembling the fragmented silk road trade manifests. Deciphering Sogdian and Gandhari scripts from the Dunhuang caches.</p>
-</article>
-</div>
-</section>
-<!-- Asymmetric Map Section -->
-<section class="mb-32 grid grid-cols-12 gap-16 items-center">
-<div class="col-span-12 md:col-span-5">
-<h2 class="text-4xl font-headline font-bold mb-8">Spatial 档案s</h2>
-<div class="space-y-8">
-<div class="border-l-4 border-primary pl-6 py-2 bg-surface-container-low">
-<h5 class="text-xl font-bold mb-2 text-primary">海上丝绸之路扩展</h5>
-<p class="text-sm text-on-surface-variant leading-relaxed">追踪9至13世纪的贸易风动态与陶瓷沉船。</p>
-</div>
-<div class="pl-6 py-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-<h5 class="text-xl font-bold mb-2">帝都迁徙</h5>
-<p class="text-sm text-on-surface-variant leading-relaxed">从长安到洛阳，跨越五朝的帝都战略迁徙概览。</p>
-</div>
-</div>
-</div>
-<div class="col-span-12 md:col-span-7 h-[500px] bg-surface-container overflow-hidden grayscale contrast-125 brightness-95">
-<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-[3s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRYhuoMNaJ_8t2NtVJRb3UV8cMYwHwlz1kz09JV_04FS88hpq5-gUuXyOm7QrhsBjvSif-EoG1BDXYvs3doV_zT6eqcbERvBmRQtPlW6nkOJtY1mC7RSCBJu-ZnpbHew-KaFBoSTGScgKcrY1Qv0mOK34MFiCFcPB1puLkULREYouABDnyFhiR2qq4cp8M0XO2cnuPEc9N5IG-VJHsxEd90mNPtj1gcMnfUfLH8dNMUGDuPGMcWzfqCNOSEevyd-9Ov48w2sAYng8"/>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#f9f9f7] dark:bg-stone-900 flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full mt-24 border-t border-[#d3c4af]/20">
-<div class="flex flex-col items-start mb-8 md:mb-0">
-<span class="text-sm font-bold text-[#1a1c1b] dark:text-stone-100 font-serif mb-2">The Scholar’s Ledger</span>
-<p class="font-serif text-xs italic tracking-tight text-primary max-w-xs">© 2024 The Scholar’s Ledger. All Rights Reserved. Institutional Partner of the National Academy.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all underline underline-offset-4" href="#">隐私政策</a>
-<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">机构访问</a>
-<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">引用</a>
-<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">联系管理员</a>
-</div>
-<div class="mt-8 md:mt-0 flex space-x-4 items-center">
-<span class="text-[10px] font-label uppercase tracking-widest text-outline">数字化保存</span>
-<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-</div>
-</footer>
-</body></html>
+<body class="text-[#1a1c1b]">
+  <div class="paper-texture"></div>
+  <div class="ink-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="w-full bg-[#f9f9f7] flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto sticky top-0 z-50 border-b border-[#d3c4af]/20">
+    <div class="flex items-center gap-8">
+      <span class="text-2xl font-bold tracking-[0.2em] font-serif">热点论文</span>
+      <div class="hidden md:flex space-x-8">
+        <a href="#topics" class="font-serif text-lg tracking-wide opacity-60 hover:text-[#785600] transition-colors">研究热点</a>
+        <a href="#papers" class="font-serif text-lg tracking-wide opacity-60 hover:text-[#785600] transition-colors">论文排行</a>
+        <a href="#" class="font-serif text-lg tracking-wide text-[#785600] border-t-2 border-[#785600] pt-1 font-bold">档案</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#785600]">search</span>
+        <input type="text" id="searchInput" placeholder="搜索论文..." class="bg-transparent border-b border-[#817563]/40 focus:border-[#785600] px-10 py-1 font-serif text-sm w-64 transition-all" onkeyup="searchPapers(this.value)">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side Navigation -->
+  <aside class="fixed left-0 top-1/4 flex flex-col space-y-12 items-center px-4 z-40">
+    <div class="flex flex-col items-center space-y-12">
+      <div class="flex flex-col items-center group cursor-pointer" onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">
+        <span class="material-symbols-outlined text-[#1a1c1b]/40 group-hover:text-[#785600]">history_edu</span>
+        <span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-[#1a1c1b]/40 group-hover:text-[#785600]">编年史</span>
+      </div>
+      <div class="flex flex-col items-center group cursor-pointer" onclick="document.getElementById('papers').scrollIntoView({behavior:'smooth'})">
+        <span class="material-symbols-outlined text-[#785600] scale-110 font-black">approval</span>
+        <span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-[#785600] font-black">论文</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="max-w-[1600px] mx-auto px-8 md:pl-32 pt-20">
+    
+    <!-- Header -->
+    <header class="mb-24 flex items-end justify-between border-b border-[#d3c4af]/20 pb-12">
+      <div class="max-w-2xl">
+        <span class="font-body text-[#785600] text-xs uppercase tracking-[0.3em] font-bold block mb-2">每周自动更新 · 2026-03-24</span>
+        <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-4 leading-tight">史学研究<br><span class="text-[#785600]">热点导航</span></h1>
+        <p class="text-xl text-[#4f4535] max-w-lg font-body italic">汇聚十五大史学研究领域，精选权威期刊高引用论文。</p>
+      </div>
+      <div class="text-right">
+        <div class="flex flex-col items-end">
+          <span class="text-6xl font-black text-[#4f4535] tabular-nums">107</span>
+          <span class="text-sm text-[#4f4535]/60 italic">收录论文</span>
+        </div>
+        <p class="text-4xl font-serif font-bold mt-8">2026</p>
+      </div>
+    </header>
+
+    <!-- Featured Topic -->
+    <section class="mb-24">
+      <div class="grid grid-cols-12 gap-0 bg-[#f4f4f2] overflow-hidden relative group border-l-4 border-[#785600]/20">
+        <div class="col-span-12 md:col-span-7 relative h-[500px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=1200&h=800&fit=crop" class="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#f4f4f2] via-transparent to-transparent"></div>
+        </div>
+        <div class="col-span-12 md:col-span-5 p-12 flex flex-col justify-center relative">
+          <div class="absolute top-0 right-0 p-8">
+            <span class="font-serif text-[#785600]/10 text-[8rem] font-bold leading-none">研</span>
+          </div>
+          <div class="relative z-10">
+            <span class="inline-block bg-[#785600] text-white px-3 py-1 text-[10px] tracking-[0.2em] mb-6 uppercase font-bold">精选热点</span>
+            <h2 class="text-4xl font-bold mb-4 leading-tight">古代地理文献与国家治理</h2>
+            <p class="text-lg text-[#4f4535] mb-8 leading-relaxed font-body">探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。</p>
+            <div class="flex items-center space-x-8">
+              <button onclick="openTopic(0)" class="bg-[#785600] text-white px-8 py-3 text-sm font-bold tracking-widest hover:brightness-110 transition-all">查看详情</button>
+              <span class="text-xs text-[#1a1c1b]/40">7 篇论文</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section id="topics" class="mb-24">
+      <div class="flex items-center justify-between mb-12">
+        <h3 class="text-3xl font-bold">研究热点</h3>
+        <div class="h-px bg-[#d3c4af]/20 flex-grow mx-8"></div>
+        <button class="text-[#785600] text-sm tracking-widest uppercase flex items-center gap-2 font-bold">
+          查看全部 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(0)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">01</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">7 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">古代地理文献与国家治理</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏯 中国古代史</span>
+            <span class="text-[#785600]">最高引用 12</span>
+          </div>
+        </article>
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(1)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">02</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">3 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">早期中国与先秦社会文化</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">利用出土甲骨文献及早期传世文献重新认识华夏共同祖先与商周社会。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏯 中国古代史</span>
+            <span class="text-[#785600]">最高引用 42</span>
+          </div>
+        </article>
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(2)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">03</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">3 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">唐宋明清的赋税军制与地方管控</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">从唐代节度使到明代军制，剖析中古以后帝国的社会管控嬗变。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏯 中国古代史</span>
+            <span class="text-[#785600]">最高引用 22</span>
+          </div>
+        </article>
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(3)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">04</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">8 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">晚清社会动荡与现代化起步</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">探讨中国早期现代化的特征以及晚清地方生态与权力的变局。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏮 中国近现代史</span>
+            <span class="text-[#785600]">最高引用 45</span>
+          </div>
+        </article>
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(4)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">05</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">8 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">民国时期政治生态与思潮</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">聚焦民国时期的中央与地方关系、以及知识界思潮与社会动员。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏮 中国近现代史</span>
+            <span class="text-[#785600]">最高引用 28</span>
+          </div>
+        </article>
+        
+        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(5)">
+          <div class="flex items-start justify-between mb-4">
+            <span class="text-5xl font-serif text-[#d3c4af] font-bold">06</span>
+            <span class="text-xs bg-[#f4f4f2] px-3 py-1">5 篇论文</span>
+          </div>
+          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">近代史学史与思想论革</h4>
+          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">清末民初及马克思主义史学观念在近代的萌发及演变过程。</p>
+          <div class="flex items-center justify-between text-xs text-[#817563]">
+            <span>🏮 中国近现代史</span>
+            <span class="text-[#785600]">最高引用 35</span>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+
+    <!-- Papers List -->
+    <section id="papers" class="mb-24">
+      <h3 class="text-3xl font-bold mb-12 text-center">高引用论文排行</h3>
+      <div class="space-y-4">
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(0)">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            1
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">中国式现代化的经济史分析</h4>
+            <p class="text-sm text-[#4f4535] mb-2">武力 · 近代史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 62</span>
+              <span>下载 5100</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">3.2</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(1)">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            2
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">从近代历史进程看中国式现代化</h4>
+            <p class="text-sm text-[#4f4535] mb-2">郭若平 · 历史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 56</span>
+              <span>下载 4800</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">3.1</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(2)">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            3
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">中国早期现代化道路的三大特性</h4>
+            <p class="text-sm text-[#4f4535] mb-2">虞和平 · 近代史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 45</span>
+              <span>下载 3200</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">2.6</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(3)">
+          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            4
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">论严歌苓新移民小说的跨域书写</h4>
+            <p class="text-sm text-[#4f4535] mb-2">张栋辉 · 未知期刊 · 2026年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 43</span>
+              <span>下载 443</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">2.3</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(4)">
+          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            5
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">人地关系视角下的石峁文化兴衰</h4>
+            <p class="text-sm text-[#4f4535] mb-2">韩茂莉 · 历史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 42</span>
+              <span>下载 2400</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">2.3</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(5)">
+          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            6
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">论新时期中国的准联盟外交</h4>
+            <p class="text-sm text-[#4f4535] mb-2">孙德刚 · 世界经济与政治 · 2012年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 36</span>
+              <span>下载 1</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">0.2</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(6)">
+          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            7
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">翦伯赞与中国马克思主义史料学的初步建立</h4>
+            <p class="text-sm text-[#4f4535] mb-2">李长银 · 近代史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 35</span>
+              <span>下载 2400</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">2.3</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(7)">
+          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+            8
+          </div>
+          <div class="flex-1">
+            <h4 class="font-bold mb-1 hover:text-[#785600]">博物学与Natural History：东西方知识传统的构造</h4>
+            <p class="text-sm text-[#4f4535] mb-2">余欣、周金泰 · 历史研究 · 2023年</p>
+            <div class="flex items-center gap-4 text-xs text-[#817563]">
+              <span>引用 35</span>
+              <span>下载 2400</span>
+              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-[#785600]">2.3</div>
+            <div class="text-xs text-[#817563]">评分</div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#f9f9f7] flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full mt-24 border-t border-[#d3c4af]/20">
+    <div class="flex flex-col items-start mb-8 md:mb-0">
+      <span class="text-sm font-bold font-serif mb-2">热点论文</span>
+      <p class="font-serif text-xs italic tracking-tight text-[#785600] max-w-xs">© 2026 热点论文 · 史学研究热点导航 · 数据每周自动更新</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a href="#" class="font-serif text-xs text-[#1a1c1b]/60 hover:text-[#785600] transition-all">隐私政策</a>
+      <a href="#" class="font-serif text-xs text-[#1a1c1b]/60 hover:text-[#785600] transition-all">数据说明</a>
+      <a href="#" class="font-serif text-xs text-[#1a1c1b]/60 hover:text-[#785600] transition-all">联系我们</a>
+    </div>
+    <div class="mt-8 md:mt-0 flex space-x-4 items-center">
+      <span class="text-[10px] uppercase tracking-widest text-[#817563]">数字化保存</span>
+      <div class="w-2 h-2 rounded-full bg-[#785600] animate-pulse"></div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="topicModal" class="modal" onclick="closeModal(event)">
+    <div class="bg-white max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+      <div class="p-8">
+        <div class="flex justify-between items-start mb-6">
+          <h2 id="modalTitle" class="text-3xl font-bold"></h2>
+          <button onclick="closeModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600]">&times;</button>
+        </div>
+        <p id="modalDesc" class="text-[#4f4535] mb-8 font-body text-lg leading-relaxed"></p>
+        <h3 class="text-xl font-bold mb-4 border-b border-[#d3c4af]/20 pb-2">相关论文</h3>
+        <div id="modalPapers" class="space-y-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const topics = [{"id":"ancient-china-001","title":"古代地理文献与国家治理","keyword":"古代地理书 国家治理 历史地理","description":"探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。","papers":[{"title":"汉魏六朝地理书的演进","authors":["徐成","杨计国"],"journal":"历史研究","year":2023,"citations":12,"downloads":850,"score":1.7,"source":"知网","cnki_id":"LSYJ202301004"},{"title":"蒙元时代的四怯薛长承袭","authors":["张晓慧"],"journal":"历史研究","year":2023,"citations":8,"downloads":420,"score":1.6,"source":"万方","cnki_id":"LSYJ202302005"},{"title":"习近平总书记关于边疆治理的重要论述的生成逻辑、理论意蕴与实践价值","authors":["赵彪","林拓"],"journal":"中央社会主义学院学报","year":2025,"citations":1,"downloads":1,"source":"万方","cnki_id":"periodical_zyshzyxyxb202503001","score":1.8},{"title":"形塑国家韧性：论中国古代大一统国家的长期延续与不断重建","authors":["赵德昊"],"journal":"","year":2026,"citations":4,"downloads":100,"source":"万方","cnki_id":"thesis_D02646689","score":2},{"title":"朱右曾《诗地理征》研究","authors":["霍忠凯"],"journal":"","year":2026,"citations":5,"downloads":25,"source":"万方","cnki_id":"thesis_D01671583","score":2},{"title":"中国古代治理模式及其核心思想——评《古代中国治国理政思想》","authors":["郑臣","王斌兵"],"journal":"中国教育学刊","year":2021,"citations":0,"downloads":0,"source":"万方","cnki_id":"periodical_zgjyxk202110048","score":1},{"title":"中国古代王朝边疆形成与稳固的历史轨迹","authors":["孙佳"],"journal":"中国出版","year":2018,"citations":0,"downloads":50,"source":"万方","cnki_id":"periodical_zgcb201815021","score":0.4}],"category":"中国古代史","categoryIcon":"🏯"},{"id":"ancient-china-002","title":"早期中国与先秦社会文化","keyword":"先秦 商周 华夏 甲骨文 早期中国","description":"利用出土甲骨文献及早期传世文献重新认识华夏共同祖先与商周社会。","papers":[{"title":"华夏共同祖先意识的萌生发展——以「祝融八姓」为中心","authors":["罗新慧"],"journal":"历史研究","year":2023,"citations":25,"downloads":1100,"score":1.9,"source":"知网","cnki_id":"LSYJ202301003"},{"title":"甲骨文「黄尹」身分考——兼论商代配祀制度","authors":["吴丽婉"],"journal":"历史研究","year":2023,"citations":6,"downloads":580,"score":1.6,"source":"万方","cnki_id":"LSYJ202302008"},{"title":"人地关系视角下的石峁文化兴衰","authors":["韩茂莉"],"journal":"历史研究","year":2023,"citations":42,"downloads":2400,"score":2.3,"source":"知网","cnki_id":"LSYJ202304005"}],"category":"中国古代史","categoryIcon":"🏯"},{"id":"ancient-china-003","title":"唐宋明清的赋税军制与地方管控","keyword":"唐代 宋代 明代 清代 军制 赋税 地方治理","description":"从唐代节度使到明代军制，剖析中古以后帝国的社会管控嬗变。","papers":[{"title":"唐代节度使领州府体制研究","authors":["丁俊"],"journal":"历史研究","year":2023,"citations":18,"downloads":1500,"score":1.9,"source":"知网","cnki_id":"LSYJ202303002"},{"title":"明代军制演进与盛衰之变","authors":["曹循"],"journal":"历史研究","year":2023,"citations":22,"downloads":1340,"score":1.9,"source":"知网","cnki_id":"LSYJ202303003"},{"title":"清中后期华北乡村治理——以青苗会若干京控案为中心","authors":["王洪兵"],"journal":"历史研究","year":2023,"citations":15,"downloads":980,"score":1.8,"source":"知网","cnki_id":"LSYJ202304006"}],"category":"中国古代史","categoryIcon":"🏯"},{"id":"modern-china-001","title":"晚清社会动荡与现代化起步","keyword":"晚清 现代化 社会变革 改革","description":"探讨中国早期现代化的特征以及晚清地方生态与权力的变局。","papers":[{"title":"中国早期现代化道路的三大特性","authors":["虞和平"],"journal":"近代史研究","year":2023,"citations":45,"downloads":3200,"score":2.6,"source":"知网","cnki_id":"JDSY202301001"},{"title":"黄河故道之变与土地权属之争(1855—1937)","authors":["李发根"],"journal":"近代史研究","year":2023,"citations":11,"downloads":650,"score":1.7,"source":"万方","cnki_id":"JDSY202302004"},{"title":"近代天津排水系统的变化与生态影响","authors":["曹牧"],"journal":"近代史研究","year":2023,"citations":14,"downloads":890,"score":1.7,"source":"知网","cnki_id":"JDSY202304008"},{"title":"民族国家建设场域中的女子教育变革——以晚清女子学堂为中心","authors":["孙秀玲"],"journal":"妇女研究论丛","year":2016,"citations":5,"downloads":36,"source":"万方","cnki_id":"periodical_fnyjlc201602011","score":0},{"title":"新权威主义视角的晚清中国宪政变革研究","authors":["田马爽"],"journal":"河南","year":2011,"citations":1,"downloads":86,"source":"万方","cnki_id":"periodical_hnshkx201103015","score":0},{"title":"人衣关系视域下的晚清民国女性服饰变革研究","authors":["张雪飞"],"journal":"","year":2026,"citations":14,"downloads":126,"source":"万方","cnki_id":"thesis_D02371678","score":2.1},{"title":"晚清军事变革战略的缺失与借鉴意义","authors":["王兆辉"],"journal":"兰州教育学院学报","year":2008,"citations":0,"downloads":35,"source":"万方","cnki_id":"periodical_lzjyxyxb200803008","score":0},{"title":"晚清民国药物政策变迁研究","authors":["冯偲"],"journal":"","year":2026,"citations":1,"downloads":28,"source":"万方","cnki_id":"thesis_D03762356","score":2}],"category":"中国近现代史","categoryIcon":"🏮"},{"id":"modern-china-002","title":"民国时期政治生态与思潮","keyword":"民国 国民政府 政治 知识分子 思潮","description":"聚焦民国时期的中央与地方关系、以及知识界思潮与社会动员。","papers":[{"title":"从分到合：国民政府的行政督察专员制度(1932—1936)","authors":["侯桂红"],"journal":"近代史研究","year":2023,"citations":16,"downloads":950,"score":1.8,"source":"知网","cnki_id":"JDSY202303004"},{"title":"国民党北伐后平津的权力角逐","authors":["郝昭荔"],"journal":"历史研究","year":2023,"citations":19,"downloads":1120,"score":1.8,"source":"万方","cnki_id":"LSYJ202304007"},{"title":"从潜流到激流：20世纪30年代北平的左翼思潮与行动","authors":["王建伟"],"journal":"近代史研究","year":2023,"citations":28,"downloads":1800,"score":2.1,"source":"知网","cnki_id":"JDSY202303003"},{"title":"民国时期教育经费独立思潮研究(1912-1937)","authors":["刘澳"],"journal":"","year":2026,"citations":0,"downloads":3,"source":"万方","cnki_id":"thesis_D03854711","score":2},{"title":"独立与自治:略论民国广西地方实力派自存之道","authors":["陈明胜"],"journal":"","year":2024,"citations":0,"downloads":1,"source":"万方","cnki_id":"periodical_mingyj202402005","score":1.6},{"title":"试论南京国民政府初期的村治派","authors":["李德芳"],"journal":"史学月刊","year":2001,"citations":14,"downloads":29,"source":"万方","cnki_id":"periodical_sxyk200102013","score":0.1},{"title":"民国时期的识字运动(1928—1937)","authors":["师萍萍"],"journal":"","year":2026,"citations":18,"downloads":115,"source":"万方","cnki_id":"thesis_Y1532563","score":2.1},{"title":"民国时期体育教学中的性别差异问题","authors":["苗海燕"],"journal":"","year":2026,"citations":2,"downloads":47,"source":"万方","cnki_id":"thesis_D01006212","score":2}],"category":"中国近现代史","categoryIcon":"🏮"},{"id":"modern-china-003","title":"近代史学史与思想论革","keyword":"近代史学 马克思主义史学 章太炎 康有为","description":"清末民初及马克思主义史学观念在近代的萌发及演变过程。","papers":[{"title":"翦伯赞与中国马克思主义史料学的初步建立","authors":["李长银"],"journal":"近代史研究","year":2023,"citations":35,"downloads":2400,"score":2.3,"source":"知网","cnki_id":"JDSY202303001"},{"title":"私谊、舆论和政治：刘师培与章太炎关系再考察","authors":["张仲民"],"journal":"近代史研究","year":2023,"citations":24,"downloads":1600,"score":2,"source":"知网","cnki_id":"JDSY202303002"},{"title":"康有为早年经学思想演变","authors":["傅正"],"journal":"历史研究","year":2023,"citations":15,"downloads":1200,"score":1.8,"source":"知网","cnki_id":"LSYJ202303004"},{"title":"学术史视野下井田制研究的演进","authors":["孙顺顺"],"journal":"","year":2026,"citations":2,"downloads":78,"source":"万方","cnki_id":"thesis_Y3707321","score":2},{"title":"20世纪的颜子文化","authors":["颜廷燕"],"journal":"","year":2026,"citations":5,"downloads":72,"source":"万方","cnki_id":"thesis_Y1471066","score":2}],"category":"中国近现代史","categoryIcon":"🏮"}];
+    const papers = [{"title":"中国式现代化的经济史分析","authors":["武力"],"journal":"近代史研究","year":2023,"citations":62,"downloads":5100,"score":3.2,"source":"知网","cnki_id":"JDSY202301002","topicTitle":"中国式现代化与经济建设","category":"中华人民共和国史"},{"title":"从近代历史进程看中国式现代化","authors":["郭若平"],"journal":"历史研究","year":2023,"citations":56,"downloads":4800,"score":3.1,"source":"知网","cnki_id":"LSYJ202301002","topicTitle":"中国式现代化与经济建设","category":"中华人民共和国史"},{"title":"中国早期现代化道路的三大特性","authors":["虞和平"],"journal":"近代史研究","year":2023,"citations":45,"downloads":3200,"score":2.6,"source":"知网","cnki_id":"JDSY202301001","topicTitle":"晚清社会动荡与现代化起步","category":"中国近现代史"},{"title":"论严歌苓新移民小说的跨域书写","authors":["张栋辉"],"journal":"","year":2026,"citations":43,"downloads":443,"source":"万方","cnki_id":"thesis_Y1939340","score":2.3,"topicTitle":"全球史与比较史学","category":"史学理论与史学史"},{"title":"人地关系视角下的石峁文化兴衰","authors":["韩茂莉"],"journal":"历史研究","year":2023,"citations":42,"downloads":2400,"score":2.3,"source":"知网","cnki_id":"LSYJ202304005","topicTitle":"早期中国与先秦社会文化","category":"中国古代史"},{"title":"论新时期中国的准联盟外交","authors":["孙德刚"],"journal":"世界经济与政治","year":2012,"citations":36,"downloads":1,"source":"万方","cnki_id":"periodical_sjjjyzz201203005","score":0.2,"topicTitle":"近代国际关系与大国外交","category":"世界历史"},{"title":"翦伯赞与中国马克思主义史料学的初步建立","authors":["李长银"],"journal":"近代史研究","year":2023,"citations":35,"downloads":2400,"score":2.3,"source":"知网","cnki_id":"JDSY202303001","topicTitle":"近代史学史与思想论革","category":"中国近现代史"},{"title":"博物学与Natural History：东西方知识传统的构造","authors":["余欣","周金泰"],"journal":"历史研究","year":2023,"citations":35,"downloads":2400,"score":2.3,"source":"万方","cnki_id":"LSYJ202301008","topicTitle":"西方思想史与概念史","category":"世界历史"}];
+    
+    function openTopic(index) {
+      const topic = topics[index];
+      document.getElementById('modalTitle').textContent = topic.title;
+      document.getElementById('modalDesc').textContent = topic.description;
+      
+      const papersHtml = topic.papers.sort((a,b) => b.citations - a.citations).map(p => 
+        '<div class="p-4 bg-[#f9f9f7] border-l-2 border-[#785600]">' +
+          '<h4 class="font-bold mb-1">' + p.title + '</h4>' +
+          '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + ' · ' + (p.journal || '未知期刊') + ' · ' + p.year + '年</p>' +
+          '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
+            '<span>引用 ' + p.citations + '</span>' +
+            '<span>评分 ' + p.score + '</span>' +
+          '</div>' +
+        '</div>'
+      ).join('');
+      
+      document.getElementById('modalPapers').innerHTML = papersHtml;
+      document.getElementById('topicModal').classList.add('active');
+    }
+    
+    function closeModal(e) {
+      if (!e || e.target.id === 'topicModal') {
+        document.getElementById('topicModal').classList.remove('active');
+      }
+    }
+    
+    function showPaperDetail(index) {
+      const paper = papers[index];
+      alert('论文详情：\n\n' + paper.title + '\n作者：' + paper.authors.join('、') + '\n期刊：' + (paper.journal || '未知') + '\n引用：' + paper.citations);
+    }
+    
+    function searchPapers(query) {
+      // Simple search - in real app would filter the displayed content
+      console.log('Searching:', query);
+    }
+  </script>
+</body>
+</html>
