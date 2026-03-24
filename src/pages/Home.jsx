@@ -8,8 +8,10 @@ export default function Home({ onTopicClick, searchQuery }) {
   const [metadata, setMetadata] = useState(null)
   const [activeCategory, setActiveCategory] = useState(null)
   const [error, setError] = useState(null)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    setIsVisible(true)
     const controller = new AbortController()
     const { signal } = controller
 
@@ -37,12 +39,16 @@ export default function Home({ onTopicClick, searchQuery }) {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <div className="text-4xl">⚠️</div>
-        <p className="text-ink-secondary">{error}</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+        <div className="w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center">
+          <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+          </svg>
+        </div>
+        <p className="text-ink-secondary text-lg">{error}</p>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-gold-light border border-gold/30 text-gold rounded-full text-sm hover:bg-gold hover:text-bg-primary transition-all"
+          className="px-6 py-2.5 bg-ink text-white rounded-xl text-sm font-medium hover:bg-ink/90 transition-all active:scale-[0.98]"
         >
           刷新页面
         </button>
@@ -52,13 +58,16 @@ export default function Home({ onTopicClick, searchQuery }) {
 
   if (!data) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-gold text-xl animate-pulse font-serif">加载中...</div>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <div className="w-12 h-12 rounded-xl bg-gold-subtle flex items-center justify-center animate-pulse">
+          <span className="text-gold font-serif text-xl">溯</span>
+        </div>
+        <p className="text-ink-muted text-sm animate-pulse">正在加载数据...</p>
       </div>
     )
   }
 
-  // 过滤逻辑：按分类 + 搜索词
+  // 过滤逻辑
   const filtered = data.categories
     .filter(cat => !activeCategory || cat.id === activeCategory)
     .map(cat => ({
@@ -76,33 +85,47 @@ export default function Home({ onTopicClick, searchQuery }) {
     .filter(cat => cat.topics.length > 0)
 
   return (
-    <div>
+    <div className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <Hero metadata={metadata} />
       <CategoryTabs
         categories={data.categories}
         activeId={activeCategory}
         onSelect={setActiveCategory}
       />
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      
+      <div className="max-w-6xl mx-auto px-6 py-10">
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-ink-muted">
-            <div className="text-5xl mb-4">🔍</div>
-            <p className="text-lg">未找到"<span className="text-gold">{searchQuery}</span>"相关内容</p>
+          <div className="text-center py-24">
+            <div className="w-16 h-16 rounded-2xl bg-bg-hover flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-ink-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z"/>
+              </svg>
+            </div>
+            <p className="text-ink-secondary text-lg mb-2">未找到相关内容</p>
+            <p className="text-ink-muted text-sm">尝试搜索其他关键词或清除筛选条件</p>
           </div>
         ) : (
-          filtered.map(category => (
-            <section key={category.id} className="mb-12">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{category.icon}</span>
-                <h2 className="font-serif text-xl text-ink font-bold">{category.name}</h2>
-                <div className="flex-1 h-px bg-border ml-2" />
-                <span className="text-ink-muted text-sm">{category.topics.length} 个热点</span>
+          filtered.map((category, catIndex) => (
+            <section key={category.id} className="mb-16 animate-slide-up" style={{ animationDelay: `${catIndex * 100}ms` }}>
+              {/* 分类标题 */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gold-subtle text-lg">
+                  {category.icon}
+                </div>
+                <h2 className="font-serif text-2xl text-ink font-semibold">{category.name}</h2>
+                <div className="flex-1 h-px bg-border/50" />
+                <span className="text-ink-muted text-sm font-medium bg-bg-hover px-4 py-1.5 rounded-full">
+                  {category.topics.length} 个热点
+                </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.topics.map(topic => (
+
+              {/* 卡片网格 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {category.topics.map((topic, index) => (
                   <TopicCard
                     key={topic.id}
                     topic={topic}
+                    index={index}
                     onClick={() => onTopicClick(topic, category)}
                   />
                 ))}

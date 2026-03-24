@@ -26,7 +26,22 @@
       "Bash(gh run:*)",
       "Bash(gh api:*)",
       "Bash(gh workflow:*)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:scrapling.readthedocs.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"from scrapling.fetchers import DynamicFetcher, DynamicSession; print\\(''scrapling OK''\\)\")",
+      "Bash(scrapling install:*)",
+      "Bash(python -c \"from scrapling.fetchers import DynamicSession; print\\(''DynamicSession ready''\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''public/data/topics.json'',encoding=''utf-8''\\)\\); cats=data[''categories'']; topics=sum\\(len\\(c[''topics'']\\) for c in cats\\); papers=sum\\(len\\(t.get\\(''papers'',[]\\)\\) for c in cats for t in c[''topics'']\\); print\\(f''JSON OK — 分类:{len\\(cats\\)} 话题:{topics} 论文:{papers}''\\)\")",
+      "mcp__mcp-registry__search_mcp_registry",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npm --version)",
+      "Bash(node -e \"const sdk = require\\(''@google/stitch-sdk''\\); console.log\\(Object.keys\\(sdk\\)\\);\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:d[k] for k in [''''main'''',''''module'''',''''exports'''',''''type''''] if k in d}, indent=2\\)\\)\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); console.log\\(JSON.stringify\\({main:d.main,module:d.module,exports:d.exports,type:d.type,bin:d.bin},null,2\\)\\)\")",
+      "Bash(node -e \"const d=require\\(''C:/Users/小明/Desktop/ai研究热点网站/node_modules/@google/stitch-sdk/package.json''\\); console.log\\(JSON.stringify\\({main:d.main,type:d.type,exports:d.exports&&Object.keys\\(d.exports\\)},null,2\\)\\)\")",
+      "Bash(node scripts/stitch-generate.mjs)"
     ]
   }
 }
