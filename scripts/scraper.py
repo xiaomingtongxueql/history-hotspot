@@ -133,7 +133,7 @@ def _parse_cnki_results(html: str) -> list[dict]:
     return papers
 
 
-def search_cnki(keyword: str, max_results: int = MAX_RESULTS_PER_TOPIC) -> list[dict]:
+def search_cnki(keyword: str, max_results: int = MAX_RESULTS_PER_TOPIC, session: requests.Session = None) -> list[dict]:
     """在知网搜索关键词，返回论文列表。
 
     遭遇任何错误（网络超时、反爬、解析失败）时返回空列表，
@@ -142,8 +142,9 @@ def search_cnki(keyword: str, max_results: int = MAX_RESULTS_PER_TOPIC) -> list[
     url = CNKI_SEARCH_URL.format(keyword=quote(keyword))
     logger.info('正在搜索知网：%s  URL: %s', keyword, url)
 
+    requester = session if session is not None else requests
     try:
-        response = requests.get(
+        response = requester.get(
             url,
             headers=REQUEST_HEADERS,
             timeout=REQUEST_TIMEOUT,
@@ -188,18 +189,23 @@ def search_cnki(keyword: str, max_results: int = MAX_RESULTS_PER_TOPIC) -> list[
 def update_scores(data: dict) -> dict:
     """遍历所有主题的论文，重新计算热度评分，返回更新后的数据副本。"""
     current_year = datetime.now().year
-    updated_topics = []
+    updated_categories = []
 
-    for topic in data.get('topics', []):
-        updated_papers = []
-        for paper in topic.get('papers', []):
-            updated_paper = {**paper, 'score': calculate_score(paper, current_year)}
-            updated_papers.append(updated_paper)
+    for category in data.get('categories', []):
+        updated_topics = []
+        for topic in category.get('topics', []):
+            updated_papers = []
+            for paper in topic.get('papers', []):
+                updated_paper = {**paper, 'score': calculate_score(paper, current_year)}
+                updated_papers.append(updated_paper)
 
-        updated_topic = {**topic, 'papers': updated_papers}
-        updated_topics.append(updated_topic)
+            updated_topic = {**topic, 'papers': updated_papers}
+            updated_topics.append(updated_topic)
 
-    return {**data, 'topics': updated_topics}
+        updated_category = {**category, 'topics': updated_topics}
+        updated_categories.append(updated_category)
+
+    return {**data, 'categories': updated_categories}
 
 
 def _merge_papers(existing_papers: list[dict], new_papers: list[dict], current_year: int) -> list[dict]:
@@ -221,6 +227,7 @@ def _merge_papers(existing_papers: list[dict], new_papers: list[dict], current_y
             'year': paper.get('year', current_year),
             'citations': paper.get('citations', 0),
             'downloads': paper.get('downloads', 0),
+            'authors': [],
             'score': calculate_score(paper, current_year),
         }
         merged.append(new_paper)
@@ -233,24 +240,32 @@ def _merge_papers(existing_papers: list[dict], new_papers: list[dict], current_y
     return merged
 
 
-def try_update_papers(data: dict) -> dict:
+def try_update_papers(data: dict, session: requests.Session = None) -> dict:
     """尝试为每个主题爬取知网数据。
 
     单个主题爬取失败时记录日志并继续，不中断整体流程（降级处理）。
     """
     current_year = datetime.now().year
-    updated_topics = []
-    total_topics = len(data.get('topics', []))
+    updated_categories = []
 
-    for idx, topic in enumerate(data.get('topics', []), start=1):
-        topic_name = topic.get('name', topic.get('title', f'主题{idx}'))
-        logger.info('处理主题 %d/%d：%s', idx, total_topics, topic_name)
+    all_topics = [
+        (category_idx, topic_idx, category, topic)
+        for category_idx, category in enumerate(data.get('categories', []))
+        for topic_idx, topic in enumerate(category.get('topics', []))
+    ]
+    total_topics = len(all_topics)
+
+    processed = 0
+    for category_idx, topic_idx, category, topic in all_topics:
+        processed += 1
+        topic_name = topic.get('name', topic.get('title', f'主题{processed}'))
+        logger.info('处理主题 %d/%d：%s', processed, total_topics, topic_name)
 
         keyword = topic.get('keyword') or topic_name
         existing_papers = topic.get('papers', [])
 
         try:
-            new_papers = search_cnki(keyword)
+            new_papers = search_cnki(keyword, session=session)
             if new_papers:
                 merged_papers = _merge_papers(existing_papers, new_papers, current_year)
                 updated_topic = {**topic, 'papers': merged_papers}
@@ -261,15 +276,20 @@ def try_update_papers(data: dict) -> dict:
             logger.error('处理主题 %s 时发生意外错误：%s，保留原有数据', topic_name, exc)
             updated_topic = topic
 
-        updated_topics.append(updated_topic)
+        # 在对应 category 的 updated_topics 列表中记录结果
+        # 按 category 分组收集
+        while len(updated_categories) <= category_idx:
+            src = data['categories'][len(updated_categories)]
+            updated_categories.append({**src, 'topics': []})
+        updated_categories[category_idx]['topics'].append(updated_topic)
 
         # 礼貌延迟，避免触发反爬
-        if idx < total_topics:
+        if processed < total_topics:
             delay = random.uniform(DELAY_MIN, DELAY_MAX)
             logger.debug('等待 %.1f 秒后继续...', delay)
             time.sleep(delay)
 
-    return {**data, 'topics': updated_topics}
+    return {**data, 'categories': updated_categories}
 
 
 # ──────────────────────────────────────────────
@@ -280,30 +300,37 @@ def load_topics() -> dict:
     """读取 topics.json，若文件不存在则返回空结构。"""
     if not TOPICS_FILE.exists():
         logger.warning('topics.json 不存在，将使用空数据结构：%s', TOPICS_FILE)
-        return {'topics': []}
+        return {'categories': []}
 
     try:
         with TOPICS_FILE.open(encoding='utf-8') as fh:
             data = json.load(fh)
-        logger.info('成功读取 topics.json，共 %d 个主题', len(data.get('topics', [])))
+        total_topics = sum(
+            len(cat.get('topics', []))
+            for cat in data.get('categories', [])
+        )
+        logger.info('成功读取 topics.json，共 %d 个分类，%d 个主题',
+                    len(data.get('categories', [])), total_topics)
         return data
     except json.JSONDecodeError as exc:
         logger.error('topics.json 解析失败：%s，将使用空数据结构', exc)
-        return {'topics': []}
+        return {'categories': []}
     except OSError as exc:
         logger.error('读取 topics.json 失败：%s，将使用空数据结构', exc)
-        return {'topics': []}
+        return {'categories': []}
 
 
 def save_topics(data: dict) -> None:
-    """将更新后的数据写回 topics.json。"""
+    """将更新后的数据写回 topics.json（原子写入）。"""
     today = datetime.now().strftime('%Y-%m-%d')
     updated_data = {**data, 'lastUpdated': today}
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    tmp_path = TOPICS_FILE.with_suffix('.tmp')
     try:
-        with TOPICS_FILE.open('w', encoding='utf-8') as fh:
+        with tmp_path.open('w', encoding='utf-8') as fh:
             json.dump(updated_data, fh, ensure_ascii=False, indent=2)
+        tmp_path.replace(TOPICS_FILE)
         logger.info('topics.json 保存成功：%s', TOPICS_FILE)
     except OSError as exc:
         logger.error('保存 topics.json 失败：%s', exc)
@@ -312,7 +339,11 @@ def save_topics(data: dict) -> None:
 
 def save_metadata(data: dict) -> None:
     """根据当前数据生成并保存 metadata.json。"""
-    topics = data.get('topics', [])
+    topics = [
+        topic
+        for category in data.get('categories', [])
+        for topic in category.get('topics', [])
+    ]
     total_papers = sum(len(t.get('papers', [])) for t in topics)
     today = datetime.now().strftime('%Y-%m-%d')
 
@@ -350,9 +381,11 @@ def main() -> None:
     data = update_scores(data)
 
     # 3. 尝试从知网爬取新论文（失败时降级保留原数据）
-    if data.get('topics'):
+    session = requests.Session()
+    session.headers.update(REQUEST_HEADERS)
+    if data.get('categories'):
         logger.info('正在尝试从知网爬取最新论文数据...')
-        data = try_update_papers(data)
+        data = try_update_papers(data, session=session)
     else:
         logger.info('暂无主题数据，跳过爬取步骤')
 
