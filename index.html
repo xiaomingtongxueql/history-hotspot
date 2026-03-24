@@ -29,6 +29,37 @@
     .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
     .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; backdrop-filter: blur(8px); }
     .modal.active { display: flex; align-items: center; justify-content: center; }
+    .animate-fade-in { transition: opacity 0.5s ease-out, transform 0.5s ease-out; transform: translateY(20px); }
+    .animate-fade-in[style*="opacity: 1"] { transform: translateY(0); }
+    
+    /* Scroll to top button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: #785600;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 40;
+      box-shadow: 0 4px 12px rgba(120, 86, 0, 0.3);
+    }
+    #scrollToTop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    #scrollToTop:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(120, 86, 0, 0.4);
+    }
   </style>
 </head>
 <body class="text-[#1a1c1b]">
@@ -46,7 +77,7 @@
       </div>
     </div>
     <div class="flex items-center gap-4">
-      <div class="relative">
+      <div class="search-container relative">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#785600]">search</span>
         <input type="text" id="searchInput" placeholder="搜索论文..." class="bg-transparent border-b border-[#817563]/40 focus:border-[#785600] px-10 py-1 font-serif text-sm w-64 transition-all" onkeyup="searchPapers(this.value)">
       </div>
@@ -110,255 +141,54 @@
       </div>
     </section>
 
+    <!-- Category Filter -->
+    <section class="mb-12">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm text-[#817563] mr-2">分类筛选：</span>
+        <button onclick="filterByCategory('all')" class="category-btn active bg-[#785600] text-white px-4 py-2 text-sm rounded-full transition-all" data-category="all">全部</button>
+        <button onclick="filterByCategory('中国古代史')" class="category-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-full transition-all hover:bg-[#e2e3e1]" data-category="中国古代史">🏯 中国古代史</button>
+        <button onclick="filterByCategory('中国近现代史')" class="category-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-full transition-all hover:bg-[#e2e3e1]" data-category="中国近现代史">🏮 中国近现代史</button>
+        <button onclick="filterByCategory('世界历史')" class="category-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-full transition-all hover:bg-[#e2e3e1]" data-category="世界历史">🌍 世界历史</button>
+        <button onclick="filterByCategory('中华人民共和国史')" class="category-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-full transition-all hover:bg-[#e2e3e1]" data-category="中华人民共和国史">🇨🇳 中华人民共和国史</button>
+        <button onclick="filterByCategory('史学理论与史学史')" class="category-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-full transition-all hover:bg-[#e2e3e1]" data-category="史学理论与史学史">📚 史学理论与史学史</button>
+      </div>
+    </section>
+
     <!-- Topics Grid -->
     <section id="topics" class="mb-24">
       <div class="flex items-center justify-between mb-12">
         <h3 class="text-3xl font-bold">研究热点</h3>
         <div class="h-px bg-[#d3c4af]/20 flex-grow mx-8"></div>
-        <button class="text-[#785600] text-sm tracking-widest uppercase flex items-center gap-2 font-bold">
-          查看全部 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        <button onclick="resetFilter()" class="text-[#785600] text-sm tracking-widest uppercase flex items-center gap-2 font-bold hover:opacity-70 transition-opacity">
+          重置筛选 <span class="material-symbols-outlined text-sm">refresh</span>
         </button>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(0)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">01</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">7 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">古代地理文献与国家治理</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">探讨中国古代地理文献的演进及其在中央政权与地方认知中的作用。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏯 中国古代史</span>
-            <span class="text-[#785600]">最高引用 12</span>
-          </div>
-        </article>
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(1)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">02</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">3 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">早期中国与先秦社会文化</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">利用出土甲骨文献及早期传世文献重新认识华夏共同祖先与商周社会。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏯 中国古代史</span>
-            <span class="text-[#785600]">最高引用 42</span>
-          </div>
-        </article>
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(2)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">03</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">3 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">唐宋明清的赋税军制与地方管控</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">从唐代节度使到明代军制，剖析中古以后帝国的社会管控嬗变。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏯 中国古代史</span>
-            <span class="text-[#785600]">最高引用 22</span>
-          </div>
-        </article>
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(3)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">04</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">8 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">晚清社会动荡与现代化起步</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">探讨中国早期现代化的特征以及晚清地方生态与权力的变局。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏮 中国近现代史</span>
-            <span class="text-[#785600]">最高引用 45</span>
-          </div>
-        </article>
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(4)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">05</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">8 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">民国时期政治生态与思潮</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">聚焦民国时期的中央与地方关系、以及知识界思潮与社会动员。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏮 中国近现代史</span>
-            <span class="text-[#785600]">最高引用 28</span>
-          </div>
-        </article>
-        
-        <article class="bg-white p-8 card-hover border border-[#e2e3e1]" onclick="openTopic(5)">
-          <div class="flex items-start justify-between mb-4">
-            <span class="text-5xl font-serif text-[#d3c4af] font-bold">06</span>
-            <span class="text-xs bg-[#f4f4f2] px-3 py-1">5 篇论文</span>
-          </div>
-          <h4 class="text-xl font-bold mb-2 hover:text-[#785600]">近代史学史与思想论革</h4>
-          <p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">清末民初及马克思主义史学观念在近代的萌发及演变过程。</p>
-          <div class="flex items-center justify-between text-xs text-[#817563]">
-            <span>🏮 中国近现代史</span>
-            <span class="text-[#785600]">最高引用 35</span>
-          </div>
-        </article>
-        
+      <div id="topicsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Topics will be rendered dynamically -->
+      </div>
+      
+      <!-- No Results Message -->
+      <div id="noTopicsMessage" class="hidden text-center py-16">
+        <span class="material-symbols-outlined text-6xl text-[#d3c4af] mb-4">search_off</span>
+        <p class="text-xl text-[#4f4535]">该分类下暂无研究热点</p>
+        <button onclick="resetFilter()" class="mt-4 text-[#785600] underline hover:no-underline">查看全部</button>
       </div>
     </section>
 
     <!-- Papers List -->
     <section id="papers" class="mb-24">
-      <h3 class="text-3xl font-bold mb-12 text-center">高引用论文排行</h3>
-      <div class="space-y-4">
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(0)">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            1
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">中国式现代化的经济史分析</h4>
-            <p class="text-sm text-[#4f4535] mb-2">武力 · 近代史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 62</span>
-              <span>下载 5100</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">3.2</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
+      <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
+        <h3 class="text-3xl font-bold">高引用论文排行</h3>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-[#817563] mr-2">排序方式：</span>
+          <button id="sort-citations" onclick="sortPapers('citations')" class="sort-btn active bg-[#785600] text-white px-4 py-2 text-sm rounded-lg transition-all">引用</button>
+          <button id="sort-downloads" onclick="sortPapers('downloads')" class="sort-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-lg transition-all hover:bg-[#e2e3e1]">下载</button>
+          <button id="sort-score" onclick="sortPapers('score')" class="sort-btn bg-[#f4f4f2] text-[#1a1c1b] px-4 py-2 text-sm rounded-lg transition-all hover:bg-[#e2e3e1]">评分</button>
         </div>
+      </div>
+      <div id="papersList" class="space-y-4">
         
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(1)">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            2
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">从近代历史进程看中国式现代化</h4>
-            <p class="text-sm text-[#4f4535] mb-2">郭若平 · 历史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 56</span>
-              <span>下载 4800</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">3.1</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(2)">
-          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            3
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">中国早期现代化道路的三大特性</h4>
-            <p class="text-sm text-[#4f4535] mb-2">虞和平 · 近代史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 45</span>
-              <span>下载 3200</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">2.6</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(3)">
-          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            4
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">论严歌苓新移民小说的跨域书写</h4>
-            <p class="text-sm text-[#4f4535] mb-2">张栋辉 · 未知期刊 · 2026年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 43</span>
-              <span>下载 443</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">2.3</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(4)">
-          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            5
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">人地关系视角下的石峁文化兴衰</h4>
-            <p class="text-sm text-[#4f4535] mb-2">韩茂莉 · 历史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 42</span>
-              <span>下载 2400</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">2.3</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(5)">
-          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            6
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">论新时期中国的准联盟外交</h4>
-            <p class="text-sm text-[#4f4535] mb-2">孙德刚 · 世界经济与政治 · 2012年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 36</span>
-              <span>下载 1</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">0.2</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(6)">
-          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            7
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">翦伯赞与中国马克思主义史料学的初步建立</h4>
-            <p class="text-sm text-[#4f4535] mb-2">李长银 · 近代史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 35</span>
-              <span>下载 2400</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">知网</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">2.3</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
-        <div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(7)">
-          <div class="w-12 h-12 bg-[#f4f4f2] text-[#1a1c1b] rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
-            8
-          </div>
-          <div class="flex-1">
-            <h4 class="font-bold mb-1 hover:text-[#785600]">博物学与Natural History：东西方知识传统的构造</h4>
-            <p class="text-sm text-[#4f4535] mb-2">余欣、周金泰 · 历史研究 · 2023年</p>
-            <div class="flex items-center gap-4 text-xs text-[#817563]">
-              <span>引用 35</span>
-              <span>下载 2400</span>
-              <span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">万方</span>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-2xl font-bold text-[#785600]">2.3</div>
-            <div class="text-xs text-[#817563]">评分</div>
-          </div>
-        </div>
-        
+        <!-- Papers will be rendered dynamically by JavaScript -->
       </div>
     </section>
 
@@ -381,19 +211,91 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- Topic Modal -->
   <div id="topicModal" class="modal" onclick="closeModal(event)">
     <div class="bg-white max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl" onclick="event.stopPropagation()">
       <div class="p-8">
         <div class="flex justify-between items-start mb-6">
-          <h2 id="modalTitle" class="text-3xl font-bold"></h2>
-          <button onclick="closeModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600]">&times;</button>
+          <div>
+            <span id="modalCategory" class="inline-block bg-[#785600]/10 text-[#785600] px-3 py-1 text-xs tracking-wider uppercase font-bold rounded-full mb-3"></span>
+            <h2 id="modalTitle" class="text-3xl font-bold"></h2>
+          </div>
+          <button onclick="closeModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600] p-2 hover:bg-[#f4f4f2] rounded-full transition-all">&times;</button>
         </div>
-        <p id="modalDesc" class="text-[#4f4535] mb-8 font-body text-lg leading-relaxed"></p>
-        <h3 class="text-xl font-bold mb-4 border-b border-[#d3c4af]/20 pb-2">相关论文</h3>
-        <div id="modalPapers" class="space-y-4"></div>
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-3 gap-4 mb-6 p-4 bg-[#f9f9f7] rounded-lg">
+          <div class="text-center">
+            <div id="modalPaperCount" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">收录论文</div>
+          </div>
+          <div class="text-center border-x border-[#e2e3e1]">
+            <div id="modalTotalCitations" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">总引用</div>
+          </div>
+          <div class="text-center">
+            <div id="modalMaxCitations" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">最高引用</div>
+          </div>
+        </div>
+        
+        <p id="modalDesc" class="text-[#4f4535] mb-8 font-body text-lg leading-relaxed border-l-2 border-[#785600] pl-4"></p>
+        <h3 class="text-xl font-bold mb-4 border-b border-[#d3c4af]/20 pb-2 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#785600]">library_books</span>
+          相关论文
+        </h3>
+        <div id="modalPapers" class="space-y-3"></div>
       </div>
     </div>
+  </div>
+
+  <!-- Paper Detail Modal -->
+  <div id="paperModal" class="modal" onclick="closePaperModal(event)">
+    <div class="bg-white max-w-2xl w-full mx-4 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+      <div class="p-8">
+        <div class="flex justify-between items-start mb-6">
+          <span id="paperModalTopic" class="text-xs bg-[#785600]/10 text-[#785600] px-3 py-1 rounded-full"></span>
+          <button onclick="closePaperModal()" class="text-2xl text-[#1a1c1b]/40 hover:text-[#785600]">&times;</button>
+        </div>
+        <h2 id="paperModalTitle" class="text-2xl font-bold mb-4 leading-tight"></h2>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#785600] text-sm">person</span>
+          <span id="paperModalAuthors" class="text-[#4f4535]"></span>
+        </div>
+        <div class="flex items-center gap-2 mb-6">
+          <span class="material-symbols-outlined text-[#785600] text-sm">menu_book</span>
+          <span id="paperModalJournal" class="text-[#4f4535]"></span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
+            <div id="paperModalCitations" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">引用</div>
+          </div>
+          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
+            <div id="paperModalDownloads" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">下载</div>
+          </div>
+          <div class="bg-[#f9f9f7] p-4 rounded-lg text-center">
+            <div id="paperModalScore" class="text-2xl font-bold text-[#785600]"></div>
+            <div class="text-xs text-[#817563] mt-1">评分</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-4 border-t border-[#e2e3e1]">
+          <span id="paperModalSource" class="text-xs bg-[#f4f4f2] px-3 py-1 rounded"></span>
+          <button class="bg-[#785600] text-white px-6 py-2 text-sm font-bold tracking-wider hover:brightness-110 transition-all">
+            查看原文
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Results Dropdown -->
+  <div id="searchResults" class="hidden fixed top-20 right-8 w-96 bg-white rounded-lg shadow-2xl z-50 max-h-[60vh] overflow-y-auto border border-[#e2e3e1]"></div>
+
+  <!-- Scroll to Top Button -->
+  <div id="scrollToTop" onclick="scrollToTop()" title="返回顶部">
+    <span class="material-symbols-outlined">arrow_upward</span>
   </div>
 
   <script>
@@ -404,36 +306,270 @@
       const topic = topics[index];
       document.getElementById('modalTitle').textContent = topic.title;
       document.getElementById('modalDesc').textContent = topic.description;
+      document.getElementById('modalCategory').textContent = topic.category;
+      document.getElementById('modalPaperCount').textContent = topic.papers.length + ' 篇论文';
       
-      const papersHtml = topic.papers.sort((a,b) => b.citations - a.citations).map(p => 
-        '<div class="p-4 bg-[#f9f9f7] border-l-2 border-[#785600]">' +
-          '<h4 class="font-bold mb-1">' + p.title + '</h4>' +
-          '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + ' · ' + (p.journal || '未知期刊') + ' · ' + p.year + '年</p>' +
-          '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
-            '<span>引用 ' + p.citations + '</span>' +
-            '<span>评分 ' + p.score + '</span>' +
+      // Calculate total citations
+      const totalCitations = topic.papers.reduce((sum, p) => sum + p.citations, 0);
+      document.getElementById('modalTotalCitations').textContent = totalCitations;
+      
+      // Find highest cited paper
+      const maxCitations = Math.max(...topic.papers.map(p => p.citations));
+      document.getElementById('modalMaxCitations').textContent = maxCitations;
+      
+      const papersHtml = topic.papers.sort((a,b) => b.citations - a.citations).map((p, i) => 
+        '<div class="p-4 bg-[#f9f9f7] border-l-2 border-[#785600] hover:bg-[#f4f4f2] transition-colors cursor-pointer" onclick="showPaperFromTopic(' + index + ', ' + i + ')">' +
+          '<div class="flex items-start justify-between mb-2">' +
+            '<h4 class="font-bold mb-1 flex-1">' + p.title + '</h4>' +
+            '<span class="text-xs bg-[#785600]/10 text-[#785600] px-2 py-0.5 ml-2 whitespace-nowrap">#' + (i + 1) + '</span>' +
+          '</div>' +
+          '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + '</p>' +
+          '<div class="flex items-center justify-between">' +
+            '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
+              '<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">menu_book</span>' + (p.journal || '未知期刊') + '</span>' +
+              '<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span>' + p.year + '年</span>' +
+              '<span class="flex items-center gap-1 text-[#785600]"><span class="material-symbols-outlined text-sm">format_quote</span>' + p.citations + ' 引用</span>' +
+              '<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">download</span>' + p.downloads + ' 下载</span>' +
+            '</div>' +
+            '<span class="text-xs bg-[#f4f4f2] px-2 py-0.5">' + p.source + '</span>' +
           '</div>' +
         '</div>'
       ).join('');
       
       document.getElementById('modalPapers').innerHTML = papersHtml;
       document.getElementById('topicModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function showPaperFromTopic(topicIndex, paperIndex) {
+      const topic = topics[topicIndex];
+      const sortedPapers = topic.papers.sort((a,b) => b.citations - a.citations);
+      const paper = sortedPapers[paperIndex];
+      
+      // Find paper in global papers array
+      const globalIndex = papers.findIndex(p => p.title === paper.title);
+      if (globalIndex !== -1) {
+        showPaperDetail(globalIndex);
+      }
     }
     
     function closeModal(e) {
       if (!e || e.target.id === 'topicModal') {
         document.getElementById('topicModal').classList.remove('active');
+        document.body.style.overflow = '';
       }
     }
     
+    // Paper Modal
     function showPaperDetail(index) {
       const paper = papers[index];
-      alert('论文详情：\n\n' + paper.title + '\n作者：' + paper.authors.join('、') + '\n期刊：' + (paper.journal || '未知') + '\n引用：' + paper.citations);
+      document.getElementById('paperModalTitle').textContent = paper.title;
+      document.getElementById('paperModalAuthors').textContent = paper.authors.join('、');
+      document.getElementById('paperModalJournal').textContent = (paper.journal || '未知期刊') + ' · ' + paper.year + '年';
+      document.getElementById('paperModalCitations').textContent = paper.citations;
+      document.getElementById('paperModalDownloads').textContent = paper.downloads;
+      document.getElementById('paperModalScore').textContent = paper.score;
+      document.getElementById('paperModalSource').textContent = paper.source;
+      document.getElementById('paperModalTopic').textContent = paper.topicTitle;
+      document.getElementById('paperModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
     
+    // Search functionality
+    let searchResults = [];
     function searchPapers(query) {
-      // Simple search - in real app would filter the displayed content
-      console.log('Searching:', query);
+      if (!query.trim()) {
+        searchResults = [];
+        document.getElementById('searchResults').classList.add('hidden');
+        return;
+      }
+      
+      const allPapers = topics.flatMap(t => t.papers.map(p => ({...p, topicTitle: t.title, category: t.category})));
+      searchResults = allPapers.filter(p => 
+        p.title.toLowerCase().includes(query.toLowerCase()) ||
+        p.authors.some(a => a.toLowerCase().includes(query.toLowerCase())) ||
+        (p.journal && p.journal.toLowerCase().includes(query.toLowerCase()))
+      ).slice(0, 10);
+      
+      displaySearchResults();
+    }
+    
+    function displaySearchResults() {
+      const container = document.getElementById('searchResults');
+      if (searchResults.length === 0) {
+        container.innerHTML = '<div class="p-4 text-center text-[#817563]">未找到相关论文</div>';
+      } else {
+        container.innerHTML = searchResults.map((p, i) => 
+          '<div class="p-4 hover:bg-[#f4f4f2] cursor-pointer border-b border-[#e2e3e1] last:border-0" onclick="showSearchResult(' + i + ')">' +
+            '<h4 class="font-bold mb-1 text-sm">' + p.title + '</h4>' +
+            '<p class="text-xs text-[#4f4535]">' + p.authors.join('、') + ' · ' + p.topicTitle + '</p>' +
+          '</div>'
+        ).join('');
+      }
+      container.classList.remove('hidden');
+    }
+    
+    function showSearchResult(index) {
+      const paper = searchResults[index];
+      showPaperDetail(papers.findIndex(p => p.title === paper.title));
+      document.getElementById('searchResults').classList.add('hidden');
+    }
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-container')) {
+        document.getElementById('searchResults').classList.add('hidden');
+      }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        closePaperModal();
+        document.getElementById('searchResults').classList.add('hidden');
+      }
+    });
+    
+    // Scroll to top button visibility
+    window.addEventListener('scroll', function() {
+      const scrollBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 500) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    function closePaperModal(e) {
+      if (!e || e.target.id === 'paperModal') {
+        document.getElementById('paperModal').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Initialize papers list on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      renderPapersList(papers);
+      renderTopicsGrid(topics);
+    });
+    
+    // Category filtering
+    let currentCategory = 'all';
+    function filterByCategory(category) {
+      currentCategory = category;
+      
+      // Update button states
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add('active', 'bg-[#785600]', 'text-white');
+          btn.classList.remove('bg-[#f4f4f2]', 'text-[#1a1c1b]');
+        } else {
+          btn.classList.remove('active', 'bg-[#785600]', 'text-white');
+          btn.classList.add('bg-[#f4f4f2]', 'text-[#1a1c1b]');
+        }
+      });
+      
+      // Filter topics
+      const filteredTopics = category === 'all' 
+        ? topics 
+        : topics.filter(t => t.category === category);
+      
+      renderTopicsGrid(filteredTopics);
+    }
+    
+    function resetFilter() {
+      filterByCategory('all');
+    }
+    
+    function renderTopicsGrid(topicsToRender) {
+      const container = document.getElementById('topicsGrid');
+      const noMessage = document.getElementById('noTopicsMessage');
+      
+      if (topicsToRender.length === 0) {
+        container.innerHTML = '';
+        noMessage.classList.remove('hidden');
+        return;
+      }
+      
+      noMessage.classList.add('hidden');
+      container.innerHTML = topicsToRender.map((t, i) => {
+        const maxCitations = Math.max(...t.papers.map(p => p.citations));
+        const totalCitations = t.papers.reduce((sum, p) => sum + p.citations, 0);
+        const avgCitations = Math.round(totalCitations / t.papers.length);
+        
+        return '<article class="bg-white p-8 card-hover border border-[#e2e3e1] opacity-0 animate-fade-in" style="animation-delay: ' + (i * 100) + 'ms" onclick="openTopic(' + topics.indexOf(t) + ')">' +
+          '<div class="flex items-start justify-between mb-4">' +
+            '<span class="text-5xl font-serif text-[#d3c4af] font-bold">' + String(i + 1).padStart(2, '0') + '</span>' +
+            '<span class="text-xs bg-[#f4f4f2] px-3 py-1">' + t.papers.length + ' 篇论文</span>' +
+          '</div>' +
+          '<h4 class="text-xl font-bold mb-2 hover:text-[#785600] transition-colors">' + t.title + '</h4>' +
+          '<p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">' + t.description + '</p>' +
+          '<div class="flex items-center justify-between text-xs text-[#817563] pt-4 border-t border-[#e2e3e1]">' +
+            '<span class="flex items-center gap-1">' + t.categoryIcon + ' ' + t.category + '</span>' +
+            '<div class="flex items-center gap-3">' +
+              '<span class="text-[#785600]" title="最高引用">最高 ' + maxCitations + '</span>' +
+              '<span class="text-[#817563]" title="平均引用">平均 ' + avgCitations + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+      
+      // Trigger fade-in animations
+      setTimeout(() => {
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+          el.style.opacity = '1';
+        });
+      }, 50);
+    }
+    
+    // Paper sorting
+    let currentSort = 'citations';
+    function sortPapers(sortBy) {
+      currentSort = sortBy;
+      const sortedPapers = [...papers].sort((a, b) => b[sortBy] - a[sortBy]);
+      
+      // Update active button state
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-[#785600]', 'text-white');
+        btn.classList.add('bg-[#f4f4f2]', 'text-[#1a1c1b]');
+      });
+      document.getElementById('sort-' + sortBy).classList.add('active', 'bg-[#785600]', 'text-white');
+      document.getElementById('sort-' + sortBy).classList.remove('bg-[#f4f4f2]', 'text-[#1a1c1b]');
+      
+      // Re-render papers list
+      renderPapersList(sortedPapers);
+    }
+    
+    function renderPapersList(papersToRender) {
+      const container = document.getElementById('papersList');
+      container.innerHTML = papersToRender.slice(0, 8).map((p, i) => 
+        '<div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-colors cursor-pointer" onclick="showPaperDetail(' + papers.indexOf(p) + ')">' +
+          '<div class="w-12 h-12 ' + (i < 3 ? 'bg-gradient-to-br from-amber-400 to-amber-600 text-white' : 'bg-[#f4f4f2] text-[#1a1c1b]') + ' rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">' +
+            (i + 1) +
+          '</div>' +
+          '<div class="flex-1">' +
+            '<h4 class="font-bold mb-1 hover:text-[#785600]">' + p.title + '</h4>' +
+            '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + ' · ' + (p.journal || '未知期刊') + ' · ' + p.year + '年</p>' +
+            '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
+              '<span>引用 ' + p.citations + '</span>' +
+              '<span>下载 ' + p.downloads + '</span>' +
+              '<span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5">' + p.source + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="text-right">' +
+            '<div class="text-2xl font-bold text-[#785600]">' + p.score + '</div>' +
+            '<div class="text-xs text-[#817563]">评分</div>' +
+          '</div>' +
+        '</div>'
+      ).join('');
     }
   </script>
 </body>
