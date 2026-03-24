@@ -60,7 +60,7 @@ export default function Home({ onTopicClick, searchQuery }) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <div className="w-12 h-12 rounded-xl bg-gold-subtle flex items-center justify-center animate-pulse">
-          <span className="text-gold font-serif text-xl">溯</span>
+          <span className="text-gold font-heading text-xl">溯</span>
         </div>
         <p className="text-ink-muted text-sm animate-pulse">正在加载数据...</p>
       </div>
@@ -112,7 +112,7 @@ export default function Home({ onTopicClick, searchQuery }) {
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gold-subtle text-lg">
                   {category.icon}
                 </div>
-                <h2 className="font-serif text-2xl text-ink font-semibold">{category.name}</h2>
+                <h2 className="font-heading text-2xl text-ink font-semibold">{category.name}</h2>
                 <div className="flex-1 h-px bg-border/50" />
                 <span className="text-ink-muted text-sm font-medium bg-bg-hover px-4 py-1.5 rounded-full">
                   {category.topics.length} 个热点

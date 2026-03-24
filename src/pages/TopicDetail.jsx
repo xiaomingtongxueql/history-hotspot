@@ -32,7 +32,7 @@ export default function TopicDetail({ topic, category, onBack }) {
         </div>
 
         {/* 标题 */}
-        <h1 className="font-serif text-3xl md:text-4xl text-ink font-bold mb-4 leading-tight tracking-tight">
+        <h1 className="font-heading text-3xl md:text-4xl text-ink font-bold mb-4 leading-tight tracking-tight">
           {topic.title}
         </h1>
 
@@ -53,7 +53,7 @@ export default function TopicDetail({ topic, category, onBack }) {
 
       {/* 论文列表 */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="font-serif text-xl text-ink font-semibold">相关权威论文</h2>
+        <h2 className="font-heading text-xl text-ink font-semibold">相关权威论文</h2>
         <span className="text-xs text-ink-muted bg-bg-hover px-4 py-2 rounded-full border border-border/50">
           按综合评分排序
         </span>

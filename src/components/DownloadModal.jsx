@@ -62,7 +62,7 @@ export default function DownloadModal({ paper, onClose }) {
                 )}
               </div>
               <div className="flex items-start gap-2">
-                <h3 className="font-serif text-lg text-ink font-semibold leading-snug flex-1">
+                <h3 className="font-heading text-lg text-ink font-semibold leading-snug flex-1">
                   {paper.title}
                 </h3>
                 {/* 复制标题按钮 */}

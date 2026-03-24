@@ -86,6 +86,13 @@ body {
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 
+/* Standard glass effect (lighter variant) */
+.glass {
+  background: rgba(253, 252, 248, 0.80);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
 /* Premium glass effect */
 .glass-premium {
   background: rgba(253, 252, 248, 0.85);

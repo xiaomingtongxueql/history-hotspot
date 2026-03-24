@@ -20,8 +20,17 @@ export default {
         ink: {
           DEFAULT: '#1A1814',
           soft: '#3D3830',
+          secondary: '#5C5650',
           muted: '#7A756A',
           faint: '#B5B0A5',
+        },
+        bg: {
+          primary: '#FDFCF8',
+          secondary: '#F8F6F1',
+          hover: '#F0EDE5',
+        },
+        border: {
+          DEFAULT: '#DDD9D0',
         },
         surface: {
           DEFAULT: '#FFFFFF',
@@ -49,10 +58,13 @@ export default {
         'card': '0 4px 20px rgba(26, 24, 20, 0.05)',
         'card-hover': '0 12px 40px rgba(26, 24, 20, 0.1)',
         'elevated': '0 16px 48px rgba(26, 24, 20, 0.12)',
+        'modal': '0 24px 64px rgba(26, 24, 20, 0.18)',
       },
       borderRadius: {
         '2xl': '1rem',
         '3xl': '1.5rem',
+        'card': '1rem',
+        'modal': '1.25rem',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',

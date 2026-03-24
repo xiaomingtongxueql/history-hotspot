@@ -21,14 +21,14 @@ export default function PaperCard({ paper, rank }) {
       >
         <div className="flex gap-4">
           {/* 排名 */}
-          <div className={`flex-shrink-0 w-10 h-10 rounded-xl ${style.bg} ${style.text} ${style.shadow} flex items-center justify-center font-serif font-bold text-lg`}>
+          <div className={`flex-shrink-0 w-10 h-10 rounded-xl ${style.bg} ${style.text} ${style.shadow} flex items-center justify-center font-heading font-bold text-lg`}>
             {rank <= 3 ? ['🥇', '🥈', '🥉'][rank - 1] : rank}
           </div>
 
           {/* 内容 */}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-3 mb-2">
-              <h4 className="font-serif text-ink font-semibold text-sm leading-snug group-hover:text-gold transition-colors duration-200 line-clamp-2">
+              <h4 className="font-heading text-ink font-semibold text-sm leading-snug group-hover:text-gold transition-colors duration-200 line-clamp-2">
                 {paper.title}
               </h4>
               <div className="flex-shrink-0 flex items-center gap-1 bg-gold-subtle rounded-full px-2.5 py-1">

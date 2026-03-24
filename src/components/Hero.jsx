@@ -8,10 +8,11 @@ export default function Hero({ metadata }) {
     return () => clearTimeout(timer)
   }, [])
 
+  const categoryCount = metadata?.totalCategories ?? 9
   const stats = [
+    { label: '研究领域', value: categoryCount },
     { label: '研究热点', value: metadata?.totalTopics ?? '--' },
     { label: '收录论文', value: metadata?.totalPapers ?? '--' },
-    { label: '每周更新', value: '✓' },
   ]
 
   return (
@@ -44,7 +45,7 @@ export default function Hero({ metadata }) {
 
         {/* Subtitle */}
         <p className={`text-ink-muted text-lg md:text-xl font-light max-w-xl mx-auto mb-16 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          汇聚十五大史学研究领域，精选权威期刊高引用论文
+          汇聚{categoryCount}大史学研究领域，精选权威期刊高引用论文
         </p>
 
         {/* Stats */}

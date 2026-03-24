@@ -9,5 +9,7 @@ export function calculateScore(paper) {
 }
 
 export function sortPapersByScore(papers) {
-  return [...papers].sort((a, b) => parseFloat(b.score) - parseFloat(a.score))
+  return [...papers]
+    .map(p => ({ ...p, score: calculateScore(p) }))
+    .sort((a, b) => b.score - a.score)
 }
