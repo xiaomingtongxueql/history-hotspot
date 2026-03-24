@@ -1,13 +1,309 @@
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>史学研究热点导航</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>热点论文 - 动态水墨优化版 | The Scholar’s Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "tertiary": "#904917",
+                "secondary-fixed": "#ffdbd0",
+                "on-primary-fixed-variant": "#5d4200",
+                "surface-container-lowest": "#ffffff",
+                "error-container": "#ffdad6",
+                "surface-container-highest": "#e2e3e1",
+                "on-primary-container": "#fffbff",
+                "on-surface": "#1a1c1b",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#321200",
+                "on-secondary-fixed": "#2c160e",
+                "on-primary-fixed": "#271900",
+                "surface": "#f9f9f7",
+                "on-surface-variant": "#4f4535",
+                "inverse-primary": "#f7bd48",
+                "on-tertiary-fixed-variant": "#753401",
+                "on-secondary-container": "#795950",
+                "on-error-container": "#93000a",
+                "tertiary-container": "#ae602d",
+                "outline-variant": "#d3c4af",
+                "secondary-container": "#fed3c7",
+                "on-tertiary-container": "#fffbff",
+                "background": "#f9f9f7",
+                "secondary-fixed-dim": "#e7bdb1",
+                "on-secondary-fixed-variant": "#5d4037",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#ffb68c",
+                "secondary": "#77574d",
+                "outline": "#817563",
+                "on-tertiary": "#ffffff",
+                "surface-bright": "#f9f9f7",
+                "primary": "#785600",
+                "primary-container": "#986d00",
+                "surface-container": "#eeeeec",
+                "primary-fixed": "#ffdea6",
+                "surface-container-high": "#e8e8e6",
+                "on-secondary": "#ffffff",
+                "surface-tint": "#7b5800",
+                "inverse-surface": "#2f3130",
+                "surface-container-low": "#f4f4f2",
+                "surface-dim": "#dadad8",
+                "on-background": "#1a1c1b",
+                "inverse-on-surface": "#f1f1ef",
+                "surface-variant": "#e2e3e1",
+                "primary-fixed-dim": "#f7bd48",
+                "tertiary-fixed": "#ffdbc9",
+                "error": "#ba1a1a"
+              },
+              fontFamily: {
+                "serif": ["Noto Serif SC", "serif"],
+                "headline": ["Noto Serif SC"],
+                "body": ["Newsreader", "serif"],
+                "label": ["Newsreader", "serif"]
+              },
+              borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        /* Mobile Ink-Wash Animation & Palette Adaptation */
+        @keyframes inkFlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(5%, 2%) scale(1.1); opacity: 0.5; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        }
+        .ink-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(26, 28, 27, 0.05) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 70%, rgba(120, 86, 0, 0.03) 0%, transparent 60%);
+            filter: blur(60px);
+            animation: inkFlow 20s ease-in-out infinite;
+        }
+        .paper-texture {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-color: #f9f9f7;
+            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuGHtryQUPXt_jXEwvfpmcp55_e51qqb-ZqjwN_48vgkha2X0B1SGHap6Wtc9QkAasnH4If6Td9iIW2C0YEMD5VU75kOMWNVn4Az8UBd1QMyTuHoZogCAaE_QHegCaNWpkfrOyofmOkWv_c-PVHuG0mnEqwk_3xvUBZsY2Z4erFRAVeu8RUc7py7LxKd7ZnOSTqyC8lTGaUKLxA5B6IqLDCgB0E3FVfyBB8_eEP2vgni2g0DnnGRBF60tHPi9yCtbcBsNKc_Nbqyo");
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Canvas & Ink Layers from Mobile -->
+<div class="paper-texture"></div>
+<div class="ink-bg"></div>
+<!-- TopNavBar -->
+<nav class="w-full top-0 left-0 bg-[#f9f9f7] dark:bg-stone-900 flex justify-between items-center px-16 py-6 max-w-[1920px] mx-auto z-50 sticky">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#1a1c1b] dark:text-stone-100 tracking-[0.2em] font-serif">The Scholar’s Ledger</span>
+<div class="hidden md:flex space-x-8">
+<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">Eras</a>
+<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">Manuscripts</a>
+<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">Calligraphy</a>
+<a class="font-serif text-lg tracking-wide text-[#1a1c1b] dark:text-[#d3c4af] opacity-60 hover:text-primary transition-colors duration-300" href="#">Maps</a>
+<a class="font-serif text-lg tracking-wide text-primary border-t-2 border-primary pt-1 font-bold" href="#">Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="bg-transparent border-b border-outline-variant/40 focus:border-primary focus:ring-0 px-10 py-1 font-serif text-sm w-64 transition-all" placeholder="Search Archives..." type="text"/>
+</div>
+<button class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</nav>
+<div class="bg-[#f4f4f2] dark:bg-stone-800 h-[1px] w-full"></div>
+<!-- Background Calligraphy Motif from Mobile -->
+<div class="fixed top-24 right-10 opacity-5 pointer-events-none select-none z-[-1]">
+<span class="font-headline text-[30rem] leading-none font-black vertical-text">歷史</span>
+</div>
+<!-- SideNavBar (Vertical Spine) -->
+<aside class="fixed left-0 top-1/4 h-auto flex flex-col space-y-12 items-center px-4 z-40">
+<div class="flex flex-col items-center space-y-12">
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">history_edu</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">Chronicles</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="material-symbols-outlined text-primary scale-110 font-black">approval</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-primary font-black">Imperial Seals</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">edit_note</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">Poetry</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">account_tree</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">Lineage</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="material-symbols-outlined text-on-surface/40 group-hover:text-primary transition-all">menu_book</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-serif vertical-text mt-2 text-on-surface/40 group-hover:text-primary">Reference</span>
+</div>
+</div>
+</aside>
+<main class="max-w-[1920px] mx-auto px-16 md:pl-32 pt-20">
+<!-- Header Title Section -->
+<header class="mb-24 flex items-end justify-between border-b border-outline-variant/20 pb-12">
+<div class="max-w-2xl">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] font-bold block mb-2">Current Research Hotspots</span>
+<h1 class="text-7xl font-headline font-bold text-on-surface tracking-tighter mb-4 leading-tight">历史研究<br/>热点导航</h1>
+<p class="text-xl text-on-surface-variant max-w-lg font-serif italic">Exploring the echoes of empires through digital curation and historical forensics.</p>
+</div>
+<div class="text-right">
+<div class="flex flex-col items-end">
+<span class="font-headline text-6xl font-black text-on-surface-variant tabular-nums">1,245,392</span>
+<span class="font-label text-sm text-on-surface-variant/60 italic">Archived Records</span>
+</div>
+<p class="text-4xl font-serif font-bold text-on-surface mt-8">MMXXIV</p>
+</div>
+</header>
+<!-- Featured Research Card (Matched Styling) -->
+<section class="mb-24">
+<div class="grid grid-cols-12 gap-0 bg-surface-container-low overflow-hidden relative group border-l-4 border-primary/20 transition-all duration-500 hover:bg-surface-container-high">
+<div class="col-span-12 md:col-span-7 relative h-[600px] overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp_VXu9z6-_0jAoRK0mS10q5kId0exbCmYHfQLH9N-XLifmOoWQGaUIYf4BQdAD2oRDVckF3SP6N_CyptbJHrwyge7ZW_E6NkVYgDTXTWcV3ZkD8zCO6rFaHzUi6paJni0soTnuUlFuZQ5vYbb4YwhaZD4KziUKQ8rQeBPRcUVx_e0-6X1HUN-PLGqe4O1rP_sMfSBxSguVIMcEG8DuMTH70wmhyRNXUCZDMEkzEcJIMB3T-s1YREzG2kJcU4d0pjhvbNcjYyNioY"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low via-transparent to-transparent"></div>
+</div>
+<div class="col-span-12 md:col-span-5 p-16 flex flex-col justify-center relative">
+<div class="absolute top-0 right-0 p-8">
+<span class="font-headline text-primary/10 text-[10rem] font-bold leading-none">清</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-primary text-on-primary px-3 py-1 text-[10px] tracking-[0.2em] mb-6 uppercase font-bold">Featured Exhibit</span>
+<h2 class="text-5xl font-headline font-bold mb-6 leading-tight text-on-surface">晚清变法与新政</h2>
+<p class="text-lg text-on-surface-variant mb-10 leading-relaxed font-body">An exploration of the seismic shifts during the late 19th century, from the Hundred Days' Reform to the twilight of the imperial era.</p>
+<div class="flex items-center space-x-8">
+<button class="bg-primary text-on-primary px-12 py-4 text-sm font-bold tracking-widest hover:brightness-110 transition-all">ENTER ARCHIVE</button>
+<span class="text-xs font-label italic text-on-surface/40">Updated 2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Grid Layout for Ongoing Investigations -->
+<section class="mb-32">
+<div class="flex items-center justify-between mb-12">
+<h3 class="text-3xl font-headline font-bold">Ongoing Investigations</h3>
+<div class="h-px bg-outline-variant/20 flex-grow mx-8"></div>
+<button class="text-primary font-label text-sm tracking-widest uppercase flex items-center gap-2 font-bold">
+                View All Folders <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Investigation 1 -->
+<article class="flex flex-col group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl_uqI8jYUkTmB_S6JQtYb5f4OcmxyGapCw1rPirQWE2axD3IhYHtDGrGzhhwLPj_SDRdYCatVeNNrvAuvIYH0enEKoVLSmmMbEc0oOyMw0oHpLTx3k6DTFXKZls2oeeKJTelQ11v94eOKM6loUpB_Bh9o0r4cq2m2f0teDazxYw_JJYaAalcG5UgPGa9_Vza8NnNt5ggU57eA0ooCXqMiz5_AnUDmwMnVhpowptVzIZ9Octxpj4HoeLY27z92ukQ6Q_qivi-cEWc"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-1">Sanxingdui Sacrifice</h5>
+<p class="font-headline text-lg text-on-surface/80">三星堆祭祀坑研究</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">SHU ARCHAEOLOGY</span>
+<span class="font-label text-[10px] opacity-40">1,402 CITATIONS</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">Decoding the ritualistic bronze culture of the Sanxingdui pits. New discoveries in the 7th and 8th excavation zones.</p>
+</article>
+<!-- Investigation 2 -->
+<article class="flex flex-col group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYzQq-WZtC2Kf7WeV89dopzpX1z3lKlN8q7v7ZQFKswYH2ncVmuqHGxlEbRUtBeeDS_2bg45zCPJIiUSJZEYDQqJs9qOt7MMg43VpkauZgwUrqtYDPiWPQDlzqvpALPFURe4zJ72QK7g6JuhqqCs1w08eX1C4KgkR1aGB4OA3CamEHq4GLipCP5Ft-FC4ZYPLHwjpGctdOj9XM3wksQwko5Nx4mjSwanHKN2cJwL8Qv0bafR6D-V4dTZAHXnvzjgz4aMqmO2B0Ss"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-1">Song Dynasty Urban Life</h5>
+<p class="font-headline text-lg text-on-surface/80">宋代城市商业景观</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">SOCIOLOGY</span>
+<span class="font-label text-[10px] opacity-40">3,891 CITATIONS</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">Urban commercial evolution during the Song Dynasty. A spatial analysis of Bianjing's economic pulse and nocturnal markets.</p>
+</article>
+<!-- Investigation 3 -->
+<article class="flex flex-col group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-8">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkc4fDvX_Rq2dtdxDHN93AC8NOeXPm6u1QIsM2se5OqYGXwzQvzH62wUZxt_Msbm951kvI6wLYzI1ZcfQUTIv7X38wtiqxl-MOvcEGnX357OLcDxQM3NwrkGmiPJc4dCO3EnzjROhpLWyaf8D0KDsA6e_9XLquWBHahHJcwcBb-aOql1TyApW9mbUR86EN-6nSBPXcDKCS_yplGgPcypBe9FmhyWpofD6LhXEK0NSjkNpkHAIm6R57VEcUTtdoXsGldrPoETHBYNI"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-1">Silk Road Fragments</h5>
+<p class="font-headline text-lg text-on-surface/80">丝绸之路文书碎片</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-widest block text-primary font-bold uppercase">PALAEOGRAPHY</span>
+<span class="font-label text-[10px] opacity-40">924 CITATIONS</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10 w-full mb-4"></div>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">Reassembling the fragmented silk road trade manifests. Deciphering Sogdian and Gandhari scripts from the Dunhuang caches.</p>
+</article>
+</div>
+</section>
+<!-- Asymmetric Map Section -->
+<section class="mb-32 grid grid-cols-12 gap-16 items-center">
+<div class="col-span-12 md:col-span-5">
+<h2 class="text-4xl font-headline font-bold mb-8">Spatial Archives</h2>
+<div class="space-y-8">
+<div class="border-l-4 border-primary pl-6 py-2 bg-surface-container-low">
+<h5 class="text-xl font-bold mb-2 text-primary">Maritime Silk Road Expansion</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">Tracking trade-wind dynamics and pottery shipwrecks between the 9th and 13th centuries.</p>
+</div>
+<div class="pl-6 py-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
+<h5 class="text-xl font-bold mb-2">Imperial Capital Relocations</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">A strategic overview of capital shifts from Chang'an to Luoyang across five dynasties.</p>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7 h-[500px] bg-surface-container overflow-hidden grayscale contrast-125 brightness-95">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-[3s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRYhuoMNaJ_8t2NtVJRb3UV8cMYwHwlz1kz09JV_04FS88hpq5-gUuXyOm7QrhsBjvSif-EoG1BDXYvs3doV_zT6eqcbERvBmRQtPlW6nkOJtY1mC7RSCBJu-ZnpbHew-KaFBoSTGScgKcrY1Qv0mOK34MFiCFcPB1puLkULREYouABDnyFhiR2qq4cp8M0XO2cnuPEc9N5IG-VJHsxEd90mNPtj1gcMnfUfLH8dNMUGDuPGMcWzfqCNOSEevyd-9Ov48w2sAYng8"/>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f9f9f7] dark:bg-stone-900 flex flex-col md:flex-row justify-between items-center px-16 py-12 w-full mt-24 border-t border-[#d3c4af]/20">
+<div class="flex flex-col items-start mb-8 md:mb-0">
+<span class="text-sm font-bold text-[#1a1c1b] dark:text-stone-100 font-serif mb-2">The Scholar’s Ledger</span>
+<p class="font-serif text-xs italic tracking-tight text-primary max-w-xs">© MMXXIV The Scholar’s Ledger. All Rights Reserved. Institutional Partner of the National Academy.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all underline underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">Institutional Access</a>
+<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">Citations</a>
+<a class="font-serif text-xs italic tracking-tight text-on-surface/60 hover:opacity-100 hover:text-primary transition-all" href="#">Contact Archivist</a>
+</div>
+<div class="mt-8 md:mt-0 flex space-x-4 items-center">
+<span class="text-[10px] font-label uppercase tracking-widest text-outline">Digitally Preserved</span>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+</footer>
+</body></html>
