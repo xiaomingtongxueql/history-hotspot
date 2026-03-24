@@ -35,10 +35,10 @@
     /* Scroll to top button */
     #scrollToTop {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 48px;
-      height: 48px;
+      bottom: 5rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
       background: #785600;
       color: white;
       border-radius: 50%;
@@ -51,6 +51,14 @@
       transition: all 0.3s ease;
       z-index: 40;
       box-shadow: 0 4px 12px rgba(120, 86, 0, 0.3);
+    }
+    @media (min-width: 768px) {
+      #scrollToTop {
+        bottom: 2rem;
+        right: 2rem;
+        width: 48px;
+        height: 48px;
+      }
     }
     #scrollToTop.visible {
       opacity: 1;
@@ -67,25 +75,55 @@
   <div class="ink-bg"></div>
 
   <!-- Navigation -->
-  <nav class="w-full bg-[#f9f9f7] flex justify-between items-center px-8 py-6 max-w-[1920px] mx-auto sticky top-0 z-50 border-b border-[#d3c4af]/20">
-    <div class="flex items-center gap-8">
-      <span class="text-2xl font-bold tracking-[0.2em] font-serif">热点论文</span>
+  <nav class="w-full bg-[#f9f9f7] flex justify-between items-center px-4 md:px-8 py-4 md:py-6 max-w-[1920px] mx-auto sticky top-0 z-50 border-b border-[#d3c4af]/20">
+    <div class="flex items-center gap-4 md:gap-8">
+      <span class="text-xl md:text-2xl font-bold tracking-[0.2em] font-serif">热点论文</span>
       <div class="hidden md:flex space-x-8">
         <a href="#topics" class="font-serif text-lg tracking-wide opacity-60 hover:text-[#785600] transition-colors">研究热点</a>
         <a href="#papers" class="font-serif text-lg tracking-wide opacity-60 hover:text-[#785600] transition-colors">论文排行</a>
         <a href="#" class="font-serif text-lg tracking-wide text-[#785600] border-t-2 border-[#785600] pt-1 font-bold">档案</a>
       </div>
     </div>
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2 md:gap-4">
       <div class="search-container relative">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#785600]">search</span>
-        <input type="text" id="searchInput" placeholder="搜索论文..." class="bg-transparent border-b border-[#817563]/40 focus:border-[#785600] px-10 py-1 font-serif text-sm w-64 transition-all" onkeyup="searchPapers(this.value)">
+        <input type="text" id="searchInput" placeholder="搜索论文..." class="bg-transparent border-b border-[#817563]/40 focus:border-[#785600] px-10 py-1 font-serif text-sm w-40 md:w-64 transition-all" onkeyup="searchPapers(this.value)">
       </div>
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-[#785600] hover:bg-[#f4f4f2] rounded-lg transition-all" onclick="toggleMobileMenu()">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-[#f9f9f7] z-40 transform translate-x-full transition-transform duration-300 md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-8 border-b border-[#d3c4af]/20 pb-4">
+        <span class="text-xl font-bold tracking-[0.2em] font-serif">热点论文</span>
+        <button onclick="toggleMobileMenu()" class="p-2 text-[#785600] hover:bg-[#f4f4f2] rounded-lg transition-all">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-6">
+        <a href="#topics" onclick="toggleMobileMenu()" class="font-serif text-2xl tracking-wide text-[#1a1c1b] hover:text-[#785600] transition-colors flex items-center gap-3">
+          <span class="material-symbols-outlined">history_edu</span>
+          研究热点
+        </a>
+        <a href="#papers" onclick="toggleMobileMenu()" class="font-serif text-2xl tracking-wide text-[#1a1c1b] hover:text-[#785600] transition-colors flex items-center gap-3">
+          <span class="material-symbols-outlined">format_list_numbered</span>
+          论文排行
+        </a>
+        <a href="#" onclick="toggleMobileMenu()" class="font-serif text-2xl tracking-wide text-[#785600] font-bold flex items-center gap-3">
+          <span class="material-symbols-outlined">folder</span>
+          档案
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <!-- Side Navigation -->
-  <aside class="fixed left-0 top-1/4 flex flex-col space-y-12 items-center px-4 z-40">
+  <!-- Side Navigation (Desktop only) -->
+  <aside class="hidden md:flex fixed left-0 top-1/4 flex-col space-y-12 items-center px-4 z-40">
     <div class="flex flex-col items-center space-y-12">
       <div class="flex flex-col items-center group cursor-pointer" onclick="document.getElementById('topics').scrollIntoView({behavior:'smooth'})">
         <span class="material-symbols-outlined text-[#1a1c1b]/40 group-hover:text-[#785600]">history_edu</span>
@@ -97,9 +135,27 @@
       </div>
     </div>
   </aside>
+  
+  <!-- Mobile Bottom Navigation -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#e2e3e1] z-50 px-4 py-2">
+    <div class="flex justify-around items-center">
+      <a href="#topics" class="flex flex-col items-center gap-1 p-2 text-[#1a1c1b]/60 hover:text-[#785600] transition-colors">
+        <span class="material-symbols-outlined">history_edu</span>
+        <span class="text-xs">热点</span>
+      </a>
+      <a href="#papers" class="flex flex-col items-center gap-1 p-2 text-[#1a1c1b]/60 hover:text-[#785600] transition-colors">
+        <span class="material-symbols-outlined">format_list_numbered</span>
+        <span class="text-xs">排行</span>
+      </a>
+      <button onclick="scrollToTop()" class="flex flex-col items-center gap-1 p-2 text-[#785600] hover:opacity-70 transition-opacity">
+        <span class="material-symbols-outlined">arrow_upward</span>
+        <span class="text-xs">顶部</span>
+      </button>
+    </div>
+  </nav>
 
   <!-- Main Content -->
-  <main class="max-w-[1600px] mx-auto px-8 md:pl-32 pt-20">
+  <main class="max-w-[1600px] mx-auto px-4 md:px-8 md:pl-32 pt-10 md:pt-20 pb-20 md:pb-0">
     
     <!-- Header -->
     <header class="mb-16 border-b border-[#d3c4af]/20 pb-12">
@@ -119,38 +175,38 @@
       </div>
       
       <!-- Data Overview Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="material-symbols-outlined text-[#785600]">article</span>
-            <span class="text-sm text-[#817563]">收录论文</span>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div class="bg-white p-4 md:p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-2 md:gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600] text-lg md:text-xl">article</span>
+            <span class="text-xs md:text-sm text-[#817563]">收录论文</span>
           </div>
-          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalPapers">0</div>
-          <div class="text-xs text-[#817563] mt-1">篇高质量论文</div>
+          <div class="text-2xl md:text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalPapers">0</div>
+          <div class="text-xs text-[#817563] mt-1 hidden md:block">篇高质量论文</div>
         </div>
-        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="material-symbols-outlined text-[#785600]">local_fire_department</span>
-            <span class="text-sm text-[#817563]">研究热点</span>
+        <div class="bg-white p-4 md:p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-2 md:gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600] text-lg md:text-xl">local_fire_department</span>
+            <span class="text-xs md:text-sm text-[#817563]">研究热点</span>
           </div>
-          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalTopics">0</div>
-          <div class="text-xs text-[#817563] mt-1">个热点方向</div>
+          <div class="text-2xl md:text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalTopics">0</div>
+          <div class="text-xs text-[#817563] mt-1 hidden md:block">个热点方向</div>
         </div>
-        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="material-symbols-outlined text-[#785600]">format_quote</span>
-            <span class="text-sm text-[#817563]">总引用数</span>
+        <div class="bg-white p-4 md:p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-2 md:gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600] text-lg md:text-xl">format_quote</span>
+            <span class="text-xs md:text-sm text-[#817563]">总引用数</span>
           </div>
-          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalCitations">0</div>
-          <div class="text-xs text-[#817563] mt-1">次学术引用</div>
+          <div class="text-2xl md:text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statTotalCitations">0</div>
+          <div class="text-xs text-[#817563] mt-1 hidden md:block">次学术引用</div>
         </div>
-        <div class="bg-white p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="material-symbols-outlined text-[#785600]">trending_up</span>
-            <span class="text-sm text-[#817563]">最高引用</span>
+        <div class="bg-white p-4 md:p-6 border border-[#e2e3e1] hover:border-[#785600]/30 transition-all group">
+          <div class="flex items-center gap-2 md:gap-3 mb-2">
+            <span class="material-symbols-outlined text-[#785600] text-lg md:text-xl">trending_up</span>
+            <span class="text-xs md:text-sm text-[#817563]">最高引用</span>
           </div>
-          <div class="text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statMaxCitation">0</div>
-          <div class="text-xs text-[#817563] mt-1">单篇论文</div>
+          <div class="text-2xl md:text-3xl font-bold text-[#1a1c1b] group-hover:text-[#785600] transition-colors" id="statMaxCitation">0</div>
+          <div class="text-xs text-[#817563] mt-1 hidden md:block">单篇论文</div>
         </div>
       </div>
     </header>
@@ -264,8 +320,8 @@
 
   <!-- Topic Modal -->
   <div id="topicModal" class="modal" onclick="closeModal(event)">
-    <div class="bg-white max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl" onclick="event.stopPropagation()">
-      <div class="p-8">
+    <div class="bg-white max-w-3xl w-full mx-0 md:mx-4 h-full md:h-auto md:max-h-[90vh] overflow-y-auto md:rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+      <div class="p-4 md:p-8">
         <div class="flex justify-between items-start mb-6">
           <div>
             <span id="modalCategory" class="inline-block bg-[#785600]/10 text-[#785600] px-3 py-1 text-xs tracking-wider uppercase font-bold rounded-full mb-3"></span>
@@ -302,8 +358,8 @@
 
   <!-- Paper Detail Modal -->
   <div id="paperModal" class="modal" onclick="closePaperModal(event)">
-    <div class="bg-white max-w-2xl w-full mx-4 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
-      <div class="p-8">
+    <div class="bg-white max-w-2xl w-full mx-0 md:mx-4 h-full md:h-auto md:rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+      <div class="p-4 md:p-8">
         <div class="flex justify-between items-start mb-6">
           <div class="flex items-center gap-2">
             <span id="paperModalTopic" class="text-xs bg-[#785600]/10 text-[#785600] px-3 py-1 rounded-full"></span>
@@ -370,7 +426,7 @@
   </div>
 
   <!-- Search Results Dropdown -->
-  <div id="searchResults" class="hidden fixed top-20 right-8 w-96 bg-white rounded-lg shadow-2xl z-50 max-h-[60vh] overflow-y-auto border border-[#e2e3e1]"></div>
+  <div id="searchResults" class="hidden fixed top-16 md:top-20 left-4 right-4 md:right-8 md:left-auto md:w-96 bg-white rounded-lg shadow-2xl z-50 max-h-[60vh] overflow-y-auto border border-[#e2e3e1]"></div>
 
   <!-- Scroll to Top Button -->
   <div id="scrollToTop" onclick="scrollToTop()" title="返回顶部">
@@ -577,6 +633,13 @@
       }
     });
     
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('translate-x-full');
+      document.body.classList.toggle('overflow-hidden');
+    }
+    
     function scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -741,18 +804,18 @@
         const totalCitations = t.papers.reduce((sum, p) => sum + p.citations, 0);
         const avgCitations = Math.round(totalCitations / t.papers.length);
         
-        return '<article class="bg-white p-8 card-hover border border-[#e2e3e1] opacity-0 animate-fade-in" style="animation-delay: ' + (i * 100) + 'ms" onclick="openTopic(' + topics.indexOf(t) + ')">' +
-          '<div class="flex items-start justify-between mb-4">' +
-            '<span class="text-5xl font-serif text-[#d3c4af] font-bold">' + String(i + 1).padStart(2, '0') + '</span>' +
-            '<span class="text-xs bg-[#f4f4f2] px-3 py-1">' + t.papers.length + ' 篇论文</span>' +
+        return '<article class="bg-white p-6 md:p-8 card-hover border border-[#e2e3e1] opacity-0 animate-fade-in" style="animation-delay: ' + (i * 100) + 'ms" onclick="openTopic(' + topics.indexOf(t) + ')">' +
+          '<div class="flex items-start justify-between mb-3 md:mb-4">' +
+            '<span class="text-4xl md:text-5xl font-serif text-[#d3c4af] font-bold">' + String(i + 1).padStart(2, '0') + '</span>' +
+            '<span class="text-xs bg-[#f4f4f2] px-3 py-1">' + t.papers.length + ' 篇</span>' +
           '</div>' +
-          '<h4 class="text-xl font-bold mb-2 hover:text-[#785600] transition-colors">' + t.title + '</h4>' +
-          '<p class="text-[#4f4535] text-sm mb-4 line-clamp-2 font-body">' + t.description + '</p>' +
-          '<div class="flex items-center justify-between text-xs text-[#817563] pt-4 border-t border-[#e2e3e1]">' +
+          '<h4 class="text-lg md:text-xl font-bold mb-2 hover:text-[#785600] transition-colors line-clamp-2">' + t.title + '</h4>' +
+          '<p class="text-[#4f4535] text-sm mb-3 md:mb-4 line-clamp-2 font-body">' + t.description + '</p>' +
+          '<div class="flex flex-col md:flex-row md:items-center justify-between text-xs text-[#817563] pt-3 md:pt-4 border-t border-[#e2e3e1] gap-2">' +
             '<span class="flex items-center gap-1">' + t.categoryIcon + ' ' + t.category + '</span>' +
-            '<div class="flex items-center gap-3">' +
+            '<div class="flex items-center gap-2 md:gap-3">' +
               '<span class="text-[#785600]" title="最高引用">最高 ' + maxCitations + '</span>' +
-              '<span class="text-[#817563]" title="平均引用">平均 ' + avgCitations + '</span>' +
+              '<span class="hidden md:inline text-[#817563]" title="平均引用">平均 ' + avgCitations + '</span>' +
             '</div>' +
           '</div>' +
         '</article>';
@@ -792,25 +855,24 @@
         const scorePercent = (p.score / maxScore) * 100;
         const scoreColor = scorePercent >= 80 ? 'bg-green-500' : scorePercent >= 60 ? 'bg-[#785600]' : scorePercent >= 40 ? 'bg-yellow-500' : 'bg-gray-400';
         
-        return '<div class="bg-white p-6 border border-[#e2e3e1] flex items-start gap-4 hover:border-[#785600]/30 transition-all cursor-pointer group" onclick="showPaperDetail(' + papers.indexOf(p) + ')">' +
-          '<div class="w-12 h-12 ' + (i < 3 ? 'bg-gradient-to-br from-amber-400 to-amber-600 text-white shadow-lg' : 'bg-[#f4f4f2] text-[#1a1c1b]') + ' rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0 transition-transform group-hover:scale-110">' +
+        return '<div class="bg-white p-4 md:p-6 border border-[#e2e3e1] flex items-start gap-3 md:gap-4 hover:border-[#785600]/30 transition-all cursor-pointer group" onclick="showPaperDetail(' + papers.indexOf(p) + ')">' +
+          '<div class="w-10 h-10 md:w-12 md:h-12 ' + (i < 3 ? 'bg-gradient-to-br from-amber-400 to-amber-600 text-white shadow-lg' : 'bg-[#f4f4f2] text-[#1a1c1b]') + ' rounded-lg flex items-center justify-center font-bold text-base md:text-lg flex-shrink-0 transition-transform group-hover:scale-110">' +
             (i + 1) +
           '</div>' +
           '<div class="flex-1 min-w-0">' +
-            '<h4 class="font-bold mb-1 hover:text-[#785600] transition-colors truncate">' + p.title + '</h4>' +
-            '<p class="text-sm text-[#4f4535] mb-2">' + p.authors.join('、') + ' · ' + (p.journal || '未知期刊') + ' · ' + p.year + '年</p>' +
-            '<div class="flex items-center gap-4 text-xs text-[#817563]">' +
+            '<h4 class="font-bold text-sm md:text-base mb-1 hover:text-[#785600] transition-colors line-clamp-2 md:line-clamp-1">' + p.title + '</h4>' +
+            '<p class="text-xs md:text-sm text-[#4f4535] mb-2 line-clamp-1">' + p.authors.join('、') + '</p>' +
+            '<div class="flex flex-wrap items-center gap-2 md:gap-4 text-xs text-[#817563]">' +
               '<span class="flex items-center gap-1" title="被引用次数"><span class="material-symbols-outlined text-sm">format_quote</span>' + formatNumber(p.citations) + '</span>' +
-              '<span class="flex items-center gap-1" title="下载次数"><span class="material-symbols-outlined text-sm">download</span>' + formatNumber(p.downloads) + '</span>' +
+              '<span class="hidden md:flex items-center gap-1" title="下载次数"><span class="material-symbols-outlined text-sm">download</span>' + formatNumber(p.downloads) + '</span>' +
               '<span class="text-[#785600] bg-[#785600]/10 px-2 py-0.5 rounded">' + p.source + '</span>' +
             '</div>' +
           '</div>' +
           '<div class="text-right flex-shrink-0">' +
-            '<div class="text-2xl font-bold text-[#785600]">' + p.score + '</div>' +
-            '<div class="w-16 h-1.5 bg-[#e2e3e1] rounded-full mt-1 overflow-hidden">' +
+            '<div class="text-xl md:text-2xl font-bold text-[#785600]">' + p.score + '</div>' +
+            '<div class="w-12 md:w-16 h-1.5 bg-[#e2e3e1] rounded-full mt-1 overflow-hidden">' +
               '<div class="h-full ' + scoreColor + ' rounded-full transition-all duration-500" style="width: ' + scorePercent + '%"></div>' +
             '</div>' +
-            '<div class="text-xs text-[#817563] mt-1">评分</div>' +
           '</div>' +
         '</div>';
       }).join('');
