@@ -39,10 +39,10 @@ export default function Home({ onTopicClick, searchQuery }) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <div className="text-4xl">⚠️</div>
-        <p className="text-cream/60">{error}</p>
+        <p className="text-ink-secondary">{error}</p>
         <button
           onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-gold/10 border border-gold/40 text-gold rounded-full text-sm hover:bg-gold hover:text-bg-primary transition-all"
+          className="px-4 py-2 bg-gold-light border border-gold/30 text-gold rounded-full text-sm hover:bg-gold hover:text-bg-primary transition-all"
         >
           刷新页面
         </button>
@@ -83,9 +83,9 @@ export default function Home({ onTopicClick, searchQuery }) {
         activeId={activeCategory}
         onSelect={setActiveCategory}
       />
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-6 py-8">
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-cream/40">
+          <div className="text-center py-20 text-ink-muted">
             <div className="text-5xl mb-4">🔍</div>
             <p className="text-lg">未找到"<span className="text-gold">{searchQuery}</span>"相关内容</p>
           </div>
@@ -94,16 +94,15 @@ export default function Home({ onTopicClick, searchQuery }) {
             <section key={category.id} className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl">{category.icon}</span>
-                <h2 className="font-serif text-xl text-cream font-bold">{category.name}</h2>
-                <div className="flex-1 h-px bg-gold/20 ml-2" />
-                <span className="text-cream/40 text-sm">{category.topics.length} 个热点</span>
+                <h2 className="font-serif text-xl text-ink font-bold">{category.name}</h2>
+                <div className="flex-1 h-px bg-border ml-2" />
+                <span className="text-ink-muted text-sm">{category.topics.length} 个热点</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.topics.map(topic => (
                   <TopicCard
                     key={topic.id}
                     topic={topic}
-                    categoryColor={category.color}
                     onClick={() => onTopicClick(topic, category)}
                   />
                 ))}

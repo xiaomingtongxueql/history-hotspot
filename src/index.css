@@ -1,22 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background-color: #1a1410;
-  color: #f0e6d3;
-  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #FAFAF8;
+  color: #1C1917;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+::selection {
+  background: #FEF9EC;
+  color: #B8860B;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #1a1410;
+  background: #FAFAF8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a84c55;
+  background: #D6D3D1;
   border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E;
 }
