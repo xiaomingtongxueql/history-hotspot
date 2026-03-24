@@ -7,17 +7,48 @@ export default function Home({ onTopicClick, searchQuery }) {
   const [data, setData] = useState(null)
   const [metadata, setMetadata] = useState(null)
   const [activeCategory, setActiveCategory] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('data/topics.json')
+    const controller = new AbortController()
+    const { signal } = controller
+
+    fetch('data/topics.json', { signal })
       .then(r => r.json())
       .then(setData)
-      .catch(err => console.error('Failed to load topics:', err))
-    fetch('data/metadata.json')
+      .catch(err => {
+        if (err.name !== 'AbortError') {
+          console.error('Failed to load topics:', err)
+          setError('数据加载失败，请刷新页面重试')
+        }
+      })
+
+    fetch('data/metadata.json', { signal })
       .then(r => r.json())
       .then(setMetadata)
-      .catch(err => console.error('Failed to load metadata:', err))
+      .catch(err => {
+        if (err.name !== 'AbortError') {
+          console.error('Failed to load metadata:', err)
+        }
+      })
+
+    return () => controller.abort()
   }, [])
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <div className="text-4xl">⚠️</div>
+        <p className="text-cream/60">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-gold/10 border border-gold/40 text-gold rounded-full text-sm hover:bg-gold hover:text-bg-primary transition-all"
+        >
+          刷新页面
+        </button>
+      </div>
+    )
+  }
 
   if (!data) {
     return (
