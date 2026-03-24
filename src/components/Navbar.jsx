@@ -1,4 +1,4 @@
-export default function Navbar({ onSearch }) {
+export default function Navbar({ onSearch, onUpdate, isUpdating }) {
   return (
     <nav className="sticky top-0 z-50 bg-bg-primary/90 backdrop-blur-xl border-b border-border">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -23,6 +23,17 @@ export default function Navbar({ onSearch }) {
             className="bg-bg-hover border border-border rounded-full pl-9 pr-4 py-2 text-sm text-ink placeholder-ink-muted w-56 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/50 transition-all"
           />
         </div>
+        <button
+          onClick={onUpdate}
+          disabled={isUpdating}
+          className={`hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${
+            isUpdating 
+              ? 'bg-bg-hover text-ink-muted cursor-not-allowed' 
+              : 'bg-gold text-bg-primary hover:bg-gold-light'
+          }`}
+        >
+          {isUpdating ? '正在抓取中...' : '一键更新'}
+        </button>
       </div>
     </nav>
   )

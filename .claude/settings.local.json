@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where npm:*)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''scripts/scraper.py''\\).read\\(\\)\\); print\\(''语法正确''\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''scripts/scraper.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''语法正确''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''public/data/topics.json'', encoding=''utf-8''\\)\\); cats=data[''categories'']; print\\(f''分类:{len\\(cats\\)}, 热点:{sum\\(len\\(c[\"\"topics\"\"]\\) for c in cats\\)}, 论文:{sum\\(len\\(t[\"\"papers\"\"]\\) for c in cats for t in c[\"\"topics\"\"]\\)}''\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''public/data/metadata.json'', encoding=''utf-8''\\)\\); print\\(json.dumps\\(data, ensure_ascii=False, indent=2\\)\\)\")",
+      "Bash(python -c \"import sys; data=sys.stdin.buffer.read\\(\\); print\\(data.decode\\(''''utf-8'''', errors=''''replace''''\\)\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''scripts/scraper.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''OK''\\)\")",
+      "Bash(python scripts/scraper.py)",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''public/data/topics.json'',encoding=''utf-8''\\)\\); p=data[''categories''][0][''topics''][0][''papers''][0]; print\\(f''标题:{p[\"\"title\"\"]}, 引用:{p[\"\"citations\"\"]}, 下载:{p[\"\"downloads\"\"]}, 年份:{p[\"\"year\"\"]}, score:{p[\"\"score\"\"]}''\\)\")",
+      "Bash(python -c \"citations=523; downloads=8900; year=2021; current_year=2026; score = min\\(citations/100, 10\\)*0.5 + min\\(downloads/1000, 10\\)*0.3 + max\\(0, 10-\\(current_year-year\\)\\)*0.2; print\\(f''Expected score: {round\\(score,1\\)}''\\)\")",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\(''.github/workflows/update-data.yml''\\)\\); yaml.safe_load\\(open\\(''.github/workflows/deploy.yml''\\)\\); print\\(''YAML 格式正确''\\)\")",
+      "Bash(gh run:*)",
+      "Bash(gh api:*)",
+      "Bash(gh workflow:*)",
+      "WebSearch"
+    ]
+  }
+}

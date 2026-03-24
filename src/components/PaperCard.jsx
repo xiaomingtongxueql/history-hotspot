@@ -29,7 +29,7 @@ export default function PaperCard({ paper, rank }) {
               </div>
             </div>
             <p className="text-ink-secondary text-xs mb-3">
-              {paper.authors?.join('、') || '—'} · {paper.journal} · {paper.year} 年
+              {paper.authors?.join('、') || '—'} · {paper.journal} · {paper.year} 年 {paper.source && <span className="text-gold bg-gold/10 px-1.5 py-0.5 rounded ml-1">来源：{paper.source}</span>}
             </p>
             <div className="flex items-center justify-between">
               <div className="flex gap-4 text-xs text-ink-muted">
