@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>热点论文 - 动态水墨优化版</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f9f9f7",
+              "inverse-on-surface": "#f1f1ef",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e2e3e1",
+              "outline-variant": "#d3c4af",
+              "on-secondary-fixed": "#2c160e",
+              "surface-container-low": "#f4f4f2",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1a1c1b",
+              "on-primary": "#ffffff",
+              "background": "#f9f9f7",
+              "on-surface-variant": "#4f4535",
+              "on-primary-fixed": "#271900",
+              "tertiary-fixed": "#ffdbc9",
+              "surface-dim": "#dadad8",
+              "secondary-fixed": "#ffdbd0",
+              "primary": "#785600",
+              "inverse-primary": "#f7bd48",
+              "surface-tint": "#7b5800",
+              "surface": "#f9f9f7",
+              "tertiary-fixed-dim": "#ffb68c",
+              "surface-container-high": "#e8e8e6",
+              "on-secondary-fixed-variant": "#5d4037",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#f7bd48",
+              "inverse-surface": "#2f3130",
+              "tertiary": "#904917",
+              "on-tertiary": "#ffffff",
+              "primary-container": "#986d00",
+              "on-error": "#ffffff",
+              "surface-variant": "#e2e3e1",
+              "on-tertiary-fixed": "#321200",
+              "tertiary-container": "#ae602d",
+              "secondary-container": "#fed3c7",
+              "secondary": "#77574d",
+              "on-tertiary-fixed-variant": "#753401",
+              "outline": "#817563",
+              "on-primary-fixed-variant": "#5d4200",
+              "secondary-fixed-dim": "#e7bdb1",
+              "on-secondary-container": "#795950",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#fffbff",
+              "surface-container": "#eeeeec",
+              "primary-fixed": "#ffdea6",
+              "on-primary-container": "#fffbff",
+              "on-background": "#1a1c1b"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif SC"],
+              "body": ["Newsreader"],
+              "label": ["Newsreader"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+/* Ink Wash Animation */
+@keyframes inkFlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+        } 50% {
+        transform: translate(5%, 2%) scale(1.1);
+        opacity: 0.5;
+        } 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+        }
+    }
+.ink-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 30%, rgba(26, 28, 27, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(120, 86, 0, 0.03) 0%, transparent 60%);
+    filter: blur(60px);
+    animation: inkFlow 20s ease-in-out infinite
+    }
+/* Subtle Grain Overlay */
+.paper-texture {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: #f9f9f7;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCuGHtryQUPXt_jXEwvfpmcp55_e51qqb-ZqjwN_48vgkha2X0B1SGHap6Wtc9QkAasnH4If6Td9iIW2C0YEMD5VU75kOMWNVn4Az8UBd1QMyTuHoZogCAaE_QHegCaNWpkfrOyofmOkWv_c-PVHuG0mnEqwk_3xvUBZsY2Z4erFRAVeu8RUc7py7LxKd7ZnOSTqyC8lTGaUKLxA5B6IqLDCgB0E3FVfyBB8_eEP2vgni2g0DnnGRBF60tHPi9yCtbcBsNKc_Nbqyo);
+    opacity: 0.4
+    }
+.writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed leading-relaxed">
+<!-- Canvas Texture -->
+<div class="paper-texture"></div>
+<div class="ink-bg"></div>
+<!-- Top App Bar -->
+<header class="bg-[#f9f9f7] dark:bg-stone-900 docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 py-4">
+<button class="text-[#785600] dark:text-amber-500 hover:opacity-80 transition-opacity scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Noto_Serif_SC'] font-bold text-2xl tracking-[0.2em] text-[#1a1c1b] dark:text-stone-100">
+                热点论文
+            </h1>
+<button class="text-[#785600] dark:text-amber-500 hover:opacity-80 transition-opacity scale-95 duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<div class="bg-[#f4f4f2] dark:bg-stone-800 h-[1px] w-full"></div>
+</header>
+<main class="relative px-6 pt-8 pb-32">
+<!-- Calligraphic Background Motif (Ji Bai Dang Hei) -->
+<div class="absolute top-20 right-0 opacity-5 pointer-events-none select-none">
+<span class="font-headline text-[12rem] leading-none font-black writing-vertical">歷史</span>
+</div>
+<!-- Heatmap Informed Header Section -->
+<section class="mb-12 relative">
+<div class="flex flex-col gap-2">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em] font-bold">Current Research Hotspots</span>
+<h2 class="font-headline text-4xl font-bold text-on-surface leading-tight">热点论文</h2>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-on-surface-variant tabular-nums">1,245,392</span>
+<span class="font-label text-sm text-on-surface-variant/60 italic">Archived Records</span>
+</div>
+</div>
+</section>
+<!-- Featured Section (Late Qing Reforms) -->
+<section class="mb-16">
+<div class="group relative overflow-hidden bg-surface-container-low p-8 transition-all duration-500 hover:bg-surface-container-high border-l-4 border-primary/20">
+<div class="absolute top-0 right-0 p-4">
+<span class="font-headline text-primary/10 text-6xl font-bold">清</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-primary text-on-primary px-3 py-1 text-[10px] tracking-widest mb-6 uppercase">Featured Exhibit</span>
+<h3 class="font-headline text-3xl font-bold mb-4">晚清变法与新政</h3>
+<p class="text-on-surface-variant font-body leading-relaxed mb-8 max-w-[85%]">
+                        An exploration of the seismic shifts during the late 19th century, from the Hundred Days' Reform to the twilight of the imperial era.
+                    </p>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 text-sm font-bold tracking-widest hover:brightness-110 transition-all">
+                            ENTER ARCHIVE
+                        </button>
+<span class="text-xs font-label italic text-on-surface/40">Updated 2 days ago</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Research Topics -->
+<section class="space-y-12">
+<h4 class="font-label text-xs uppercase tracking-[0.4em] text-on-surface/40 mb-8 border-b border-outline-variant/20 pb-2">Ongoing Investigations</h4>
+<!-- Topic 1: Sanxingdui -->
+<div class="flex flex-col gap-6 group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="Macro photo of ancient bronze mask with prominent eyes, warm atmospheric lighting hitting oxidized green texture in a museum setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl_uqI8jYUkTmB_S6JQtYb5f4OcmxyGapCw1rPirQWE2axD3IhYHtDGrGzhhwLPj_SDRdYCatVeNNrvAuvIYH0enEKoVLSmmMbEc0oOyMw0oHpLTx3k6DTFXKZls2oeeKJTelQ11v94eOKM6loUpB_Bh9o0r4cq2m2f0teDazxYw_JJYaAalcG5UgPGa9_Vza8NnNt5ggU57eA0ooCXqMiz5_AnUDmwMnVhpowptVzIZ9Octxpj4HoeLY27z92ukQ6Q_qivi-cEWc"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-2">Sanxingdui Sacrifice</h5>
+<p class="font-headline text-lg text-on-surface/80">三星堆祭祀坑研究</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-tighter block text-primary font-bold">SHU ARCHAEOLOGY</span>
+<span class="font-label text-[10px] opacity-40">1,402 CITATIONS</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10 w-full"></div>
+</div>
+<!-- Topic 2: Song Dynasty Urban Life -->
+<div class="flex flex-col gap-6 group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="Detailed ink painting scroll depicting a busy marketplace along a river with bridges and traditional boats in Song dynasty style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYzQq-WZtC2Kf7WeV89dopzpX1z3lKlN8q7v7ZQFKswYH2ncVmuqHGxlEbRUtBeeDS_2bg45zCPJIiUSJZEYDQqJs9qOt7MMg43VpkauZgwUrqtYDPiWPQDlzqvpALPFURe4zJ72QK7g6JuhqqCs1w08eX1C4KgkR1aGB4OA3CamEHq4GLipCP5Ft-FC4ZYPLHwjpGctdOj9XM3wksQwko5Nx4mjSwanHKN2cJwL8Qv0bafR6D-V4dTZAHXnvzjgz4aMqmO2B0Ss"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-2">Song Dynasty Urban Life</h5>
+<p class="font-headline text-lg text-on-surface/80">宋代城市商业景观</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-tighter block text-primary font-bold">SOCIOLOGY</span>
+<span class="font-label text-[10px] opacity-40">3,891 CITATIONS</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10 w-full"></div>
+</div>
+<!-- Topic 3: Silk Road Fragments -->
+<div class="flex flex-col gap-6 group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="Ancient weathered silk parchment fragments with faint calligraphy, resting on a textured dark wood surface with soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkc4fDvX_Rq2dtdxDHN93AC8NOeXPm6u1QIsM2se5OqYGXwzQvzH62wUZxt_Msbm951kvI6wLYzI1ZcfQUTIv7X38wtiqxl-MOvcEGnX357OLcDxQM3NwrkGmiPJc4dCO3EnzjROhpLWyaf8D0KDsA6e_9XLquWBHahHJcwcBb-aOql1TyApW9mbUR86EN-6nSBPXcDKCS_yplGgPcypBe9FmhyWpofD6LhXEK0NSjkNpkHAIm6R57VEcUTtdoXsGldrPoETHBYNI"/>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<h5 class="font-headline text-xl font-bold mb-2">Silk Road Fragments</h5>
+<p class="font-headline text-lg text-on-surface/80">丝绸之路文书碎片</p>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] tracking-tighter block text-primary font-bold">PALAEOGRAPHY</span>
+<span class="font-label text-[10px] opacity-40">924 CITATIONS</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full bg-[#f9f9f7] dark:bg-stone-900 border-t border-[#d3c4af]/20 dark:border-stone-700/30 z-50 flex justify-around items-center px-4 pb-6 pt-2">
+<!-- Archives (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#1a1c1b]/60 dark:text-stone-500 pt-2 transition-all duration-300 ease-in-out hover:text-[#785600] dark:hover:text-amber-400" href="#">
+<span class="material-symbols-outlined mb-1">inventory_2</span>
+<span class="font-['Newsreader'] italic text-[10px] uppercase tracking-wider">Archives</span>
+</a>
+<!-- Eras (Active) -->
+<a class="flex flex-col items-center justify-center text-[#785600] dark:text-amber-500 font-bold border-t-2 border-[#785600] pt-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1">history_edu</span>
+<span class="font-['Newsreader'] italic text-[10px] uppercase tracking-wider">Eras</span>
+</a>
+<!-- Citations (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#1a1c1b]/60 dark:text-stone-500 pt-2 transition-all duration-300 ease-in-out hover:text-[#785600] dark:hover:text-amber-400" href="#">
+<span class="material-symbols-outlined mb-1">format_quote</span>
+<span class="font-['Newsreader'] italic text-[10px] uppercase tracking-wider">Citations</span>
+</a>
+<!-- Account (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#1a1c1b]/60 dark:text-stone-500 pt-2 transition-all duration-300 ease-in-out hover:text-[#785600] dark:hover:text-amber-400" href="#">
+<span class="material-symbols-outlined mb-1">account_circle</span>
+<span class="font-['Newsreader'] italic text-[10px] uppercase tracking-wider">Account</span>
+</a>
+</nav>
+</body></html>

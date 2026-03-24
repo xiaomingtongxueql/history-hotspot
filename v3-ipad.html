@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>热点论文 - THE SCHOLAR’S LEDGER (Tablet)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Newsreader:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "tertiary": "#904917",
+                "secondary-fixed": "#ffdbd0",
+                "on-primary-fixed-variant": "#5d4200",
+                "surface-container-lowest": "#ffffff",
+                "error-container": "#ffdad6",
+                "surface-container-highest": "#e2e3e1",
+                "on-primary-container": "#fffbff",
+                "on-surface": "#1a1c1b",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#321200",
+                "on-secondary-fixed": "#2c160e",
+                "on-primary-fixed": "#271900",
+                "surface": "#f9f9f7",
+                "on-surface-variant": "#4f4535",
+                "inverse-primary": "#f7bd48",
+                "on-tertiary-fixed-variant": "#753401",
+                "on-secondary-container": "#795950",
+                "on-error-container": "#93000a",
+                "tertiary-container": "#ae602d",
+                "outline-variant": "#d3c4af",
+                "secondary-container": "#fed3c7",
+                "on-tertiary-container": "#fffbff",
+                "background": "#f9f9f7",
+                "secondary-fixed-dim": "#e7bdb1",
+                "on-secondary-fixed-variant": "#5d4037",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#ffb68c",
+                "secondary": "#77574d",
+                "outline": "#817563",
+                "on-tertiary": "#ffffff",
+                "surface-bright": "#f9f9f7",
+                "primary": "#785600",
+                "primary-container": "#986d00",
+                "surface-container": "#eeeeec",
+                "primary-fixed": "#ffdea6",
+                "surface-container-high": "#e8e8e6",
+                "on-secondary": "#ffffff",
+                "surface-tint": "#7b5800",
+                "inverse-surface": "#2f3130",
+                "surface-container-low": "#f4f4f2",
+                "surface-dim": "#dadad8",
+                "on-background": "#1a1c1b",
+                "inverse-on-surface": "#f1f1ef",
+                "surface-variant": "#e2e3e1",
+                "primary-fixed-dim": "#f7bd48",
+                "tertiary-fixed": "#ffdbc9",
+                "error": "#ba1a1a"
+              },
+              fontFamily: {
+                "serif": ["Noto Serif SC", "serif"],
+                "headline": ["Noto Serif SC"],
+                "body": ["Newsreader", "serif"],
+                "label": ["Newsreader", "serif"]
+              },
+              borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        @keyframes inkFlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(5%, 2%) scale(1.1); opacity: 0.5; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        }
+        .ink-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(26, 28, 27, 0.05) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 70%, rgba(120, 86, 0, 0.03) 0%, transparent 60%);
+            filter: blur(60px);
+            animation: inkFlow 20s ease-in-out infinite;
+        }
+        .paper-texture {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background-color: #f9f9f7;
+            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuGHtryQUPXt_jXEwvfpmcp55_e51qqb-ZqjwN_48vgkha2X0B1SGHap6Wtc9QkAasnH4If6Td9iIW2C0YEMD5VU75kOMWNVn4Az8UBd1QMyTuHoZogCAaE_QHegCaNWpkfrOyofmOkWv_c-PVHuG0mnEqwk_3xvUBZsY2Z4erFRAVeu8RUc7py7LxKd7ZnOSTqyC8lTGaUKLxA5B6IqLDCgB0E3FVfyBB8_eEP2vgni2g0DnnGRBF60tHPi9yCtbcBsNKc_Nbqyo");
+            opacity: 0.4;
+        }
+        .ji-bai-dang-hei {
+            letter-spacing: 0.15em;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="paper-texture"></div>
+<div class="ink-bg"></div>
+<!-- Tablet Navigation -->
+<nav class="w-full sticky top-0 bg-surface/90 backdrop-blur-sm z-50 px-10 py-6 border-b border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold text-on-surface tracking-[0.2em] font-serif uppercase">The Scholar’s Ledger</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex space-x-6">
+<a class="font-serif text-sm tracking-widest text-on-surface/60 hover:text-primary transition-colors" href="#">Eras</a>
+<a class="font-serif text-sm tracking-widest text-on-surface/60 hover:text-primary transition-colors" href="#">Manuscripts</a>
+<a class="font-serif text-sm tracking-widest text-primary font-bold" href="#">Archive</a>
+</div>
+<button class="text-primary"><span class="material-symbols-outlined">search</span></button>
+<button class="text-primary"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</nav>
+<!-- Side Labels (Subtle Tablet Implementation) -->
+<aside class="fixed left-0 top-1/3 z-40 hidden md:flex flex-col space-y-16 items-center px-4 opacity-30">
+<div class="vertical-text text-[10px] uppercase tracking-[0.3em] font-serif">Chronicles</div>
+<div class="vertical-text text-[10px] uppercase tracking-[0.3em] font-serif text-primary">Seals</div>
+<div class="vertical-text text-[10px] uppercase tracking-[0.3em] font-serif">Poetry</div>
+</aside>
+<main class="max-w-4xl mx-auto px-10 pt-16 pb-32 relative">
+<!-- Background Calligraphy -->
+<div class="absolute top-20 right-0 opacity-5 pointer-events-none select-none z-[-1]">
+<span class="font-headline text-[18rem] leading-none font-black vertical-text">歷史</span>
+</div>
+<!-- Header -->
+<header class="mb-20 border-b border-outline-variant/20 pb-10">
+<div class="flex flex-col sm:flex-row justify-between items-end gap-6">
+<div>
+<span class="font-label text-primary text-[10px] uppercase tracking-[0.4em] font-bold block mb-4">Current Research Hotspots</span>
+<h1 class="text-5xl font-headline font-bold text-on-surface tracking-tighter mb-4 leading-tight ji-bai-dang-hei">历史研究<br/>热点导航</h1>
+</div>
+<div class="text-right">
+<span class="font-headline text-4xl font-black text-on-surface-variant tabular-nums">1,245,392</span>
+<span class="font-label text-xs text-on-surface-variant/60 italic block">Archived Records</span>
+<p class="text-2xl font-serif font-bold text-on-surface mt-4">MMXXIV</p>
+</div>
+</div>
+</header>
+<!-- Featured Card (Tablet Optimized) -->
+<section class="mb-20">
+<div class="bg-surface-container-low border-l-4 border-primary/20 transition-all hover:bg-surface-container-high relative overflow-hidden group">
+<div class="grid grid-cols-1 sm:grid-cols-5">
+<div class="sm:col-span-2 aspect-[4/5] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp_VXu9z6-_0jAoRK0mS10q5kId0exbCmYHfQLH9N-XLifmOoWQGaUIYf4BQdAD2oRDVckF3SP6N_CyptbJHrwyge7ZW_E6NkVYgDTXTWcV3ZkD8zCO6rFaHzUi6paJni0soTnuUlFuZQ5vYbb4YwhaZD4KziUKQ8rQeBPRcUVx_e0-6X1HUN-PLGqe4O1rP_sMfSBxSguVIMcEG8DuMTH70wmhyRNXUCZDMEkzEcJIMB3T-s1YREzG2kJcU4d0pjhvbNcjYyNioY"/>
+</div>
+<div class="sm:col-span-3 p-10 flex flex-col justify-center relative">
+<div class="absolute top-0 right-0 p-6 opacity-10">
+<span class="font-headline text-[8rem] font-bold leading-none">清</span>
+</div>
+<div class="relative z-10">
+<span class="inline-block bg-primary text-on-primary px-3 py-1 text-[9px] tracking-[0.2em] mb-4 uppercase font-bold">Featured Exhibit</span>
+<h2 class="text-3xl font-headline font-bold mb-4 leading-tight">晚清变法与新政</h2>
+<p class="text-base text-on-surface-variant mb-8 leading-relaxed font-body italic">An exploration of the seismic shifts during the late 19th century, from the Hundred Days' Reform to the twilight of the imperial era.</p>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-on-primary px-10 py-3 text-xs font-bold tracking-widest hover:brightness-110 transition-all">ENTER ARCHIVE</button>
+<span class="text-[10px] font-label italic text-on-surface/40">Updated 2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Investigations Grid (2-Column Tablet) -->
+<section class="mb-20">
+<div class="flex items-center justify-between mb-10">
+<h3 class="text-2xl font-headline font-bold tracking-tight">Ongoing Investigations</h3>
+<button class="text-primary font-label text-[10px] tracking-widest uppercase flex items-center gap-2 font-bold">
+                    View All <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+<!-- Topic 1 -->
+<article class="flex flex-col group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-6">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl_uqI8jYUkTmB_S6JQtYb5f4OcmxyGapCw1rPirQWE2axD3IhYHtDGrGzhhwLPj_SDRdYCatVeNNrvAuvIYH0enEKoVLSmmMbEc0oOyMw0oHpLTx3k6DTFXKZls2oeeKJTelQ11v94eOKM6loUpB_Bh9o0r4cq2m2f0teDazxYw_JJYaAalcG5UgPGa9_Vza8NnNt5ggU57eA0ooCXqMiz5_AnUDmwMnVhpowptVzIZ9Octxpj4HoeLY27z92ukQ6Q_qivi-cEWc"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h5 class="font-headline text-lg font-bold">Sanxingdui Sacrifice</h5>
+<p class="font-headline text-base text-on-surface/60">三星堆祭祀坑研究</p>
+</div>
+<span class="font-label text-[9px] tracking-widest text-primary font-bold uppercase">SHU</span>
+</div>
+<div class="h-px bg-outline-variant/20 w-full mb-4"></div>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">Decoding the ritualistic bronze culture of the Sanxingdui pits. New discoveries in the 7th and 8th excavation zones.</p>
+</article>
+<!-- Topic 2 -->
+<article class="flex flex-col group">
+<div class="aspect-[16/9] overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700 mb-6">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYzQq-WZtC2Kf7WeV89dopzpX1z3lKlN8q7v7ZQFKswYH2ncVmuqHGxlEbRUtBeeDS_2bg45zCPJIiUSJZEYDQqJs9qOt7MMg43VpkauZgwUrqtYDPiWPQDlzqvpALPFURe4zJ72QK7g6JuhqqCs1w08eX1C4KgkR1aGB4OA3CamEHq4GLipCP5Ft-FC4ZYPLHwjpGctdOj9XM3wksQwko5Nx4mjSwanHKN2cJwL8Qv0bafR6D-V4dTZAHXnvzjgz4aMqmO2B0Ss"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h5 class="font-headline text-lg font-bold">Song Urban Life</h5>
+<p class="font-headline text-base text-on-surface/60">宋代城市商业景观</p>
+</div>
+<span class="font-label text-[9px] tracking-widest text-primary font-bold uppercase">SONG</span>
+</div>
+<div class="h-px bg-outline-variant/20 w-full mb-4"></div>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">Urban commercial evolution during the Song Dynasty. A spatial analysis of Bianjing's economic pulse.</p>
+</article>
+</div>
+</section>
+<!-- Spatial Archives Asymmetric Section -->
+<section class="grid grid-cols-1 sm:grid-cols-2 gap-10 items-center">
+<div class="bg-surface-container overflow-hidden grayscale contrast-125 aspect-square">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-[3s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRYhuoMNaJ_8t2NtVJRb3UV8cMYwHwlz1kz09JV_04FS88hpq5-gUuXyOm7QrhsBjvSif-EoG1BDXYvs3doV_zT6eqcbERvBmRQtPlW6nkOJtY1mC7RSCBJu-ZnpbHew-KaFBoSTGScgKcrY1Qv0mOK34MFiCFcPB1puLkULREYouABDnyFhiR2qq4cp8M0XO2cnuPEc9N5IG-VJHsxEd90mNPtj1gcMnfUfLH8dNMUGDuPGMcWzfqCNOSEevyd-9Ov48w2sAYng8"/>
+</div>
+<div>
+<h2 class="text-3xl font-headline font-bold mb-6">Spatial Archives</h2>
+<div class="space-y-6">
+<div class="border-l-2 border-primary pl-4 py-1">
+<h5 class="text-base font-bold text-primary">Maritime Silk Road</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed italic">Tracking trade-wind dynamics and pottery shipwrecks.</p>
+</div>
+<div class="pl-4 py-1 opacity-50">
+<h5 class="text-base font-bold">Imperial Relocations</h5>
+<p class="text-xs text-on-surface-variant leading-relaxed italic">Capital shifts from Chang'an to Luoyang.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant/20 px-10 py-12">
+<div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8">
+<div class="text-center sm:text-left">
+<span class="text-xs font-bold font-serif block mb-2 uppercase tracking-widest">The Scholar’s Ledger</span>
+<p class="text-[10px] italic text-primary">© MMXXIV National Academy Partner.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[10px] uppercase tracking-widest text-on-surface/40 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-[10px] uppercase tracking-widest text-on-surface/40 hover:text-primary transition-colors" href="#">Access</a>
+<a class="text-[10px] uppercase tracking-widest text-on-surface/40 hover:text-primary transition-colors" href="#">Citations</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[9px] font-label uppercase tracking-widest text-outline">Digitally Preserved</span>
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+</div>
+</div>
+</footer>
+</body></html>
