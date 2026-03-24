@@ -1,11 +1,45 @@
-function App() {
+import { useState } from 'react'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import TopicDetail from './pages/TopicDetail'
+
+export default function App() {
+  const [currentTopic, setCurrentTopic] = useState(null)
+  const [currentCategory, setCurrentCategory] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleTopicClick = (topic, category) => {
+    setCurrentTopic(topic)
+    setCurrentCategory(category)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleBack = () => {
+    setCurrentTopic(null)
+    setCurrentCategory(null)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <div className="min-h-screen bg-bg-primary text-cream">
-      <h1 className="text-3xl font-serif text-gold text-center pt-16">
-        史学研究热点导航
-      </h1>
+    <div className="min-h-screen bg-bg-primary">
+      <Navbar onSearch={setSearchQuery} />
+      <main>
+        {currentTopic ? (
+          <TopicDetail
+            topic={currentTopic}
+            category={currentCategory}
+            onBack={handleBack}
+          />
+        ) : (
+          <Home
+            onTopicClick={handleTopicClick}
+            searchQuery={searchQuery}
+          />
+        )}
+      </main>
+      <footer className="border-t border-gold/10 mt-16 py-8 text-center text-cream/30 text-xs">
+        史学研究热点导航 · 数据每周自动更新 · 仅供学术研究使用
+      </footer>
     </div>
   )
 }
-
-export default App
