@@ -108,13 +108,17 @@ export default function Home({ onTopicClick, searchQuery }) {
           filtered.map((category, catIndex) => (
             <section key={category.id} className="mb-16 animate-slide-up" style={{ animationDelay: `${catIndex * 100}ms` }}>
               {/* 分类标题 */}
-              <div className="flex items-center gap-4 mb-8">
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gold-subtle text-lg">
-                  {category.icon}
-                </div>
-                <h2 className="font-heading text-2xl text-ink font-semibold">{category.name}</h2>
-                <div className="flex-1 h-px bg-border/50" />
-                <span className="text-ink-muted text-sm font-medium bg-bg-hover px-4 py-1.5 rounded-full">
+              <div className="flex items-center gap-3 mb-8">
+                {/* Cinnabar seal dot */}
+                <span className="seal-dot flex-shrink-0" />
+                {/* Category icon */}
+                <span className="text-lg leading-none select-none">{category.icon}</span>
+                {/* Title */}
+                <h2 className="font-heading text-xl text-ink font-semibold tracking-tight">{category.name}</h2>
+                {/* Gold rule */}
+                <div className="flex-1 h-px bg-gradient-to-r from-gold/30 via-parchment to-transparent" />
+                {/* Count badge */}
+                <span className="text-[11px] font-semibold tracking-[0.08em] text-gold bg-gold-subtle border border-gold/10 px-3 py-1 rounded-full">
                   {category.topics.length} 个热点
                 </span>
               </div>

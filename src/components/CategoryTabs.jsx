@@ -12,58 +12,57 @@ export default function CategoryTabs({ categories = [], activeId, onSelect }) {
     setShowRightFade(scrollLeft < scrollWidth - clientWidth - 10)
   }
 
-  useEffect(() => {
-    handleScroll()
-  }, [])
+  useEffect(() => { handleScroll() }, [])
+
+  const tabCls = (active) =>
+    active
+      ? 'flex-shrink-0 relative px-5 py-2.5 text-[13px] font-semibold text-gold transition-all duration-200 whitespace-nowrap'
+      : 'flex-shrink-0 relative px-5 py-2.5 text-[13px] font-medium text-ink-muted hover:text-ink transition-all duration-200 whitespace-nowrap'
 
   return (
-    <div className="sticky top-[73px] z-40 glass border-b border-border/30">
+    <div className="sticky top-[72px] z-40 glass border-b border-gold/10">
       <div className="max-w-6xl mx-auto px-6 relative">
-        {/* 左侧渐变 */}
+
+        {/* Left fade */}
         {showLeftFade && (
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-bg-primary/95 to-transparent z-10 pointer-events-none"/>
+          <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white/90 to-transparent z-10 pointer-events-none"/>
         )}
-        
-        {/* 标签滚动区 */}
-        <div 
+
+        {/* Scrollable tabs */}
+        <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex gap-2 overflow-x-auto py-4 -mx-6 px-6"
+          className="flex gap-0 overflow-x-auto -mx-6 px-6"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {/* 全部按钮 */}
-          <button
-            onClick={() => onSelect(null)}
-            className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-out ${
-              activeId === null
-                ? 'bg-ink text-white shadow-md'
-                : 'bg-transparent text-ink-secondary hover:bg-bg-hover hover:text-ink'
-            }`}
-          >
+          {/* 全部 */}
+          <button onClick={() => onSelect(null)} className={tabCls(activeId === null)}>
             全部
+            {activeId === null && (
+              <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-cinnabar to-gold" />
+            )}
           </button>
 
-          {/* 分类按钮 */}
+          {/* Category tabs */}
           {categories.map((cat, index) => (
             <button
               key={cat.id}
               onClick={() => onSelect(cat.id)}
-              className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-out whitespace-nowrap ${
-                activeId === cat.id
-                  ? 'bg-ink text-white shadow-md'
-                  : 'bg-transparent text-ink-secondary hover:bg-bg-hover hover:text-ink'
-              }`}
+              className={tabCls(activeId === cat.id)}
               style={{ animationDelay: `${index * 30}ms` }}
             >
-              <span className="mr-1.5">{cat.icon}</span>
+              <span className="mr-1.5 text-[12px]">{cat.icon}</span>
               {cat.name}
+              {activeId === cat.id && (
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-cinnabar to-gold" />
+              )}
             </button>
           ))}
         </div>
 
-        {/* 右侧渐变 */}
+        {/* Right fade */}
         {showRightFade && (
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-bg-primary/95 to-transparent z-10 pointer-events-none"/>
+          <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white/90 to-transparent z-10 pointer-events-none"/>
         )}
       </div>
     </div>

@@ -43,7 +43,9 @@
       "Bash(node -e \"const d=require\\(''C:/Users/小明/Desktop/ai研究热点网站/node_modules/@google/stitch-sdk/package.json''\\); console.log\\(JSON.stringify\\({main:d.main,type:d.type,exports:d.exports&&Object.keys\\(d.exports\\)},null,2\\)\\)\")",
       "Bash(node scripts/stitch-generate.mjs)",
       "Bash(node -e \":*)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(start /B npx vite preview --port 4173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4174)"
     ]
   }
 }
