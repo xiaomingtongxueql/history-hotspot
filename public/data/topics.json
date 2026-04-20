@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13",
+  "lastUpdated": "2026-04-20",
   "categories": [
     {
       "id": "ancient-china",
@@ -106,6 +106,20 @@
               "source": "万方",
               "cnki_id": "periodical_zgcb201815021",
               "score": 0.4
+            },
+            {
+              "title": "驿传与大一统国家:古代中国规模治理的基础能力分析",
+              "authors": [
+                "王逸洲",
+                "彭斌"
+              ],
+              "journal": "天府新论",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_tfxl202602012",
+              "score": 2.0
             }
           ]
         },
