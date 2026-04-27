@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20",
+  "lastUpdated": "2026-04-27",
   "categories": [
     {
       "id": "ancient-china",
@@ -1139,6 +1139,19 @@
               "downloads": 0,
               "source": "万方",
               "cnki_id": "periodical_jzywh202603077",
+              "score": 2.0
+            },
+            {
+              "title": "长江流域史前文明化论纲",
+              "authors": [
+                "郭伟民"
+              ],
+              "journal": "中国文化遗产",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_zgwhyc202602002",
               "score": 2.0
             }
           ]
