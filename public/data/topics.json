@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-04",
+  "lastUpdated": "2026-05-11",
   "categories": [
     {
       "id": "ancient-china",
@@ -119,6 +119,19 @@
               "downloads": 0,
               "source": "万方",
               "cnki_id": "periodical_tfxl202602012",
+              "score": 2.0
+            },
+            {
+              "title": "垂范、认同与互构：作为空间媒介的应天府书院",
+              "authors": [
+                "徐涵"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 4,
+              "source": "万方",
+              "cnki_id": "thesis_D04056088",
               "score": 2.0
             }
           ]
@@ -630,6 +643,20 @@
               "downloads": 17,
               "source": "万方",
               "cnki_id": "periodical_xxjyxyxb202401002",
+              "score": 1.6
+            },
+            {
+              "title": "民营经济高质量发展:中国式现代化的历史使命",
+              "authors": [
+                "朱卿元",
+                "葛扬"
+              ],
+              "journal": "南通大学学报（社会科学版）",
+              "year": 2024,
+              "citations": 5,
+              "downloads": 12,
+              "source": "万方",
+              "cnki_id": "periodical_ntsfxyxb-zxshkxb202404012",
               "score": 1.6
             }
           ]
@@ -1377,6 +1404,19 @@
               "source": "万方",
               "cnki_id": "periodical_xxb-xsb201611068",
               "score": 0.0
+            },
+            {
+              "title": "民国时期山东城市下层社会物质生活状况研究(1912-1937)",
+              "authors": [
+                "于景莲"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 21,
+              "downloads": 373,
+              "source": "万方",
+              "cnki_id": "thesis_Y2045578",
+              "score": 2.2
             }
           ]
         }
@@ -1458,6 +1498,32 @@
               "downloads": 1,
               "source": "万方",
               "cnki_id": "periodical_15995382",
+              "score": 2.0
+            },
+            {
+              "title": "北宋四子的“诚”论",
+              "authors": [
+                "李旭然"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 14,
+              "downloads": 28,
+              "source": "万方",
+              "cnki_id": "thesis_D01629603",
+              "score": 2.1
+            },
+            {
+              "title": "王阳明《孟子》诠释研究",
+              "authors": [
+                "孙敏博"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 1,
+              "downloads": 30,
+              "source": "万方",
+              "cnki_id": "thesis_Y4328339",
               "score": 2.0
             }
           ]
