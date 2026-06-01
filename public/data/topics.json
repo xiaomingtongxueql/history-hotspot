@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25",
+  "lastUpdated": "2026-06-01",
   "categories": [
     {
       "id": "ancient-china",
@@ -359,6 +359,19 @@
               "downloads": 0,
               "source": "万方",
               "cnki_id": "periodical_hsxyxb202601004",
+              "score": 2.0
+            },
+            {
+              "title": "在近代历史文化进程中认识中共早期(1921-1949)对现代化道路的探索",
+              "authors": [
+                "王宪明"
+              ],
+              "journal": "河北师范大学学报（哲学",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "periodical_hbsfdxxb-zxshkxb202603002",
               "score": 2.0
             }
           ]
