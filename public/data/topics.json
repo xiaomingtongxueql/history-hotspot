@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-06",
+  "lastUpdated": "2026-07-13",
   "categories": [
     {
       "id": "ancient-china",
@@ -712,6 +712,24 @@
               "source": "万方",
               "cnki_id": "periodical_lzdxxb-shkxb202602007",
               "score": 2.0
+            },
+            {
+              "title": "老工业搬迁区生态风险评估与土地再利用规划方法",
+              "authors": [
+                "耿涌",
+                "薛冰",
+                "任婉侠",
+                "张黎明",
+                "孙丽娜",
+                "中国科学院沈阳应用生态研究所"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "nstr_E537E671-683E-4D66-A0D6-958B06D0B6F6",
+              "score": 2.0
             }
           ]
         },
@@ -1233,6 +1251,24 @@
               "downloads": 0,
               "source": "万方",
               "cnki_id": "periodical_zgwhyc202602002",
+              "score": 2.0
+            },
+            {
+              "title": "3500BC－1500BC中国文明形成与早期发展阶段的社会与精神文化研究",
+              "authors": [
+                "陈星灿",
+                "张弛",
+                "李新伟",
+                "王明辉",
+                "张海",
+                "中国社会科学院考古研究所"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 0,
+              "source": "万方",
+              "cnki_id": "nstr_94659EAF-7EA4-4899-90D2-6043AE3013D4",
               "score": 2.0
             }
           ]
