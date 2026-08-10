@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-27",
+  "lastUpdated": "2026-08-10",
   "categories": [
     {
       "id": "ancient-china",
@@ -730,6 +730,19 @@
               "source": "万方",
               "cnki_id": "nstr_E537E671-683E-4D66-A0D6-958B06D0B6F6",
               "score": 2.0
+            },
+            {
+              "title": "新时代党以历史主动精神推进中国式现代化建设研究",
+              "authors": [
+                "崔旭丁"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "thesis_D04342886",
+              "score": 2.0
             }
           ]
         },
@@ -816,6 +829,19 @@
               "source": "万方",
               "cnki_id": "periodical_qnjz200903012",
               "score": 0.0
+            },
+            {
+              "title": "延安时期中共形象国际传播研究--基于访延国际人士著述的考察",
+              "authors": [
+                "王昆"
+              ],
+              "journal": "",
+              "year": 2026,
+              "citations": 0,
+              "downloads": 1,
+              "source": "万方",
+              "cnki_id": "thesis_D04318585",
+              "score": 2.0
             }
           ]
         },
